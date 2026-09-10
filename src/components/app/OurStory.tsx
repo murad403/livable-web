@@ -1,5 +1,4 @@
 'use client'
-
 import React from 'react'
 
 interface OurStoryProps {
@@ -19,28 +18,30 @@ const OurStory: React.FC<OurStoryProps> = ({ onTalkClick }) => {
     }
 
     return (
-        <section className="py-24 px-6 sm:px-12 max-w-5xl mx-auto text-center">
+        <section className="py-24 px-6 sm:px-12 max-w-7xl mx-auto text-center">
             {/* Label */}
-            <span className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest block mb-4">
+            <p className="text-xs sm:text-sm font-semibold text-title text-start uppercase tracking-widest block mb-6">
                 Our Story
-            </span>
+            </p>
 
             {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-8 leading-tight">
-                We built the relocation company we wished had existed when we moved
-            </h2>
+            <div className='max-w-5xl mx-auto'>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-8 leading-tight">
+                    We built the relocation company we wished had existed when we moved
+                </h2>
 
-            {/* Paragraphs */}
-            <div className="space-y-6 text-gray-600 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed font-light">
-                <p>
-                    Founded by expats who navigated the maze of moving abroad themselves, we built Livable to provide the structure, clarity, and hands-on guidance we needed when making our own relocation decisions.
-                </p>
-                <p>
-                    Our team combines local market knowledge with deep personal experience moving across borders. We're here to make your move to Spain or Portugal seamless, enjoyable, and free of costly mistakes.
-                </p>
-                <p className="font-normal text-[#282828]">
-                    We believe moving abroad should be a joyful transformation, not a stressful ordeal.
-                </p>
+                {/* Paragraphs */}
+                <div className="space-y-6 text-title text-base sm:text-lg leading-relaxed font-light">
+                    <p>
+                         Livable began when a forensic anthropologist and a systems designer discovered they had both spent their careers solving the exact same problem: helping people make sound decisions in unfamiliar environments.
+                    </p>
+                    <p>
+                        Between us, we have moved across five continents—navigating relocations with pets, careers, families, and changing priorities. After years of helping individuals and corporate clients manage their own transitions, we built Livable to create a clearer, more organized path for one of life’s biggest decisions.
+                    </p>
+                    <p className="font-normal text-title">
+                        We believe that finding a better-fit life unlocks your true energy for the work, relationships, and life you care about.
+                    </p>
+                </div>
             </div>
 
             {/* Red Pill Button */}
@@ -49,7 +50,7 @@ const OurStory: React.FC<OurStoryProps> = ({ onTalkClick }) => {
                     onClick={handleScrollToForm}
                     className="bg-primary hover:bg-primary-hover text-white px-8 py-3.5 rounded-full text-base font-medium transition-all transform hover:scale-105 shadow-md cursor-pointer"
                 >
-                    Get started
+                    Book your introductory call →
                 </button>
             </div>
         </section>

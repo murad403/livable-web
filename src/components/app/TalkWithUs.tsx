@@ -32,6 +32,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
         handleSubmit,
         watch,
         setValue,
+        control,
         trigger,
         reset,
         formState: { errors, isSubmitting }
@@ -47,10 +48,9 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
         }
     })
 
-    // Reacting to preselectedCity if provided externally
     React.useEffect(() => {
         if (preselectedCity) {
-            setValue('selectedPlaces', [preselectedCity])
+            setValue('selectedPlaces', [preselectedCity], { shouldValidate: true, shouldDirty: true })
         }
     }, [preselectedCity, setValue])
 
@@ -63,44 +63,41 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
 
     const onSubmit = async (data: FormValues) => {
         console.log('Submitted form data:', data)
-        // Simulate API call delay
         await new Promise((resolve) => setTimeout(resolve, 800))
         setIsSubmitted(true)
     }
 
     return (
         <section id="talk-with-us" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto scroll-mt-24">
-            <span className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest block mb-3">
+            {/* Top Section Label (Matching User Image) */}
+            <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-12">
                 Talk With Us
             </span>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-6">
-                {/* Left text column */}
-                <div className="lg:col-span-5 pt-4">
-                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#282828] tracking-tight mb-4 leading-tight">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                {/* Left Text Column (Matching User Image) */}
+                <div className="lg:col-span-6">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-medium text-title tracking-tight leading-none mb-3">
                         Hello, Europe.
                     </h2>
-                    <p className="text-xl sm:text-2xl text-gray-600 font-light">
+                    <p className="text-2xl sm:text-3xl text-title font-normal tracking-tight">
                         Your first step starts here.
-                    </p>
-                    <p className="text-sm sm:text-base text-gray-500 mt-6 leading-relaxed">
-                        Fill out our short questionnaire to tell us about your timelines, target locations, and scouting preferences. We will schedule a personalized introductory call to match you with local experts.
                     </p>
                 </div>
 
-                {/* Right Form Card Column (Image 3 exact frame design) */}
-                <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-200/90 shadow-xl relative">
-                    {/* Top Progress Dots Indicator */}
+                {/* Right Form Card Column (Matching User Image) */}
+                <div className="lg:col-span-6 bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-sm max-w-lg w-full lg:ml-auto">
+                    {/* Top Center Progress Dots Indicator (Matching User Image) */}
                     {!isSubmitted && (
                         <div className="flex items-center justify-center gap-2 mb-6">
                             <span
                                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                                    step >= 1 ? 'bg-[#FE3F39]' : 'bg-gray-300'
+                                    step >= 1 ? 'bg-primary' : 'bg-gray-200'
                                 }`}
                             />
                             <span
                                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                                    step === 2 ? 'bg-[#FE3F39]' : 'bg-gray-300'
+                                    step === 2 ? 'bg-primary' : 'bg-gray-200'
                                 }`}
                             />
                         </div>
@@ -108,8 +105,8 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
 
                     {isSubmitted ? (
                         <div className="text-center py-12 px-4 space-y-4">
-                            <CheckCircle2 className="w-16 h-16 text-[#FE3F39] mx-auto animate-bounce" />
-                            <h3 className="text-2xl font-bold text-[#282828]">You're all set!</h3>
+                            <CheckCircle2 className="w-16 h-16 text-primary mx-auto animate-bounce" />
+                            <h3 className="text-2xl font-bold text-title">You're all set!</h3>
                             <p className="text-gray-600 max-w-md mx-auto text-sm sm:text-base">
                                 Thank you for booking your introductory call. Our relocation advisors have received your preferences and will reach out within 24 hours.
                             </p>
@@ -120,7 +117,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
                                         setStep(1)
                                         setIsSubmitted(false)
                                     }}
-                                    className="bg-gray-100 hover:bg-gray-200 text-[#282828] text-xs font-semibold px-6 py-3 rounded-full transition-colors cursor-pointer"
+                                    className="bg-gray-100 hover:bg-gray-200 text-title text-xs font-semibold px-6 py-3 rounded-full transition-colors cursor-pointer"
                                 >
                                     Submit another response
                                 </button>
@@ -132,7 +129,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
                                 <TalkStep1 register={register} errors={errors} onNext={handleNextStep} />
                             ) : (
                                 <TalkStep2
-                                    watch={watch}
+                                    control={control}
                                     setValue={setValue}
                                     errors={errors}
                                     onBack={() => setStep(1)}
