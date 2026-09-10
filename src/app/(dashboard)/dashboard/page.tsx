@@ -43,11 +43,11 @@ export default function DashboardPage() {
             </div>
 
             {/* Sub-Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 sm:mb-12 gap-4">
                 <h1 className="text-2xl sm:text-3xl font-semibold text-title tracking-tight">
                     Hi, Sarah
                 </h1>
-                <h2 className="text-3xl sm:text-4xl font-semibold text-title tracking-tight text-center md:-translate-x-12">
+                <h2 className="text-3xl sm:text-4xl font-semibold text-title tracking-tight text-center translate-x-0 md:-translate-x-12">
                     Dashboard
                 </h2>
                 <div className="hidden md:block w-24" />
