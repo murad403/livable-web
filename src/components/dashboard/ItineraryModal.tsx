@@ -46,7 +46,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
             <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
                 {/* Header */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-6">
+                <div className="flex items-center justify-between mb-8">
                     <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
                         Your Scouting Itinerary
                     </h2>
@@ -59,7 +59,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Subtitle */}
-                <p className="text-sm sm:text-base text-gray-600 font-light leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-gray-700 font-light leading-relaxed mb-8">
                     Your itinerary is ready. Below is your three-day scouting schedule for Lisbon, coordinated by the Livable™ team to maximize your time on the ground.
                 </p>
 
@@ -67,16 +67,16 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
                 <div className="space-y-8 mb-8">
                     {schedule.map((day, idx) => (
                         <div key={idx} className="border-t border-gray-100 pt-6">
-                            <span className="text-xs sm:text-sm font-medium text-gray-500 block mb-1">
+                            <span className="text-xs sm:text-sm font-normal text-gray-500 block mb-1">
                                 {day.dayTag}
                             </span>
-                            <h3 className="text-xl sm:text-2xl font-semibold text-title mb-4">
+                            <h3 className="text-lg md:text-xl font-medium text-title mb-4">
                                 {day.title}
                             </h3>
                             <ul className="space-y-2.5 text-sm sm:text-base text-gray-700 font-light">
                                 {day.bullets.map((b, bIdx) => (
                                     <li key={bIdx} className="flex items-start gap-3">
-                                        <span className="w-1.5 h-1.5 bg-gray-400 shrink-0 mt-2 rounded-xs" />
+                                        <span className="w-1.5 h-1.5 bg-gray-400 shrink-0 mt-2 rounded-none" />
                                         <span>{b}</span>
                                     </li>
                                 ))}
@@ -103,7 +103,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
                     </a>
                     <button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-2xl text-lg font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
+                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
                     >
                         Done
                     </button>
