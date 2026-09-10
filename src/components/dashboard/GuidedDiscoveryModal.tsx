@@ -62,7 +62,7 @@ const GuidedDiscoveryModal: React.FC<GuidedDiscoveryModalProps> = ({ isOpen, onC
                     </a>
                     <button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-2xl text-lg font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
+                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
                     >
                         Done
                     </button>
