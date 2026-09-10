@@ -89,8 +89,7 @@ const Navbar = () => {
                             Get started
                         </button>
                         <a
-                            href="#scouting-trip"
-                            onClick={handleSeeHowItWorks}
+                            href="/pricing"
                             className="text-xs sm:text-sm font-semibold tracking-wider text-title uppercase underline underline-offset-4 hover:text-primary transition-colors"
                         >
                             SEE HOW IT WORKS →
