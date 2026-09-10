@@ -1,8 +1,6 @@
 'use client'
-
 import React from 'react'
 import ScoutingTripCard from '@/components/shared/ScoutingTripCard'
-
 import trip1 from '@/assets/trip1.jpg'
 import trip2 from '@/assets/trip2.jpg'
 import trip3 from '@/assets/trip3.jpg'
@@ -59,26 +57,16 @@ const scoutingTripsData = [
 const ScoutingTrip: React.FC<ScoutingTripProps> = ({ onSelectCard }) => {
     return (
         <section id="scouting-trip" className="py-16 px-6 sm:px-12 max-w-7xl mx-auto scroll-mt-24">
-            {/* Transition row from Hero (Image 1 style) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-24 pb-16 border-b border-gray-200/80">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-[#282828] leading-snug tracking-tight">
-                    Moving abroad can turn into years of fragmented research, expensive mistakes, and second-guessing.
-                </h2>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-                    Every detail of our scouting trip program is designed to shortcut years of guesswork into a focused three-day experience that helps you clarify your priorities and move with confidence.
-                </p>
-            </div>
-
             {/* Scouting Trip Header */}
             <div className="text-center mb-16">
-                <span className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest block mb-3">
+                <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-3">
                     The Scouting Trip
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#282828] tracking-tight mb-4 max-w-4xl mx-auto">
-                    Three days. Three experts. Your priorities. Insider info.
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-4 max-w-4xl mx-auto">
+                    Three days, Three experts. Your priorities. Insider info.
                 </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-                    Our customized three-day scouting trip pairs you with local experts to give you an insider look into living in Spain or Portugal so you can make decisions based on real experience, not secondhand info.
+                <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">
+                    One carefully designed three-day scouting trip, giving you the real-world experience to replace guesswork before you commit to the move. Every neighborhood layout and local consultation is prepared around your priorities before you arrive, so you can decide with confidence.
                 </p>
             </div>
 

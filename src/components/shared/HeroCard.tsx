@@ -10,12 +10,13 @@ interface HeroCardProps {
     onClick?: () => void
 }
 
-const HeroCard: React.FC<HeroCardProps> = ({ image, title, subtitle, onClick }) => {
+const HeroCard: React.FC<HeroCardProps> = ({ image, title, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className="group relative overflow-hidden rounded-2xl h-44 sm:h-52 md:h-60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+            className="group relative overflow-hidden rounded-2xl cursor-pointer w-full transition-all duration-300 ease-out h-48 sm:h-56 md:h-60 hover:h-64 sm:hover:h-76 md:hover:h-84 shadow-sm hover:shadow-2xl"
         >
+            {/* Image */}
             <Image
                 src={image}
                 alt={title}
@@ -23,10 +24,12 @@ const HeroCard: React.FC<HeroCardProps> = ({ image, title, subtitle, onClick }) 
                 sizes="(max-width: 768px) 50vw, 16vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-            <div className="absolute bottom-3 left-3 right-3 text-white">
-                <p className="text-xs sm:text-sm font-medium drop-shadow-sm truncate">{title}</p>
-                {subtitle && <p className="text-[10px] sm:text-xs text-gray-200 truncate">{subtitle}</p>}
+
+            {/* Dark glassmorphic backdrop-blur overlay with title (Matching User Image) */}
+            <div className="absolute inset-x-0 bottom-0 py-4 px-3 bg-black/50 backdrop-blur-md border-t border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center text-center rounded-b-2xl">
+                <span className="text-white text-base sm:text-lg font-medium tracking-normal drop-shadow-sm truncate font-sans">
+                    {title}
+                </span>
             </div>
         </div>
     )

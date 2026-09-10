@@ -1,8 +1,6 @@
 'use client'
-
 import React from 'react'
 import HeroCard from '@/components/shared/HeroCard'
-
 import hero1 from '@/assets/hero1.png'
 import hero2 from '@/assets/hero2.png'
 import hero3 from '@/assets/hero3.png'
@@ -25,7 +23,7 @@ interface HeroProps {
 const heroItems = [
     {
         id: 'lisbon-waterfront',
-        title: 'Lisbon Waterfront',
+        title: 'Lisbon',
         subtitle: 'Tagus River Promenade',
         image: hero1,
         location: 'Lisbon • Waterfront',
@@ -39,7 +37,7 @@ const heroItems = [
     },
     {
         id: 'teleferico',
-        title: 'Barcelona Cable Car',
+        title: 'Barcelona',
         subtitle: 'Montjuïc Sky Views',
         image: hero2,
         location: 'Barcelona • Skyway',
@@ -52,11 +50,11 @@ const heroItems = [
         neighborhoodsText: 'Gràcia, Eixample, El Born, Poblenou, Sarrià-Sant Gervasi'
     },
     {
-        id: 'lisbon-tram',
-        title: 'Historic Tram Routes',
-        subtitle: 'Alfama & Chiado',
+        id: 'san-francisco',
+        title: 'San Francisco',
+        subtitle: 'Coast & Beaches',
         image: hero3,
-        location: 'Lisbon • Historic Center',
+        location: 'Coastal Beaches',
         description: 'Iconic yellow tramways winding through steep cobblestone avenues and sun-drenched squares.',
         metrics: [
             { rank: '#1', title: 'Historic Charm', subtitle: 'Travel + Leisure' },
@@ -66,8 +64,8 @@ const heroItems = [
         neighborhoodsText: 'Alfama, Graça, Mouraria, Chiado, Bairro Alto'
     },
     {
-        id: 'rooftop-views',
-        title: 'Old Town Rooftops',
+        id: 'seville-madrid',
+        title: 'Seville',
         subtitle: 'Spanish Architecture',
         image: hero4,
         location: 'Seville & Madrid',
@@ -80,8 +78,8 @@ const heroItems = [
         neighborhoodsText: 'Santa Cruz, Triana, Macarena, Alfalfa'
     },
     {
-        id: 'tapas-culture',
-        title: 'Tapas & Dining',
+        id: 'tapas-dining',
+        title: 'Porto',
         subtitle: 'Culinary Experiences',
         image: hero5,
         location: 'Spain & Portugal',
@@ -94,8 +92,8 @@ const heroItems = [
         neighborhoodsText: 'Local fresh markets, tapas bars, sea view terraces, chiringuitos'
     },
     {
-        id: 'coastal-hills',
-        title: 'Coastal Terraces',
+        id: 'cascais-terrace',
+        title: 'Cascais',
         subtitle: 'Cascais & Porto',
         image: hero6,
         location: 'Cascais • Atlantic Coast',
@@ -113,12 +111,12 @@ const Hero: React.FC<HeroProps> = ({ onSelectCard }) => {
     return (
         <section className="pt-4 pb-16 px-6 sm:px-12 max-w-7xl mx-auto">
             {/* Subtitle */}
-            <p className="text-2xl sm:text-3xl md:text-4xl text-title/90 font-normal max-w-4xl leading-tight tracking-tight mb-12">
+            <p className="text-2xl sm:text-3xl md:text-4xl text-title/90 font-normal max-w-4xl leading-tight tracking-tight">
                 Move from the U.S. to Spain or Portugal efficiently, joyfully, and without regret.
             </p>
 
-            {/* 6 Hero Image Strip (Image 1 style) */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4">
+            {/* 6 Hero Image Strip */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-end gap-3 sm:gap-4 min-h-90 pt-8 mb-18">
                 {heroItems.map((item) => (
                     <HeroCard
                         key={item.id}
@@ -128,6 +126,16 @@ const Hero: React.FC<HeroProps> = ({ onSelectCard }) => {
                         onClick={() => onSelectCard && onSelectCard(item)}
                     />
                 ))}
+            </div>
+
+            {/* Moving abroad text row (Under Hero cards) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pt-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-title leading-snug tracking-tight">
+                    Moving abroad can turn into years of fragmented research, expensive mistakes, and second-guessing.
+                </h2>
+                <p className="text-base sm:text-lg text-title leading-relaxed">
+                    Every detail of our scouting trip program is designed to shortcut years of guesswork into a focused three-day experience that helps you clarify your priorities and move with confidence.
+                </p>
             </div>
         </section>
     )

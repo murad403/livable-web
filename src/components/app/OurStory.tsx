@@ -26,7 +26,7 @@ const OurStory: React.FC<OurStoryProps> = ({ onTalkClick }) => {
             </span>
 
             {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#282828] tracking-tight mb-8 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-8 leading-tight">
                 We built the relocation company we wished had existed when we moved
             </h2>
 
