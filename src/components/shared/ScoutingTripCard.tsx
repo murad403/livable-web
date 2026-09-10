@@ -47,7 +47,7 @@ const ScoutingTripCard: React.FC<ScoutingTripCardProps> = ({ day, title, descrip
             </div>
 
             {/* Footer action link */}
-            <div className="flex items-center gap-1 text-xs font-medium text-gray-500 group-hover:text-primary transition-colors pt-2 border-t border-gray-200/60">
+            <div className="flex items-center gap-1 text-xs font-medium text-title group-hover:text-primary transition-colors pt-2 border-t border-gray-200/60">
                 <span>View Day Agenda</span>
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </div>

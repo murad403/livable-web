@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image, { StaticImageData } from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
 
 interface PlacesCardProps {
     badge?: string
@@ -12,48 +11,39 @@ interface PlacesCardProps {
     onClick?: () => void
 }
 
-const PlacesCard: React.FC<PlacesCardProps> = ({ badge, title, locationText, image, onClick }) => {
+const PlacesCard: React.FC<PlacesCardProps> = ({ badge = 'More →', title, locationText, image, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className="group relative overflow-hidden rounded-3xl h-80 sm:h-96 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-gray-900"
+            className="group relative overflow-hidden rounded-3xl h-[420px] sm:h-[460px] w-[280px] sm:w-[330px] shrink-0 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 bg-gray-900 snap-start"
         >
             {/* Background Image */}
             <Image
                 src={image}
                 alt={title}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                sizes="(max-width: 768px) 280px, 330px"
                 className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
             />
 
-            {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
+            {/* Dark gradient overlay at bottom (Matching User Image) */}
+            <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
 
-            {/* Badge top right */}
-            {badge && (
-                <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-[#FE3F39] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
-                        {badge}
-                    </span>
-                </div>
-            )}
+            {/* Red Badge top right (Matching User Image "More →") */}
+            <div className="absolute top-4 right-4 z-10">
+                <span className="bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-normal px-4 py-2 rounded-2xl shadow-sm transition-all duration-300 inline-flex items-center gap-1">
+                    {badge}
+                </span>
+            </div>
 
-            {/* Card Content at Bottom */}
-            <div className="absolute bottom-5 left-5 right-5 text-white z-10">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h3 className="text-xl sm:text-2xl font-bold tracking-tight uppercase font-sans group-hover:text-[#FE3F39] transition-colors">
-                            {title}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-300 font-light mt-1">
-                            {locationText}
-                        </p>
-                    </div>
-                    <div className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-[#FE3F39] transition-colors">
-                        <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </div>
-                </div>
+            {/* Card Content at Bottom: Subtitle on top, Title below (Matching User Image) */}
+            <div className="absolute bottom-5 left-5 right-5 text-white z-10 space-y-1">
+                <p className="text-xs sm:text-sm text-gray-200 font-light tracking-wide truncate">
+                    {locationText}
+                </p>
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight uppercase font-sans text-white group-hover:text-primary transition-colors">
+                    {title}
+                </h3>
             </div>
         </div>
     )

@@ -1,8 +1,7 @@
 'use client'
-
-import React from 'react'
+import React, { useRef } from 'react'
 import PlacesCard from '@/components/shared/PlacesCard'
-
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import place1 from '@/assets/place1.jpg'
 import place2 from '@/assets/place2.png'
 import place3 from '@/assets/place3.jpg'
@@ -17,28 +16,11 @@ interface PlacesProps {
 
 export const placesList = [
     {
-        id: 'lisbon',
-        badge: 'Popular',
-        title: 'LISBON',
+        id: 'porto',
+        badge: 'More →',
+        title: 'PORTO',
         locationText: 'West Lisbon • Oeiras • Cascais',
         image: place1,
-        mapImage: mapImg,
-        description:
-            'Miradouros, markets, azulejos, the Tagus, neighborhood cafés, and late golden light—discover the blend of beauty, movement, and daily ease that makes Lisbon feel so magnetic.',
-        metrics: [
-            { rank: '#1', title: 'Healthy Urban Design', subtitle: 'ISGlobal Healthy Urban Design Index' },
-            { rank: '#3', title: 'Most Livable City for Foreigners', subtitle: 'AMPS Lisbon Livable Cities Conference' },
-            { rank: '#8', title: 'Friendliest Globally', subtitle: 'Time Out Resident Survey' }
-        ],
-        neighborhoodsText:
-            'Historic Lisbon: Alfama, Baixa, Chiado River + West: Santos, Alcântara, Belém Livable Periphery: Cascais, Oeiras, Almada'
-    },
-    {
-        id: 'porto',
-        badge: 'New',
-        title: 'PORTO',
-        locationText: 'Douro Valley • Foz do Douro • Cedofeita',
-        image: place2,
         mapImage: mapImg,
         description:
             'Granite bridges, historic wine cellars along the Douro, dynamic creative hubs, coastal bike paths, and warm northern Portuguese hospitality.',
@@ -51,10 +33,27 @@ export const placesList = [
             'Ribeira, Baixa, Cedofeita, Bonfim, Foz do Douro, Vila Nova de Gaia, Matosinhos Coast'
     },
     {
+        id: 'barcelona',
+        badge: 'More →',
+        title: 'BARCELONA',
+        locationText: 'Creative Coast • Hillside Enclaves • City Adjacent',
+        image: place2,
+        mapImage: mapImg,
+        description:
+            'Gothic Architecture, Mediterranean beaches, creative hubs, world-class gastronomy, and vibrant city lifestyle.',
+        metrics: [
+            { rank: '#1', title: 'Top Cultural Hub', subtitle: 'Global Cities' },
+            { rank: '#2', title: 'Quality of Transport', subtitle: 'EU Transit' },
+            { rank: '#5', title: 'Innovation Capital', subtitle: 'Smart City Index' }
+        ],
+        neighborhoodsText:
+            'Gràcia, Eixample, El Born, Poblenou, Sarrià-Sant Gervasi'
+    },
+    {
         id: 'san-sebastian',
-        badge: '10% off',
+        badge: 'More →',
         title: 'SAN SEBASTIÁN',
-        locationText: 'Basque Country • La Concha • Gros',
+        locationText: 'Historic Center • Concha Bay • Basque Coast',
         image: place3,
         mapImage: mapImg,
         description:
@@ -69,9 +68,9 @@ export const placesList = [
     },
     {
         id: 'malaga',
-        badge: 'Popular',
+        badge: 'More →',
         title: 'MÁLAGA',
-        locationText: 'Costa del Sol • Soho • Pedregalejo',
+        locationText: 'West Lisbon • Oeiras • Cascais',
         image: place4,
         mapImage: mapImg,
         description:
@@ -86,9 +85,9 @@ export const placesList = [
     },
     {
         id: 'valencia',
-        badge: 'Trending',
+        badge: 'More →',
         title: 'VALENCIA',
-        locationText: 'Turia Gardens • Ruzafa • El Carmen',
+        locationText: 'Turia Gardens • El Carmen • Ruzafa',
         image: hero4,
         mapImage: mapImg,
         description:
@@ -103,7 +102,7 @@ export const placesList = [
     },
     {
         id: 'madrid',
-        badge: 'Capital Hub',
+        badge: 'More →',
         title: 'MADRID',
         locationText: 'Salamanca • Chamberí • Malasaña',
         image: hero3,
@@ -121,24 +120,62 @@ export const placesList = [
 ]
 
 const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const scrollLeft = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: -360, behavior: 'smooth' });
+        }
+    }
+
+    const scrollRight = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: 360, behavior: 'smooth' });
+        }
+    }
+
     return (
         <section className="py-16 px-6 sm:px-12 max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-16">
-                <span className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest block mb-3">
-                    Our Locations
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#282828] tracking-tight mb-4 max-w-4xl mx-auto">
+            {/* 1. Top Section Label: Left-aligned (Matching User Image) */}
+            <span className="text-xs sm:text-sm font-semibold text-start text-title uppercase tracking-widest block mb-3">
+                The Places
+            </span>
+
+            {/* 2. Centered Headline & Paragraph (Matching User Image) */}
+            <div className="text-center max-w-4xl mx-auto mb-10">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-4 max-w-4xl mx-auto">
                     We currently run scouting trips in six locations across Spain and Portugal.
                 </h2>
-                <p className="text-gray-600 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-                    Explore locations that match your vision—from vibrant cities to relaxed coastal regions. Select a location to see full details, neighborhood guides, and scouting trip agendas.
+                <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">
+                    Our trips encompass the broader regional system—the city center, but also connected rail towns and coastal neighborhoods—to evaluate each area for livability, social infrastructure, and lifestyle fit.
                 </p>
             </div>
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {placesList.slice(0, 4).map((place) => (
+            {/* 3. Arrow buttons above the cards on the right side (Matching User Image) */}
+            <div className="flex justify-end items-center gap-3 mb-4">
+                <button
+                    onClick={scrollLeft}
+                    aria-label="Scroll left"
+                    className="p-1 text-title hover:text-primary transition-colors cursor-pointer"
+                >
+                    <ArrowLeft className="w-5 h-5" />
+                </button>
+                <button
+                    onClick={scrollRight}
+                    aria-label="Scroll right"
+                    className="p-1 text-title hover:text-primary transition-colors cursor-pointer"
+                >
+                    <ArrowRight className="w-5 h-5" />
+                </button>
+            </div>
+
+            {/* 4. Scrollable Cards Carousel */}
+            <div
+                ref={scrollContainerRef}
+                className="flex items-center gap-6 overflow-x-auto scrollbar-none pb-6 scroll-smooth snap-x snap-mandatory"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+                {placesList.map((place) => (
                     <PlacesCard
                         key={place.id}
                         badge={place.badge}
