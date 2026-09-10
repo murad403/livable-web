@@ -61,9 +61,9 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
             <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
                 {/* Header bar */}
                 <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-8">
-                    <span className="text-sm font-medium text-gray-700">
+                    <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
                         Core Infrastructure & Verified Networks
-                    </span>
+                    </h2>
                     <button
                         onClick={onClose}
                         className="text-gray-400 hover:text-black transition-colors p-1 cursor-pointer"
@@ -293,4 +293,4 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
     )
 }
 
-export default CoreInfrastructureModal
+export default CoreInfrastructureModal
