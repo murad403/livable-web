@@ -13,41 +13,41 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white text-[#282828] font-sans flex flex-col justify-between">
+        <div className="min-h-screen bg-white text-title font-sans flex flex-col justify-between selection:bg-primary selection:text-white">
             <div>
                 <Navbar />
-                <main className="py-16 px-6 sm:px-12 max-w-md mx-auto">
+                <main className="py-20 px-6 sm:px-12 max-w-md mx-auto">
                     <div className="text-center mb-8">
-                        <span className="text-xs font-semibold text-[#FE3F39] uppercase tracking-widest block mb-2">
-                            Expat Portal
+                        <span className="text-xs font-semibold text-primary uppercase tracking-widest block mb-2">
+                            Dashboard Login
                         </span>
-                        <h1 className="text-3xl font-bold tracking-tight text-[#282828] mb-2">
-                            Sign in to Livable™
+                        <h1 className="text-3xl font-semibold tracking-tight text-title mb-2">
+                            Sign in to Livable<span className="text-sm align-super ml-0.5 font-normal">™</span>
                         </h1>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-500 font-light">
                             Access your personalized scouting itineraries, city dossiers, and advisor messages.
                         </p>
                     </div>
 
-                    <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg">
+                    <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
                         <form onSubmit={handleLogin} className="space-y-4">
                             <div>
-                                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                                <label className="block text-xs font-normal text-title uppercase tracking-wider mb-2">
                                     Email Address
                                 </label>
                                 <div className="relative">
                                     <input
                                         type="email"
                                         required
-                                        placeholder="you@example.com"
-                                        className="w-full pl-10 pr-4 py-3 rounded-2xl border border-gray-200 text-sm focus:outline-none focus:border-[#FE3F39] transition-colors"
+                                        placeholder="your@email.com"
+                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 text-sm text-title focus:outline-none focus:border-primary transition-colors"
                                     />
                                     <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-2">
+                                <label className="block text-xs font-normal text-title uppercase tracking-wider mb-2">
                                     Password
                                 </label>
                                 <div className="relative">
@@ -55,7 +55,7 @@ export default function LoginPage() {
                                         type="password"
                                         required
                                         placeholder="••••••••"
-                                        className="w-full pl-10 pr-4 py-3 rounded-2xl border border-gray-200 text-sm focus:outline-none focus:border-[#FE3F39] transition-colors"
+                                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 text-sm text-title focus:outline-none focus:border-primary transition-colors"
                                     />
                                     <Lock className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5" />
                                 </div>
@@ -63,17 +63,17 @@ export default function LoginPage() {
 
                             <div className="flex items-center justify-between text-xs pt-1">
                                 <label className="flex items-center gap-2 cursor-pointer text-gray-600">
-                                    <input type="checkbox" className="rounded border-gray-300 text-[#FE3F39] focus:ring-[#FE3F39]" />
+                                    <input type="checkbox" className="rounded border-gray-300 text-primary focus:ring-primary" />
                                     <span>Remember me</span>
                                 </label>
-                                <a href="#" className="text-[#FE3F39] font-medium hover:underline">
+                                <a href="#" className="text-primary font-medium hover:underline">
                                     Forgot password?
                                 </a>
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-[#FE3F39] hover:bg-[#e0322d] text-white py-3.5 rounded-full text-sm font-semibold transition-all shadow hover:shadow-md cursor-pointer flex items-center justify-center gap-2 mt-4"
+                                className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-full text-sm font-medium transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 mt-4"
                             >
                                 <span>Sign In</span>
                                 <ArrowRight className="w-4 h-4" />
@@ -83,7 +83,7 @@ export default function LoginPage() {
                         <div className="mt-6 pt-6 border-t border-gray-100 text-center">
                             <p className="text-xs text-gray-500">
                                 Don't have an account?{' '}
-                                <Link href="/#talk-with-us" className="text-[#FE3F39] font-semibold hover:underline">
+                                <Link href="/#talk-with-us" className="text-primary font-semibold hover:underline">
                                     Book a scouting trip
                                 </Link>
                             </p>
