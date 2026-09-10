@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 
 const Step = () => {
     const stepsData = [
@@ -44,7 +43,7 @@ const Step = () => {
     ]
 
     return (
-        <section className="py-20 px-6 sm:px-12 max-w-7xl mx-auto text-title font-sans">
+        <section id="how-it-works" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto text-title font-sans scroll-mt-24">
             {/* Top Left Label */}
             <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-4">
                 What's Included

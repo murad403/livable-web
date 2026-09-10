@@ -37,13 +37,13 @@ const Navbar = () => {
 
     const handleSeeHowItWorks = (e: React.MouseEvent) => {
         e.preventDefault()
-        if (pathname === '/') {
-            const el = document.getElementById('scouting-trip')
+        if (pathname === '/pricing') {
+            const el = document.getElementById('how-it-works')
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' })
             }
         } else {
-            router.push('/#scouting-trip')
+            router.push('/pricing#how-it-works')
         }
     }
 
@@ -89,8 +89,9 @@ const Navbar = () => {
                             Get started
                         </button>
                         <a
-                            href="/pricing"
-                            className="text-xs sm:text-sm font-semibold tracking-wider text-title uppercase underline underline-offset-4 hover:text-primary transition-colors"
+                            href="/pricing#how-it-works"
+                            onClick={handleSeeHowItWorks}
+                            className="text-xs sm:text-sm font-semibold tracking-wider text-title uppercase underline underline-offset-4 hover:text-primary transition-colors cursor-pointer"
                         >
                             SEE HOW IT WORKS →
                         </a>
