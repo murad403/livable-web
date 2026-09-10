@@ -15,7 +15,7 @@ const PlacesCard: React.FC<PlacesCardProps> = ({ badge = 'More →', title, loca
     return (
         <div
             onClick={onClick}
-            className="group relative overflow-hidden rounded-3xl h-[420px] sm:h-[460px] w-[280px] sm:w-[330px] shrink-0 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 bg-gray-900 snap-start"
+            className="group relative overflow-hidden rounded-3xl h-105 sm:h-115 w-70 sm:w-82.5 shrink-0 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 bg-gray-900 snap-start"
         >
             {/* Background Image */}
             <Image

@@ -137,13 +137,13 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
     return (
         <section className="py-16 px-6 sm:px-12 max-w-7xl mx-auto">
             {/* 1. Top Section Label: Left-aligned (Matching User Image) */}
-            <span className="text-xs sm:text-sm font-semibold text-start text-title uppercase tracking-widest block mb-3">
+            <span className="text-xs sm:text-sm font-semibold text-start text-title uppercase tracking-widest block mb-6">
                 The Places
             </span>
 
             {/* 2. Centered Headline & Paragraph (Matching User Image) */}
             <div className="text-center max-w-4xl mx-auto mb-10">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-4 max-w-4xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-6 max-w-4xl mx-auto">
                     We currently run scouting trips in six locations across Spain and Portugal.
                 </h2>
                 <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">

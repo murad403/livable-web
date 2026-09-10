@@ -59,10 +59,10 @@ const ScoutingTrip: React.FC<ScoutingTripProps> = ({ onSelectCard }) => {
         <section id="scouting-trip" className="py-16 px-6 sm:px-12 max-w-7xl mx-auto scroll-mt-24">
             {/* Scouting Trip Header */}
             <div className="text-center mb-16">
-                <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-3">
+                <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-6">
                     The Scouting Trip
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-4 max-w-4xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-6 max-w-4xl mx-auto">
                     Three days, Three experts. Your priorities. Insider info.
                 </h2>
                 <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">
