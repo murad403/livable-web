@@ -2,7 +2,8 @@
 
 import React, { useEffect } from 'react'
 import Image, { StaticImageData } from 'next/image'
-import { X, ArrowRight } from 'lucide-react'
+import { X } from 'lucide-react'
+import mapImg from '@/assets/map.png'
 
 export interface ModalData {
     title: string
@@ -55,105 +56,102 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
         }
     }
 
+    const currentMapImage = data.mapImage || mapImg
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/60 backdrop-blur-sm animate-fadeIn">
-            {/* Modal Container (Matching Image 4 layout) */}
-            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100 relative animate-scaleUp">
+            {/* Modal Container (Matching Exact Image Layout) */}
+            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100 relative p-6 sm:p-10 space-y-10 animate-scaleUp">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/80 hover:bg-white text-gray-700 shadow-md backdrop-blur-md flex items-center justify-center transition-transform hover:scale-110 cursor-pointer"
+                    className="absolute top-5 right-5 z-20 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-title flex items-center justify-center transition-colors cursor-pointer"
                     aria-label="Close modal"
                 >
                     <X className="w-5 h-5" />
                 </button>
 
-                {/* Hero Header Image & Title Block */}
-                <div className="p-6 sm:p-8 space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                        {/* Top Left Image */}
-                        <div className="md:col-span-6 relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-sm">
-                            <Image
-                                src={data.image}
-                                alt={data.title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
+                {/* 1. Hero Header Image & Title Block */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    {/* Top Left Image */}
+                    <div className="md:col-span-6 relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-sm">
+                        <Image
+                            src={data.image}
+                            alt={data.title}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
 
-                        {/* Top Right Content */}
-                        <div className="md:col-span-6 space-y-3">
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#282828] uppercase font-sans">
-                                {data.title}
-                            </h2>
-                            {data.location && (
-                                <p className="text-xs sm:text-sm text-gray-500 font-medium tracking-wide">
-                                    {data.location}
-                                </p>
-                            )}
-                            <p className="text-sm sm:text-base text-gray-600 leading-relaxed font-light">
-                                {data.description}
+                    {/* Top Right Content */}
+                    <div className="md:col-span-6 space-y-3 pt-1">
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-title uppercase font-sans">
+                            {data.title}
+                        </h2>
+                        {data.location && (
+                            <p className="text-xs sm:text-sm text-gray-500 font-normal">
+                                {data.location}
                             </p>
-                        </div>
-                    </div>
-
-                    {/* 3 Metric Cards Grid (Matching Image 4 middle cards) */}
-                    {data.metrics && data.metrics.length > 0 && (
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                            {data.metrics.map((m, idx) => (
-                                <div
-                                    key={idx}
-                                    className="border border-gray-200 rounded-2xl p-4 sm:p-5 text-center bg-gray-50/50 hover:bg-white hover:shadow-sm transition-all"
-                                >
-                                    <span className="text-2xl sm:text-3xl font-bold text-[#282828] block mb-1">
-                                        {m.rank}
-                                    </span>
-                                    <h4 className="text-sm font-semibold text-[#282828] mb-1">
-                                        {m.title}
-                                    </h4>
-                                    <p className="text-[11px] text-gray-500 font-light">
-                                        {m.subtitle}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-
-                    {/* Map & Neighborhoods Section (Matching Image 4 map row) */}
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-4 border-t border-gray-100">
-                        {data.mapImage && (
-                            <div className="md:col-span-6 relative h-48 sm:h-56 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-                                <Image
-                                    src={data.mapImage}
-                                    alt="Map View"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
                         )}
-                        <div className={`space-y-2 ${data.mapImage ? 'md:col-span-6' : 'md:col-span-12'}`}>
-                            {data.neighborhoodsText && (
-                                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                                    {data.neighborhoodsText}
-                                </p>
-                            )}
-                        </div>
+                        <p className="text-base sm:text-lg text-title leading-relaxed font-normal pt-1">
+                            {data.description}
+                        </p>
                     </div>
+                </div>
 
-                    {/* Bottom CTA Block (Matching Image 4 bottom CTA) */}
-                    <div className="pt-6 border-t border-gray-100 text-center space-y-3">
-                        <h3 className="text-xl sm:text-2xl font-semibold text-[#282828]">
-                            Ready to see how {data.title} fits your life?
-                        </h3>
-                        <button
-                            onClick={handleContinue}
-                            className="inline-flex items-center gap-2 bg-[#FE3F39] hover:bg-[#e0322d] text-white text-sm sm:text-base font-semibold px-8 py-3.5 rounded-full transition-all shadow-md hover:shadow-lg cursor-pointer transform hover:scale-105"
-                        >
-                            <span>Choose {data.title} and Continue</span>
-                            <ArrowRight className="w-4 h-4" />
-                        </button>
+                {/* 2. Three Metric Cards Grid (Matching User Image) */}
+                {data.metrics && data.metrics.length > 0 && (
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                        {data.metrics.map((m, idx) => (
+                            <div
+                                key={idx}
+                                className="border border-gray-800 rounded-2xl p-6 text-center bg-white shadow-xs"
+                            >
+                                <span className="text-xl sm:text-2xl font-medium text-title block mb-1">
+                                    {m.rank}
+                                </span>
+                                <h4 className="text-base sm:text-lg font-semibold text-title leading-snug mb-1">
+                                    {m.title}
+                                </h4>
+                                <p className="text-xs text-gray-500 font-normal">
+                                    {m.subtitle}
+                                </p>
+                            </div>
+                        ))}
                     </div>
+                )}
+
+                {/* 3. Map & Neighborhoods Section (Always showing map.png from assets) */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
+                    <div className="md:col-span-6 relative h-52 sm:h-60 rounded-2xl overflow-hidden border border-gray-200 shadow-xs">
+                        <Image
+                            src={currentMapImage}
+                            alt="Map View"
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                    <div className="md:col-span-6 space-y-2">
+                        {data.neighborhoodsText && (
+                            <p className="text-lg sm:text-xl text-title font-normal leading-relaxed">
+                                {data.neighborhoodsText}
+                            </p>
+                        )}
+                    </div>
+                </div>
+
+                {/* 4. Bottom CTA Block (Matching User Image Exact Design) */}
+                <div className="pt-6 text-center space-y-2">
+                    <h3 className="text-2xl sm:text-3xl font-medium text-title">
+                        Ready to see how {data.title} fits your life?
+                    </h3>
+                    <button
+                        onClick={handleContinue}
+                        className="text-xs sm:text-sm font-medium text-title hover:text-primary transition-colors cursor-pointer inline-flex items-center gap-1 mt-1"
+                    >
+                        Choose {data.title} and Continue →
+                    </button>
                 </div>
             </div>
         </div>
