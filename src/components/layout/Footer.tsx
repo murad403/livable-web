@@ -19,9 +19,9 @@ const Footer = () => {
                         <Link href="/pricing" className="hover:text-black transition-colors">
                             Pricing
                         </Link>
-                        <a href="https://substack.com" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
+                        <Link href="/substack-library" className="hover:text-black transition-colors">
                             Substack-library
-                        </a>
+                        </Link>
                         <Link href="/login" className="hover:text-black transition-colors">
                             Dashboard Login
                         </Link>
