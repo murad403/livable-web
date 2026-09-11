@@ -99,8 +99,8 @@ export default function LoginPage() {
                             )}
                         </div>
 
-                        {/* Remember me checkbox (No forgot password link as requested) */}
-                        <div className="flex items-center text-xs pt-1">
+                        {/* Remember me & Forgot Password */}
+                        <div className="flex items-center justify-between text-xs pt-1">
                             <label className="flex items-center gap-2.5 cursor-pointer text-gray-600 font-normal select-none">
                                 <input
                                     type="checkbox"
@@ -109,6 +109,13 @@ export default function LoginPage() {
                                 />
                                 <span>Remember me</span>
                             </label>
+
+                            <Link
+                                href="/forgot-password"
+                                className="text-gray-500 hover:text-primary font-medium transition-colors"
+                            >
+                                Forgot password?
+                            </Link>
                         </div>
 
                         {/* Submit Button */}
