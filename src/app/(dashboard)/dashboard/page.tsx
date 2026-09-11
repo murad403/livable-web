@@ -85,10 +85,6 @@ export default function DashboardPage() {
                                 <span className="font-medium text-title">3 Days</span>
                             </div>
                             <div className="flex justify-between items-center py-1">
-                                <span className="text-gray-500">Phase</span>
-                                <span className="font-medium text-title">Pre-Scouting</span>
-                            </div>
-                            <div className="flex justify-between items-center py-1">
                                 <span className="text-gray-500">Advisor</span>
                                 <span className="font-medium text-title">Livable Team</span>
                             </div>
