@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { Lock } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Lock, LogOut } from 'lucide-react'
+import { toast } from 'sonner'
 import OrientationModal from '@/components/dashboard/OrientationModal'
 import FinancialProfileModal from '@/components/dashboard/FinancialProfileModal'
 import LifestyleAlignmentModal from '@/components/dashboard/LifestyleAlignmentModal'
@@ -14,16 +16,24 @@ import MicroSocialBlueprintModal from '@/components/dashboard/MicroSocialBluepri
 import DetailsModal, { ModalData } from '@/components/app/DetailsModal'
 import ChangePasswordModal from '@/components/shared/ChangePasswordModal'
 import { useGetMyTripsQuery } from '@/redux/features/app/app.api'
+import { removeToken } from '@/utils/auth'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
 
 export default function DashboardPage() {
+    const router = useRouter()
     const [activeModal, setActiveModal] = useState<string | null>(null);
     const [locationModalOpen, setLocationModalOpen] = useState(false);
     const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
 
     const { data: tripsData, isLoading: isTripsLoading } = useGetMyTripsQuery();
     const trip = tripsData?.trips?.[0];
+
+    const handleLogout = async () => {
+        await removeToken();
+        toast.success('Logged out successfully');
+        router.push('/');
+    }
 
     const lisbonData: ModalData = {
         title: trip?.city ? `${trip.city}, Portugal` : 'Lisbon, Portugal',
@@ -46,13 +56,22 @@ export default function DashboardPage() {
                 <Link href="/" className="font-normal text-xl sm:text-2xl text-title">
                     Livable<span className="text-xs align-super font-light ml-0.5">TM</span>
                 </Link>
-                <button
-                    onClick={() => setChangePasswordModalOpen(true)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-xs font-semibold text-title hover:border-primary hover:text-primary transition-all cursor-pointer shadow-xs hover:shadow-sm"
-                >
-                    <Lock className="w-3.5 h-3.5" />
-                    <span>Change Password</span>
-                </button>
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={() => setChangePasswordModalOpen(true)}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-xs font-semibold text-title hover:border-primary hover:text-primary transition-all cursor-pointer shadow-xs hover:shadow-sm"
+                    >
+                        <Lock className="w-3.5 h-3.5" />
+                        <span>Change Password</span>
+                    </button>
+                    <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 hover:bg-red-100 text-xs font-semibold transition-all cursor-pointer shadow-xs hover:shadow-sm"
+                    >
+                        <LogOut className="w-3.5 h-3.5" />
+                        <span>Logout</span>
+                    </button>
+                </div>
             </div>
 
             {/* Sub-Header */}
@@ -117,12 +136,12 @@ export default function DashboardPage() {
                             </div>
                         )}
 
-                        <button
+                        {/* <button
                             onClick={() => setLocationModalOpen(true)}
                             className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer mt-6 text-center"
                         >
                             View Location Details
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 

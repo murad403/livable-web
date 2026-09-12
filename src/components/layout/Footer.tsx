@@ -1,7 +1,25 @@
 'use client'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { getCurrentUser } from '@/utils/auth'
 
 const Footer = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const { access } = await getCurrentUser()
+                setIsLoggedIn(!!access)
+            } catch {
+                setIsLoggedIn(false)
+            }
+        }
+        checkAuth();
+    }, [pathname])
+
     return (
         <footer className="border-t border-gray-100 bg-white py-14 px-6 sm:px-12 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row items-start justify-between gap-10">
@@ -22,9 +40,15 @@ const Footer = () => {
                         <Link href="/substack-library" className="hover:text-black transition-colors">
                             Substack-library
                         </Link>
-                        <Link href="/login" className="hover:text-black transition-colors">
-                            Dashboard Login
-                        </Link>
+                        {isLoggedIn ? (
+                            <Link href="/dashboard" className="hover:text-black transition-colors">
+                                Portal
+                            </Link>
+                        ) : (
+                            <Link href="/login" className="hover:text-black transition-colors">
+                                Dashboard Login
+                            </Link>
+                        )}
                     </div>
 
                     {/* Column 2 */}
