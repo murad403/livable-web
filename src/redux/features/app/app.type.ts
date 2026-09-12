@@ -20,3 +20,21 @@ export interface BookTalkWithUsResponse {
     detail?: string;
     [key: string]: any;
 }
+
+export interface TripItem {
+    id: number;
+    client_name: string;
+    email: string;
+    visa: string;
+    city: string;
+    timeline: string;
+    guide_name: string;
+    property_views?: number;
+    created_at?: string;
+    updated_at?: string;
+}
+
+export interface GetMyTripsResponse {
+    total: number;
+    trips: TripItem[];
+}

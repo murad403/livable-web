@@ -1,6 +1,5 @@
 'use client'
-
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Lock } from 'lucide-react'
 import OrientationModal from '@/components/dashboard/OrientationModal'
@@ -14,17 +13,21 @@ import ArrivalChecklistsModal from '@/components/dashboard/ArrivalChecklistsModa
 import MicroSocialBlueprintModal from '@/components/dashboard/MicroSocialBlueprintModal'
 import DetailsModal, { ModalData } from '@/components/app/DetailsModal'
 import ChangePasswordModal from '@/components/shared/ChangePasswordModal'
+import { useGetMyTripsQuery } from '@/redux/features/app/app.api'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
 
 export default function DashboardPage() {
-    const [activeModal, setActiveModal] = useState<string | null>(null)
-    const [locationModalOpen, setLocationModalOpen] = useState(false)
-    const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false)
+    const [activeModal, setActiveModal] = useState<string | null>(null);
+    const [locationModalOpen, setLocationModalOpen] = useState(false);
+    const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
+
+    const { data: tripsData, isLoading: isTripsLoading } = useGetMyTripsQuery();
+    const trip = tripsData?.trips?.[0];
 
     const lisbonData: ModalData = {
-        title: 'Lisbon, Portugal',
-        location: 'Lisbon, Portugal',
+        title: trip?.city ? `${trip.city}, Portugal` : 'Lisbon, Portugal',
+        location: trip?.city ? `${trip.city}, Portugal` : 'Lisbon, Portugal',
         image: lisbonImg,
         description: 'Portugal’s hilly, coastal capital city known for its historic charm, vibrant culture, and world-class expat amenities.',
         metrics: [
@@ -55,7 +58,7 @@ export default function DashboardPage() {
             {/* Sub-Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 sm:mb-12 gap-4">
                 <h1 className="text-2xl sm:text-3xl font-semibold text-title tracking-tight">
-                    Hi, Sarah
+                    Hi, {trip?.client_name || 'Sarah'}
                 </h1>
                 <h2 className="text-3xl sm:text-4xl font-semibold text-title tracking-tight text-center translate-x-0 md:-translate-x-12">
                     Dashboard
@@ -81,24 +84,38 @@ export default function DashboardPage() {
                         <span className="text-xs font-semibold text-title uppercase tracking-wider block mb-4">
                             Trip Details
                         </span>
-                        <div className="space-y-3 text-xs sm:text-sm text-gray-600 font-light">
-                            <div className="flex justify-between items-center py-1">
-                                <span className="text-gray-500">Target</span>
-                                <span className="font-medium text-title">Lisbon</span>
+                        {isTripsLoading ? (
+                            <div className="space-y-3 py-2 animate-pulse">
+                                <div className="h-4 bg-gray-100 rounded w-full" />
+                                <div className="h-4 bg-gray-100 rounded w-full" />
+                                <div className="h-4 bg-gray-100 rounded w-full" />
+                                <div className="h-4 bg-gray-100 rounded w-full" />
+                                <div className="h-4 bg-gray-100 rounded w-full" />
                             </div>
-                            <div className="flex justify-between items-center py-1">
-                                <span className="text-gray-500">Timeline</span>
-                                <span className="font-medium text-title">Oct 12 – Oct 15</span>
+                        ) : (
+                            <div className="space-y-3 text-xs sm:text-sm text-gray-600 font-light">
+                                <div className="flex justify-between items-center py-1">
+                                    <span className="text-gray-500">Client Name</span>
+                                    <span className="font-medium text-title">{trip?.client_name || '—'}</span>
+                                </div>
+                                <div className="flex justify-between items-center py-1">
+                                    <span className="text-gray-500">City</span>
+                                    <span className="font-medium text-title">{trip?.city || '—'}</span>
+                                </div>
+                                <div className="flex justify-between items-center py-1">
+                                    <span className="text-gray-500">Visa</span>
+                                    <span className="font-medium text-title">{trip?.visa || '—'}</span>
+                                </div>
+                                <div className="flex justify-between items-center py-1">
+                                    <span className="text-gray-500">Timeline</span>
+                                    <span className="font-medium text-title">{trip?.timeline || '—'}</span>
+                                </div>
+                                <div className="flex justify-between items-center py-1">
+                                    <span className="text-gray-500">Guide Name</span>
+                                    <span className="font-medium text-title">{trip?.guide_name || '—'}</span>
+                                </div>
                             </div>
-                            <div className="flex justify-between items-center py-1">
-                                <span className="text-gray-500">Duration</span>
-                                <span className="font-medium text-title">3 Days</span>
-                            </div>
-                            <div className="flex justify-between items-center py-1">
-                                <span className="text-gray-500">Advisor</span>
-                                <span className="font-medium text-title">Livable Team</span>
-                            </div>
-                        </div>
+                        )}
 
                         <button
                             onClick={() => setLocationModalOpen(true)}
