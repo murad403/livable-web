@@ -23,15 +23,14 @@ export default function LoginPage() {
     const [signIn, { isLoading }] = useSignInMutation()
     const [apiError, setApiError] = useState<string | null>(null)
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting }
-    } = useForm<LoginValues>({
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<LoginValues>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
-            email: 'mahmudtasin028@gmail.com',
-            password: 'newpassword123',
+            // email: 'mahmudtasin028@gmail.com',
+            // password: 'newpassword123',
+            // rememberMe: false
+            email: '',
+            password: '',
             rememberMe: false
         }
     })
@@ -98,8 +97,8 @@ export default function LoginPage() {
                                     placeholder="your@email.com"
                                     {...register('email')}
                                     className={`w-full pl-11 pr-4 py-3.5 rounded-2xl border text-sm text-title placeholder:text-gray-400 focus:outline-none transition-all ${errors.email
-                                            ? 'border-primary focus:border-primary'
-                                            : 'border-gray-200 focus:border-title'
+                                        ? 'border-primary focus:border-primary'
+                                        : 'border-gray-200 focus:border-title'
                                         }`}
                                 />
                                 <Mail className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -120,8 +119,8 @@ export default function LoginPage() {
                                     placeholder="••••••••"
                                     {...register('password')}
                                     className={`w-full pl-11 pr-4 py-3.5 rounded-2xl border text-sm text-title placeholder:text-gray-400 focus:outline-none transition-all ${errors.password
-                                            ? 'border-primary focus:border-primary'
-                                            : 'border-gray-200 focus:border-title'
+                                        ? 'border-primary focus:border-primary'
+                                        : 'border-gray-200 focus:border-title'
                                         }`}
                                 />
                                 <Lock className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
