@@ -16,6 +16,7 @@ import MicroSocialBlueprintModal from '@/components/dashboard/MicroSocialBluepri
 import DetailsModal, { ModalData } from '@/components/app/DetailsModal'
 import ChangePasswordModal from '@/components/shared/ChangePasswordModal'
 import { useGetMyTripsQuery } from '@/redux/features/app/app.api'
+import { useGetMeQuery } from '@/redux/features/auth/auth.api'
 import { removeToken } from '@/utils/auth'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
@@ -39,28 +40,35 @@ export default function DashboardPage() {
     const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
     const [completedSteps, setCompletedSteps] = useState<string[]>([]);
 
+    const { data: userData } = useGetMeQuery();
     const { data: tripsData, isLoading: isTripsLoading } = useGetMyTripsQuery();
     const trip = tripsData?.trips?.[0];
 
+    const userIdentifier = userData?.id || userData?.email || trip?.email || trip?.client_name;
+    const storageKey = userIdentifier ? `livable_completed_steps_${userIdentifier}` : 'livable_completed_steps';
+
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const saved = localStorage.getItem('livable_completed_steps');
+        if (typeof window !== 'undefined' && storageKey) {
+            const saved = localStorage.getItem(storageKey);
             if (saved) {
                 try {
                     setCompletedSteps(JSON.parse(saved));
                 } catch (e) {
                     console.error('Failed to parse completed steps from localStorage', e);
+                    setCompletedSteps([]);
                 }
+            } else {
+                setCompletedSteps([]);
             }
         }
-    }, []);
+    }, [storageKey]);
 
     const markStepCompleted = (stepId: string) => {
         setCompletedSteps((prev) => {
             if (prev.includes(stepId)) return prev;
             const updated = [...prev, stepId];
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('livable_completed_steps', JSON.stringify(updated));
+            if (typeof window !== 'undefined' && storageKey) {
+                localStorage.setItem(storageKey, JSON.stringify(updated));
             }
             return updated;
         });
