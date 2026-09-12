@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import ReduxProvider from "@/providers/ReduxProvider";
 import "./globals.css";
 
 const neueMontreal = localFont({
@@ -43,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${neueMontreal.variable} font-sans h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white">
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `
