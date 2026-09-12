@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Toaster } from "sonner";
 import ReduxProvider from "@/providers/ReduxProvider";
 import "./globals.css";
 
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${neueMontreal.variable} font-sans h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white">
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          {children}
+          <Toaster position="top-center" richColors />
+        </ReduxProvider>
         <script
           dangerouslySetInnerHTML={{
             __html: `

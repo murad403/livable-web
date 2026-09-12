@@ -1,13 +1,14 @@
 'use client'
-
-import React from 'react'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ArrowRight, Lock, Mail } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { toast } from 'sonner'
+import { useSignInMutation } from '@/redux/features/auth/auth.api'
+import { saveToken } from '@/utils/auth'
 
 const loginSchema = z.object({
     email: z.string().email('Please enter a valid email address'),
@@ -18,6 +19,10 @@ const loginSchema = z.object({
 type LoginValues = z.infer<typeof loginSchema>
 
 export default function LoginPage() {
+    const router = useRouter()
+    const [signIn, { isLoading }] = useSignInMutation()
+    const [apiError, setApiError] = useState<string | null>(null)
+
     const {
         register,
         handleSubmit,
@@ -25,15 +30,37 @@ export default function LoginPage() {
     } = useForm<LoginValues>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
-            email: '',
-            password: '',
+            email: 'mahmudtasin028@gmail.com',
+            password: 'newpassword123',
             rememberMe: false
         }
     })
 
-    const onSubmit = (data: LoginValues) => {
-        console.log('Login submitted:', data)
-        alert(`Welcome back to Livable! Logged in as: ${data.email}`)
+    const onSubmit = async (data: LoginValues) => {
+        setApiError(null)
+        try {
+            const res = await signIn({ email: data.email, password: data.password }).unwrap()
+            const access = res.access || res.data?.access || res.token || res.data?.token
+            const refresh = res.refresh || res.data?.refresh
+
+            if (access) {
+                await saveToken(access, refresh);
+                toast.success('Signed in successfully!')
+                router.push('/dashboard');
+            } else {
+                const msg = res.message || res.detail || 'Login failed. Invalid response from server.'
+                setApiError(msg)
+                toast.error(msg)
+            }
+        } catch (err: any) {
+            const errorMessage =
+                err?.data?.message ||
+                err?.data?.detail ||
+                err?.data?.error ||
+                'Invalid email or password. Please try again.'
+            setApiError(errorMessage)
+            toast.error(errorMessage)
+        }
     }
 
     return (
@@ -54,6 +81,11 @@ export default function LoginPage() {
 
                 {/* Login Card */}
                 <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm">
+                    {apiError && (
+                        <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-2xl text-xs text-red-600 font-medium">
+                            {apiError}
+                        </div>
+                    )}
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                         {/* Email Address */}
                         <div>
@@ -110,21 +142,21 @@ export default function LoginPage() {
                                 <span>Remember me</span>
                             </label>
 
-                            <Link
+                            {/* <Link
                                 href="/forgot-password"
                                 className="text-gray-500 hover:text-primary font-medium transition-colors"
                             >
                                 Forgot password?
-                            </Link>
+                            </Link> */}
                         </div>
 
                         {/* Submit Button */}
                         <button
                             type="submit"
-                            disabled={isSubmitting}
-                            className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 mt-2"
+                            disabled={isSubmitting || isLoading}
+                            className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-full text-sm font-semibold transition-all shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-2 mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
                         >
-                            <span>Sign In</span>
+                            <span>{isLoading || isSubmitting ? 'Signing in...' : 'Sign In'}</span>
                             <ArrowRight className="w-4 h-4" />
                         </button>
                     </form>

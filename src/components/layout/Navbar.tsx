@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
+import { getCurrentUser } from '@/utils/auth'
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const pathname = usePathname()
     const router = useRouter()
 
@@ -22,6 +24,18 @@ const Navbar = () => {
         handleScroll()
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const { access } = await getCurrentUser()
+                setIsLoggedIn(!!access)
+            } catch {
+                setIsLoggedIn(false)
+            }
+        }
+        checkAuth()
+    }, [pathname])
 
     const handleTalkWithUs = (e: React.MouseEvent) => {
         e.preventDefault()
@@ -55,7 +69,7 @@ const Navbar = () => {
                     scrolled ? 'opacity-0 pointer-events-none -translate-y-4' : 'opacity-100 translate-y-0'
                 } pt-6 pb-4 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto z-40`}
             >
-                {/* Top line: Pricing & Login links */}
+                {/* Top line: Pricing & Login/Portal links */}
                 <div className="flex justify-center items-center gap-6 sm:gap-8 md:mb-20 mb-8 sm:mb-12">
                     <Link
                         href="/pricing"
@@ -65,14 +79,25 @@ const Navbar = () => {
                     >
                         Pricing
                     </Link>
-                    <Link
-                        href="/login"
-                        className={`text-xs sm:text-sm font-medium transition-colors ${
-                            pathname === '/login' ? 'text-primary' : 'text-title'
-                        }`}
-                    >
-                        Login
-                    </Link>
+                    {isLoggedIn ? (
+                        <Link
+                            href="/dashboard"
+                            className={`text-xs sm:text-sm font-medium transition-colors ${
+                                pathname === '/dashboard' ? 'text-primary' : 'text-title'
+                            }`}
+                        >
+                            Portal
+                        </Link>
+                    ) : (
+                        <Link
+                            href="/login"
+                            className={`text-xs sm:text-sm font-medium transition-colors ${
+                                pathname === '/login' ? 'text-primary' : 'text-title'
+                            }`}
+                        >
+                            Login
+                        </Link>
+                    )}
                 </div>
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
@@ -123,14 +148,25 @@ const Navbar = () => {
                         >
                             Pricing
                         </Link>
-                        <Link
-                            href="/login"
-                            className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
-                                pathname === '/login' ? 'text-primary' : 'text-title hover:text-black'
-                            }`}
-                        >
-                            Login
-                        </Link>
+                        {isLoggedIn ? (
+                            <Link
+                                href="/dashboard"
+                                className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
+                                    pathname === '/dashboard' ? 'text-primary' : 'text-title hover:text-black'
+                                }`}
+                            >
+                                Portal
+                            </Link>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
+                                    pathname === '/login' ? 'text-primary' : 'text-title hover:text-black'
+                                }`}
+                            >
+                                Login
+                            </Link>
+                        )}
                         <button
                             onClick={handleTalkWithUs}
                             className="bg-primary hover:bg-primary-hover text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm md:text-base font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
