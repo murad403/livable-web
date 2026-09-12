@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Lock, LogOut } from 'lucide-react'
@@ -20,14 +20,81 @@ import { removeToken } from '@/utils/auth'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
 
+const ALL_STEPS = [
+    'orientation',
+    'financial',
+    'lifestyle',
+    'itinerary',
+    'travel',
+    'guided',
+    'core',
+    'arrival',
+    'social'
+];
+
 export default function DashboardPage() {
     const router = useRouter()
     const [activeModal, setActiveModal] = useState<string | null>(null);
     const [locationModalOpen, setLocationModalOpen] = useState(false);
     const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
+    const [completedSteps, setCompletedSteps] = useState<string[]>([]);
 
     const { data: tripsData, isLoading: isTripsLoading } = useGetMyTripsQuery();
     const trip = tripsData?.trips?.[0];
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const saved = localStorage.getItem('livable_completed_steps');
+            if (saved) {
+                try {
+                    setCompletedSteps(JSON.parse(saved));
+                } catch (e) {
+                    console.error('Failed to parse completed steps from localStorage', e);
+                }
+            }
+        }
+    }, []);
+
+    const markStepCompleted = (stepId: string) => {
+        setCompletedSteps((prev) => {
+            if (prev.includes(stepId)) return prev;
+            const updated = [...prev, stepId];
+            if (typeof window !== 'undefined') {
+                localStorage.setItem('livable_completed_steps', JSON.stringify(updated));
+            }
+            return updated;
+        });
+    };
+
+    const handleCloseActiveModal = () => {
+        if (activeModal) {
+            markStepCompleted(activeModal);
+            setActiveModal(null);
+        }
+    };
+
+    const isStepUnlocked = (stepId: string) => {
+        const index = ALL_STEPS.indexOf(stepId);
+        if (index <= 0) return true;
+        const prevStep = ALL_STEPS[index - 1];
+        return completedSteps.includes(stepId) || completedSteps.includes(prevStep);
+    };
+
+    const handleStepClick = (stepId: string) => {
+        if (!isStepUnlocked(stepId)) {
+            toast.error('Please complete the previous step first');
+            return;
+        }
+        setActiveModal(stepId);
+    };
+
+    const step1Steps = ['orientation', 'financial', 'lifestyle'];
+    const step2Steps = ['itinerary', 'travel', 'guided'];
+    const step3Steps = ['core', 'arrival', 'social'];
+
+    const step1CompletedCount = step1Steps.filter((s) => completedSteps.includes(s)).length;
+    const step2CompletedCount = step2Steps.filter((s) => completedSteps.includes(s)).length;
+    const step3CompletedCount = step3Steps.filter((s) => completedSteps.includes(s)).length;
 
     const handleLogout = async () => {
         await removeToken();
@@ -135,13 +202,6 @@ export default function DashboardPage() {
                                 </div>
                             </div>
                         )}
-
-                        {/* <button
-                            onClick={() => setLocationModalOpen(true)}
-                            className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer mt-6 text-center"
-                        >
-                            View Location Details
-                        </button> */}
                     </div>
                 </div>
 
@@ -159,45 +219,58 @@ export default function DashboardPage() {
                                 </h4>
                             </div>
                             <span className="text-xs font-semibold text-gray-400">
-                                3/3
+                                {step1CompletedCount}/3
                             </span>
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
                             <button
-                                onClick={() => setActiveModal('orientation')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('orientation')}
+                                disabled={!isStepUnlocked('orientation')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('orientation')
+                                        ? 'text-gray-300 cursor-not-allowed'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>01 Orientation</span>
-                                <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('orientation') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('financial')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('financial')}
+                                disabled={!isStepUnlocked('financial')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('financial')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>02 Financial Profile</span>
-                                <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('financial') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('lifestyle')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('lifestyle')}
+                                disabled={!isStepUnlocked('lifestyle')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('lifestyle')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>03 Lifestyle Alignment</span>
-                                <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('lifestyle') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
                         </div>
 
-                        <div className="flex items-center justify-between pt-1">
-                            <button
-                                onClick={() => setActiveModal('orientation')}
-                                className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-xs font-medium transition-all cursor-pointer"
-                            >
-                                Done
-                            </button>
-                            <span className="text-xs text-gray-500 font-light">
-                                Ready for you next step!
-                            </span>
-                        </div>
+                        {step1CompletedCount === 3 && (
+                            <div className="flex items-center justify-end pt-1">
+                                <span className="text-xs text-gray-500 font-light">
+                                    Ready for you next step!
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     {/* STEP 02 CARD */}
@@ -212,45 +285,58 @@ export default function DashboardPage() {
                                 </h4>
                             </div>
                             <span className="text-xs font-semibold text-gray-400">
-                                0/3
+                                {step2CompletedCount}/3
                             </span>
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
                             <button
-                                onClick={() => setActiveModal('itinerary')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('itinerary')}
+                                disabled={!isStepUnlocked('itinerary')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('itinerary')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>01 Itinerary</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('itinerary') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('travel')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5 text-gray-500"
+                                onClick={() => handleStepClick('travel')}
+                                disabled={!isStepUnlocked('travel')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('travel')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>02 Travel Preparation</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('travel') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('guided')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5 text-gray-500"
+                                onClick={() => handleStepClick('guided')}
+                                disabled={!isStepUnlocked('guided')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('guided')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>03 Guided Discovery</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('guided') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
                         </div>
 
-                        <div className="flex items-center justify-between pt-1">
-                            <button
-                                onClick={() => setActiveModal('itinerary')}
-                                className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-xs font-medium transition-all cursor-pointer"
-                            >
-                                Done
-                            </button>
-                            <span className="text-xs text-gray-500 font-light">
-                                Ready for you next step!
-                            </span>
-                        </div>
+                        {step2CompletedCount === 3 && (
+                            <div className="flex items-center justify-end pt-1">
+                                <span className="text-xs text-gray-500 font-light">
+                                    Ready for you next step!
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     {/* STEP 03 CARD */}
@@ -265,42 +351,58 @@ export default function DashboardPage() {
                                 </h4>
                             </div>
                             <span className="text-xs font-semibold text-gray-400">
-                                0/3
+                                {step3CompletedCount}/3
                             </span>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4 text-gray-500">
+                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
                             <button
-                                onClick={() => setActiveModal('core')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('core')}
+                                disabled={!isStepUnlocked('core')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('core')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>01 Core Infrastructure</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('core') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('arrival')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('arrival')}
+                                disabled={!isStepUnlocked('arrival')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('arrival')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>02 Arrival Checklists</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('arrival') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
+
                             <button
-                                onClick={() => setActiveModal('social')}
-                                className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
+                                onClick={() => handleStepClick('social')}
+                                disabled={!isStepUnlocked('social')}
+                                className={`flex items-center gap-1.5 transition-colors ${
+                                    !isStepUnlocked('social')
+                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                        : 'hover:text-primary cursor-pointer text-title'
+                                }`}
                             >
                                 <span>03 Micro-Social Blueprint</span>
-                                <span className="w-2 h-2 bg-gray-300 shrink-0 rounded-xs" />
+                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('social') ? 'bg-title' : 'bg-gray-300'}`} />
                             </button>
                         </div>
 
-                        <div className="flex items-center justify-between pt-1">
-                            <button
-                                onClick={() => setActiveModal('core')}
-                                className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full text-xs font-medium transition-all cursor-pointer"
-                            >
-                                Done
-                            </button>
-                        </div>
+                        {step3CompletedCount === 3 && (
+                            <div className="flex items-center justify-end pt-1">
+                                <span className="text-xs text-gray-500 font-light">
+                                    Ready for you next step!
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -321,15 +423,15 @@ export default function DashboardPage() {
                     <div className="space-y-4 text-xs sm:text-sm font-semibold text-title">
                         <div className="flex items-center gap-2">
                             <span>01 PRE-SCOUTING</span>
-                            <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step1CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
                         </div>
                         <div className="flex items-center gap-2">
                             <span>02 The Scouting Trip</span>
-                            <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step2CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
                         </div>
                         <div className="flex items-center gap-2">
                             <span>03 Post-Trip to Move</span>
-                            <span className="w-2 h-2 bg-title shrink-0 rounded-xs" />
+                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step3CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
                         </div>
                     </div>
                 </div>
@@ -339,39 +441,39 @@ export default function DashboardPage() {
             {/* MODALS */}
             <OrientationModal
                 isOpen={activeModal === 'orientation'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <FinancialProfileModal
                 isOpen={activeModal === 'financial'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <LifestyleAlignmentModal
                 isOpen={activeModal === 'lifestyle'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <ItineraryModal
                 isOpen={activeModal === 'itinerary'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <TravelPreparationModal
                 isOpen={activeModal === 'travel'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <GuidedDiscoveryModal
                 isOpen={activeModal === 'guided'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <CoreInfrastructureModal
                 isOpen={activeModal === 'core'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <ArrivalChecklistsModal
                 isOpen={activeModal === 'arrival'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
             <MicroSocialBlueprintModal
                 isOpen={activeModal === 'social'}
-                onClose={() => setActiveModal(null)}
+                onClose={handleCloseActiveModal}
             />
 
             {/* Location Details Modal */}
