@@ -13,8 +13,8 @@ const scoutingTripsData = [
     {
         id: 'day-1',
         day: 'Day 1',
-        title: 'Preparation & Time To Reality',
-        description: 'We front-load the setup so you can land in Spain or Portugal with a clear plan and direct guidance.',
+        title: 'Protected Time to Decide',
+        description: 'We handle the logistics so your attention stays on evaluating the place, not managing the trip.',
         image: trip1,
         location: 'Spain & Portugal • Orientation',
         metrics: [
@@ -27,8 +27,8 @@ const scoutingTripsData = [
     {
         id: 'day-2',
         day: 'Day 2',
-        title: 'Pacing Through Your Priorities',
-        description: 'Explore key neighborhoods that match your lifestyle, budget, and daily commute or family preferences.',
+        title: 'Expertise Through Your Priorities',
+        description: 'Spend your hours with local guides who are thoroughly pre-briefed on your budget, lifestyle, and housing parameters.',
         image: trip2,
         location: 'Neighborhood Scouting Tour',
         metrics: [
@@ -41,8 +41,8 @@ const scoutingTripsData = [
     {
         id: 'day-3',
         day: 'Day 3',
-        title: 'Actionable Plan & Wrap-up',
-        description: 'Wrap up your scouting trip with clear next steps, trusted partners, and expert advice for relocation.',
+        title: 'Independent Daily Routines',
+        description: 'Use your unguided hours to test everyday micro-social textures with total independence, but zero aimless wandering.',
         image: trip3,
         location: 'Final Action Roadmap',
         metrics: [
