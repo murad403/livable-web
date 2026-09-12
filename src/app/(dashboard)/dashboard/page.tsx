@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import { Lock } from 'lucide-react'
 import OrientationModal from '@/components/dashboard/OrientationModal'
 import FinancialProfileModal from '@/components/dashboard/FinancialProfileModal'
 import LifestyleAlignmentModal from '@/components/dashboard/LifestyleAlignmentModal'
@@ -12,12 +13,14 @@ import CoreInfrastructureModal from '@/components/dashboard/CoreInfrastructureMo
 import ArrivalChecklistsModal from '@/components/dashboard/ArrivalChecklistsModal'
 import MicroSocialBlueprintModal from '@/components/dashboard/MicroSocialBlueprintModal'
 import DetailsModal, { ModalData } from '@/components/app/DetailsModal'
+import ChangePasswordModal from '@/components/shared/ChangePasswordModal'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
 
 export default function DashboardPage() {
     const [activeModal, setActiveModal] = useState<string | null>(null)
     const [locationModalOpen, setLocationModalOpen] = useState(false)
+    const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false)
 
     const lisbonData: ModalData = {
         title: 'Lisbon, Portugal',
@@ -40,6 +43,13 @@ export default function DashboardPage() {
                 <Link href="/" className="font-normal text-xl sm:text-2xl text-title">
                     Livable<span className="text-xs align-super font-light ml-0.5">TM</span>
                 </Link>
+                <button
+                    onClick={() => setChangePasswordModalOpen(true)}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-xs font-semibold text-title hover:border-primary hover:text-primary transition-all cursor-pointer shadow-xs hover:shadow-sm"
+                >
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Change Password</span>
+                </button>
             </div>
 
             {/* Sub-Header */}
@@ -333,6 +343,11 @@ export default function DashboardPage() {
                 isOpen={locationModalOpen}
                 onClose={() => setLocationModalOpen(false)}
                 data={lisbonData}
+            />
+            {/* Change Password Modal */}
+            <ChangePasswordModal
+                isOpen={changePasswordModalOpen}
+                onClose={() => setChangePasswordModalOpen(false)}
             />
         </div>
     )

@@ -17,3 +17,15 @@ export interface LoginResponse {
     detail?: string;
     [key: string]: any;
 }
+
+export interface ChangePasswordRequest {
+    current_password: string;
+    new_password: string;
+    confirm_new_password: string;
+}
+
+export interface ChangePasswordResponse {
+    detail?: string;
+    message?: string;
+    [key: string]: any;
+}

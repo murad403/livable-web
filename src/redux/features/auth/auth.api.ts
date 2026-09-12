@@ -1,5 +1,5 @@
 import baseApi from "@/redux/api/api";
-import { LoginRequest, LoginResponse } from "./auth.typ";
+import { ChangePasswordRequest, ChangePasswordResponse, LoginRequest, LoginResponse } from "./auth.typ";
 
 const authApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -12,10 +12,20 @@ const authApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        changePassword: builder.mutation<ChangePasswordResponse, ChangePasswordRequest>({
+            query: (data) => {
+                return {
+                    url: "/auth/change-password/",
+                    method: "POST",
+                    body: data
+                }
+            }
+        }),
     })
 })
 
 
 export const {
     useSignInMutation,
+    useChangePasswordMutation,
 } = authApi;
