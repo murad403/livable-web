@@ -133,11 +133,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Tax ID PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -215,11 +215,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Address Registration PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -288,11 +288,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Banking Setup PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -368,11 +368,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Mobile Activation PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -440,11 +440,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Transit Navigation PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -519,11 +519,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                     </ul>
                                 </div>
 
-                                <div className="pt-2">
+                                {/* <div className="pt-2">
                                     <a href="#" className="text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                         📑 Download Pet Registration PDF Guide 📌
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>
@@ -532,9 +532,9 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
 
                 {/* Modal Footer */}
                 <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <a href="#" className="text-xs sm:text-sm text-title underline underline-offset-4 hover:text-primary transition-colors font-medium">
+                    {/* <a href="#" className="text-xs sm:text-sm text-title underline underline-offset-4 hover:text-primary transition-colors font-medium">
                         Download Complete Arrival Guide (PDF) ↓
-                    </a>
+                    </a> */}
                     <button
                         onClick={onClose}
                         className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-xs cursor-pointer w-full sm:w-auto"

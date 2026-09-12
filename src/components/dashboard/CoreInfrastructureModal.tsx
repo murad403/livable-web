@@ -136,7 +136,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                     </p>
                                 </div>
 
-                                <div>
+                                {/* <div>
                                     <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
                                         DIRECT CONTACT VECTORS
                                     </span>
@@ -151,7 +151,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                             Verified WhatsApp Line
                                         </a>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                     </div>
@@ -202,7 +202,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                     </p>
                                 </div>
 
-                                <div>
+                                {/* <div>
                                     <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
                                         DIRECT CONTACT VECTORS
                                     </span>
@@ -217,7 +217,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                             Verified WhatsApp Line
                                         </a>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                     </div>
@@ -252,7 +252,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                             </div>
                         </div>
 
-                        <div className="space-y-1">
+                        {/* <div className="space-y-1">
                             <span className="font-semibold text-title block text-xs sm:text-sm">The Blueprint:</span>
                             <a href="#" className="text-xs sm:text-sm font-normal text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                 Download Step-by-Step International Pet Transit PDF Manual 📌
@@ -275,7 +275,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                             <p className="text-xs text-gray-600 italic font-normal pt-1">
                                 (A simple layout map showing exactly where to walk after baggage claim to complete your official customs check-in without terminal confusion.)
                             </p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

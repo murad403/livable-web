@@ -94,13 +94,13 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
 
                 {/* Modal Footer */}
                 <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <a
+                    {/* <a
                         href="#"
                         onClick={(e) => { e.preventDefault(); alert('Downloading itinerary PDF...') }}
                         className="text-sm sm:text-base font-medium text-title underline underline-offset-4 hover:text-primary transition-colors cursor-pointer"
                     >
                         Download Scouting Itinerary →
-                    </a>
+                    </a> */}
                     <button
                         onClick={onClose}
                         className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
