@@ -4,6 +4,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { X } from 'lucide-react'
+import { toast } from 'sonner'
+import { useSaveLifestyleAlignmentMutation } from '@/redux/features/app/app.api'
+import { useGetMeQuery } from '@/redux/features/auth/auth.api'
+import { LifestyleAlignmentRequest } from '@/redux/features/app/app.type'
 
 interface LifestyleAlignmentModalProps {
     isOpen: boolean
@@ -40,8 +44,69 @@ export interface LifestyleAlignmentFormValues {
     gladIDidThis?: string
 }
 
+const mapDailyLifeDesire = (val: string): string => {
+    switch (val) {
+        case 'Walking': return 'walking'
+        case 'Time outdoors': return 'outdoors'
+        case 'Water & beaches': return 'water_beaches'
+        case 'Cafés': return 'cafes'
+        case 'Local markets': return 'local_markets'
+        case 'Language learning': return 'language_learning'
+        case 'Fitness & movement': return 'fitness_movement'
+        case 'Arts & culture': return 'arts_culture'
+        case 'Good food': return 'good_food'
+        case 'Slower mornings': return 'slower_mornings'
+        case 'Lively evenings': return 'lively_evenings'
+        case 'Community': return 'community'
+        case 'Dog-friendly living': return 'dog_friendly'
+        case 'Family-friendly living': return 'family_friendly'
+        case 'Quiet': return 'quiet'
+        case 'Beauty': return 'beauty'
+        case 'Ease': return 'ease'
+        case 'Something else': return 'something_else'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapEnvironmentalDraw = (val: string): string => {
+    switch (val) {
+        case 'More time outdoors': return 'outdoors'
+        case 'A different culture': return 'different_culture'
+        case 'A slower pace of life': return 'slower_pace'
+        case 'A more beautiful everyday environment': return 'beautiful_environment'
+        case 'Better access to nature': return 'access_nature'
+        case 'Better access to the coast': return 'access_coast'
+        case 'Opportunities to explore Europe': return 'explore_europe'
+        case 'Living somewhere that feels outside my comfort zone': return 'outside_comfort_zone'
+        case 'Living somewhere that feels comfortably familiar in a new way': return 'comfortably_familiar'
+        case 'A place that feels more like me': return 'more_like_me'
+        case 'Something else': return 'something_else'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapInternalDraw = (val: string): string => {
+    switch (val) {
+        case 'It feels brave.': return 'brave'
+        case 'It feels exciting.': return 'exciting'
+        case 'It feels scary, and I like doing scary things.': return 'scary'
+        case 'It feels calm.': return 'calm'
+        case 'It feels like I\'m ready for a change.': return 'ready_change'
+        case 'It feels like something that was always meant to happen.': return 'meant_to_happen'
+        case 'It feels like the right time.': return 'right_time'
+        case 'It feels like a chance to grow.': return 'chance_to_grow'
+        case 'It feels like all of the above, and that\'s interesting.': return 'all_above'
+        case 'I\'m still figuring it out.': return 'figuring_out'
+        case 'Something else': return 'something_else'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
 const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpen, onClose }) => {
-    const { register, handleSubmit } = useForm<LifestyleAlignmentFormValues>({
+    const { data: userData } = useGetMeQuery(undefined, { skip: !isOpen })
+    const [saveLifestyleAlignment, { isLoading: isSaving }] = useSaveLifestyleAlignmentMutation()
+
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm<LifestyleAlignmentFormValues>({
         defaultValues: {
             dailyRhythmsOptions: [],
             environmentalDrawsOptions: [],
@@ -51,9 +116,42 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
 
     if (!isOpen) return null
 
-    const onSubmit = (data: LifestyleAlignmentFormValues) => {
-        console.log('Lifestyle Alignment Submitted:', data)
-        onClose()
+    const onSubmit = async (data: LifestyleAlignmentFormValues) => {
+        try {
+            const anythingToAddParts = [
+                data.environmentalDrawsAdd,
+                data.internalDrawsAdd
+            ].filter((text): text is string => Boolean(text && text.trim()))
+            const anythingToAdd = anythingToAddParts.join('; ')
+
+            const payload: LifestyleAlignmentRequest = {
+                daily_life_desires: (data.dailyRhythmsOptions || []).map(mapDailyLifeDesire).join(','),
+                good_weekday: data.goodWeekday || '',
+                good_weekend: data.goodWeekend || '',
+                routines_real_life: data.routinesRealLife || '',
+                day_looked_like: data.greatDayArrival || '',
+                environmental_pull_factors: (data.environmentalDrawsOptions || []).map(mapEnvironmentalDraw).join(','),
+                anything_to_add: anythingToAdd || '',
+                internal_pull_factors: (data.internalDrawsOptions || []).map(mapInternalDraw).join(','),
+                shadow_fear: data.theShadowFear || '',
+                anchor_aspiration: data.theAnchorSecret || '',
+                imagine_life_working: data.pictureLifeWorking || '',
+                emotions_hope_to_feel: data.emotionsHopeToFeel || '',
+                success_picture: data.gladIDidThis || ''
+            }
+
+            const clientId = userData?.client_id || 1
+            const res = await saveLifestyleAlignment({ clientId, body: payload }).unwrap()
+            toast.success(res.message || res.detail || 'Lifestyle alignment saved successfully!')
+            onClose()
+        } catch (err: any) {
+            const errorMsg =
+                err?.data?.detail ||
+                err?.data?.message ||
+                err?.data?.error ||
+                'Failed to save lifestyle alignment. Please try again.'
+            toast.error(errorMsg)
+        }
     }
 
     return (
@@ -188,16 +286,6 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                             />
                         </div>
 
-                        {/* Mid-form Submit button and divider */}
-                        <div className="pt-4 pb-2">
-                            <button
-                                type="button"
-                                onClick={handleSubmit(onSubmit)}
-                                className="bg-primary hover:bg-primary-hover text-white px-8 py-3 rounded-full text-sm font-semibold transition-all shadow-sm cursor-pointer"
-                            >
-                                Submit to Livable
-                            </button>
-                        </div>
                         <div className="border-b border-black w-full my-6" />
                     </div>
 
@@ -388,13 +476,14 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                         </div>
                     </div>
 
-                    {/* Done / Submit Button */}
+                    {/* Submit Button */}
                     <div className="pt-6 border-t border-gray-100 flex items-center justify-start">
                         <button
                             type="submit"
-                            className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer"
+                            disabled={isSubmitting || isSaving}
+                            className="bg-primary hover:bg-primary-hover disabled:opacity-60 text-white px-10 py-3 rounded-full text-base font-semibold transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
                         >
-                            Done
+                            {isSubmitting || isSaving ? 'Submitting...' : 'Submit to Livable'}
                         </button>
                     </div>
 

@@ -4,7 +4,9 @@ import {
     BookTalkWithUsResponse,
     FinancialProfileRequest,
     FinancialProfileResponse,
-    GetMyTripsResponse
+    GetMyTripsResponse,
+    LifestyleAlignmentRequest,
+    LifestyleAlignmentResponse
 } from "./app.type";
 
 const appApi = baseApi.injectEndpoints({
@@ -35,6 +37,15 @@ const appApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        saveLifestyleAlignment: builder.mutation<LifestyleAlignmentResponse, { clientId?: number | string; body: LifestyleAlignmentRequest }>({
+            query: ({ clientId = 1, body }) => {
+                return {
+                    url: `/clients/${clientId}/lifestyle-alignment/`,
+                    method: "POST",
+                    body: body
+                }
+            }
+        }),
     })
 })
 
@@ -43,4 +54,5 @@ export const {
     useBookTalkWithUsMutation,
     useGetMyTripsQuery,
     useSaveFinancialProfileMutation,
+    useSaveLifestyleAlignmentMutation,
 } = appApi;
