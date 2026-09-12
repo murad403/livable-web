@@ -1,5 +1,11 @@
 import baseApi from "@/redux/api/api";
-import { BookTalkWithUsRequest, BookTalkWithUsResponse, GetMyTripsResponse } from "./app.type";
+import {
+    BookTalkWithUsRequest,
+    BookTalkWithUsResponse,
+    FinancialProfileRequest,
+    FinancialProfileResponse,
+    GetMyTripsResponse
+} from "./app.type";
 
 const appApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -20,6 +26,15 @@ const appApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        saveFinancialProfile: builder.mutation<FinancialProfileResponse, { clientId?: number | string; body: FinancialProfileRequest }>({
+            query: ({ clientId = 1, body }) => {
+                return {
+                    url: `/clients/${clientId}/financial-profile/`,
+                    method: "POST",
+                    body: body
+                }
+            }
+        }),
     })
 })
 
@@ -27,4 +42,5 @@ const appApi = baseApi.injectEndpoints({
 export const {
     useBookTalkWithUsMutation,
     useGetMyTripsQuery,
+    useSaveFinancialProfileMutation,
 } = appApi;

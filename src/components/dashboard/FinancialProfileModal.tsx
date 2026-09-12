@@ -3,6 +3,10 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { X } from 'lucide-react'
+import { toast } from 'sonner'
+import { useSaveFinancialProfileMutation } from '@/redux/features/app/app.api'
+import { useGetMeQuery } from '@/redux/features/auth/auth.api'
+import { FinancialProfileRequest } from '@/redux/features/app/app.type'
 
 interface FinancialProfileModalProps {
     isOpen: boolean
@@ -34,8 +38,92 @@ export interface FinancialProfileFormValues {
     lifestyleOutlookOther?: string
 }
 
+const mapMotivation = (val: string): string => {
+    switch (val) {
+        case 'Lower monthly living costs': return 'lower_costs'
+        case 'More space for the same budget': return 'more_space'
+        case 'Better value for money on overall costs': return 'better_quality'
+        case 'Lower housing/tax burden': return 'lower_tax_burden'
+        case 'Retirement or semi-retirement': return 'retirement'
+        case 'Remote work flexibility': return 'remote_flexibility'
+        case 'A cleaner financial lifestyle': return 'cleaner_lifestyle'
+        case 'Still figuring it out': return 'figuring_out'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapExpectation = (val: string): string => {
+    switch (val) {
+        case 'Maintain my current monthly expenses within my budget': return 'maintain_lifestyle'
+        case 'Reduce my monthly expenses while maintaining my current lifestyle': return 'reduce_expenses'
+        case 'Spend a bit more for a better quality of life': return 'spend_more_better_quality'
+        case 'Spend less overall by simplifying my requirements': return 'spend_less_simplifying'
+        case 'Still figuring this out': return 'figuring_out'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapIncomeRoute = (val: string): string => {
+    switch (val) {
+        case 'Remote employment': return 'remote_employment'
+        case 'Business income': return 'business_income'
+        case 'Retirement or pensions': return 'retirement_pensions'
+        case 'Investment income': return 'investment_income'
+        case 'Still figuring it out': return 'figuring_out'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapTradeoff = (val: string): string => {
+    switch (val) {
+        case 'Housing size': return 'housing_size'
+        case 'Central location': return 'central_location'
+        case 'Walkability': return 'walkability'
+        case 'Public transportation': return 'public_transportation'
+        case 'Proximity to co-working': return 'proximity_coworking'
+        case 'Climate': return 'climate'
+        case 'Distance from health center': return 'distance_health_center'
+        case 'Housing budget': return 'housing_budget'
+        case 'Personal space': return 'personal_space'
+        case 'Other': return 'other'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapConstraint = (val: string): string => {
+    switch (val) {
+        case 'I plan to move within 6-12 months.': return 'move_6_12_months'
+        case 'I expect to spend significant time outside my home country.': return 'time_outside_home'
+        case 'I have multiple accounts to manage.': return 'multiple_accounts'
+        case 'I have pets moving with me.': return 'pets'
+        case 'I have access to local mobility options.': return 'local_mobility'
+        case 'I have complex tax or financial considerations.': return 'complex_tax'
+        case 'I need to stay within a specific budget.': return 'budget'
+        case 'Something else': return 'something_else'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
+const mapExcitement = (val: string): string => {
+    switch (val) {
+        case 'Spending less on day-to-day living expenses': return 'spending_less'
+        case 'Having more financial flexibility': return 'financial_flexibility'
+        case 'Living comfortably without high housing costs': return 'comfortable_no_high_cost'
+        case 'Financial predictability and stability': return 'predictability_stability'
+        case 'Lower healthcare costs': return 'lower_healthcare'
+        case 'More affordable café, restaurant, and cultural culture': return 'cafe_culture'
+        case 'Better safety, walkability, and access to public spaces': return 'safety_walkability'
+        case 'Having lower fixed monthly living costs': return 'lower_fixed_costs'
+        case 'Something else': return 'something_else'
+        default: return val.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '')
+    }
+}
+
 const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, onClose }) => {
-    const { register, handleSubmit } = useForm<FinancialProfileFormValues>({
+    const { data: userData } = useGetMeQuery(undefined, { skip: !isOpen });
+    const [saveFinancialProfile, { isLoading: isSaving }] = useSaveFinancialProfileMutation()
+
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm<FinancialProfileFormValues>({
         defaultValues: {
             motivationOptions: [],
             tradeoffsOptions: [],
@@ -46,10 +134,43 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
 
     if (!isOpen) return null
 
-    const onSubmit = (data: FinancialProfileFormValues) => {
-        console.log('Financial Profile Submitted:', data)
-        alert('Financial Profile submitted successfully!')
-        onClose()
+    const onSubmit = async (data: FinancialProfileFormValues) => {
+        try {
+            const opinions = [
+                data.motivationOther,
+                data.incomePathsOther,
+                data.tradeoffsNotWantToMake,
+                data.constraintsMoreInfo,
+                data.lifestyleOutlookOther
+            ].filter((text): text is string => Boolean(text && text.trim()))
+
+            const payload: FinancialProfileRequest = {
+                motivating_factors: (data.motivationOptions || []).map(mapMotivation).join(','),
+                share_your_opinion: JSON.stringify(opinions),
+                comfortable_housing_budget: data.comfortableHousingBudget || '',
+                stretched_housing_budget: data.stretchHousingBudget || '',
+                monthly_living_budget_target: data.generalLivingTarget || '',
+                financial_expectation: data.expectationsOption ? mapExpectation(data.expectationsOption) : '',
+                general_monthly_living_budget_target: data.monthlyLivingBudgetTarget || '',
+                income_route: data.incomePathsOption ? mapIncomeRoute(data.incomePathsOption) : '',
+                willing_tradeoffs: (data.tradeoffsOptions || []).map(mapTradeoff).join(','),
+                practical_constraints: (data.constraintsOptions || []).map(mapConstraint).join(','),
+                specific_codes_worried_about: data.constraintsSpecific || '',
+                financial_excitement_factors: (data.lifestyleOutlookOptions || []).map(mapExcitement).join(',')
+            }
+
+            const clientId = userData?.client_id || 1
+            const res = await saveFinancialProfile({ clientId, body: payload }).unwrap()
+            toast.success(res.message || res.detail || 'Financial profile submitted successfully!')
+            onClose()
+        } catch (err: any) {
+            const errorMsg =
+                err?.data?.detail ||
+                err?.data?.message ||
+                err?.data?.error ||
+                'Failed to submit financial profile. Please try again.'
+            toast.error(errorMsg)
+        }
     }
 
     return (
@@ -396,9 +517,10 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                     <div className="pt-6 border-t border-gray-100 flex items-center justify-start">
                         <button
                             type="submit"
-                            className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer"
+                            disabled={isSubmitting || isSaving}
+                            className="bg-primary hover:bg-primary-hover disabled:opacity-60 text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
                         >
-                            Submit
+                            {isSubmitting || isSaving ? 'Submitting...' : 'Submit'}
                         </button>
                     </div>
 

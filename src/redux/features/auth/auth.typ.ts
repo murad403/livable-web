@@ -29,3 +29,13 @@ export interface ChangePasswordResponse {
     message?: string;
     [key: string]: any;
 }
+
+export interface UserProfileResponse {
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    is_admin: boolean;
+    client_id: number;
+    [key: string]: any;
+}

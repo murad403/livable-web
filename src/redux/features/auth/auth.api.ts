@@ -1,5 +1,11 @@
 import baseApi from "@/redux/api/api";
-import { ChangePasswordRequest, ChangePasswordResponse, LoginRequest, LoginResponse } from "./auth.typ";
+import {
+    ChangePasswordRequest,
+    ChangePasswordResponse,
+    LoginRequest,
+    LoginResponse,
+    UserProfileResponse
+} from "./auth.typ";
 
 const authApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -21,6 +27,14 @@ const authApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        getMe: builder.query<UserProfileResponse, void>({
+            query: () => {
+                return {
+                    url: "/auth/me/",
+                    method: "GET"
+                }
+            }
+        }),
     })
 })
 
@@ -28,4 +42,5 @@ const authApi = baseApi.injectEndpoints({
 export const {
     useSignInMutation,
     useChangePasswordMutation,
+    useGetMeQuery,
 } = authApi;
