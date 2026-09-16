@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { getCurrentUser } from '@/utils/auth'
+import { Button } from '@/components/ui/button'
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -113,12 +114,12 @@ const Navbar = () => {
                         >
                             SEE HOW IT WORKS →
                         </a>
-                        <button
+                        <Button
                             onClick={handleTalkWithUs}
-                            className="bg-primary hover:bg-primary-hover text-white px-6 sm:px-7 py-2.5 rounded-full text-sm sm:text-base font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
+                            variant="customPill"
                         >
                             Get started
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </header>
@@ -166,12 +167,13 @@ const Navbar = () => {
                                 Login
                             </Link>
                         )}
-                        <button
+                        <Button
                             onClick={handleTalkWithUs}
-                            className="bg-primary hover:bg-primary-hover text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm md:text-base font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
+                            variant="customPill"
+                            className="h-10 px-5 text-sm sm:text-base"
                         >
                             Talk With Us
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

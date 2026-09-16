@@ -62,3 +62,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #FE3F39;
 }
+
+
+.chamfer-pill {
+  border-radius: 9999px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% calc(100% - 0px),
+    calc(100% - 0px) 100%,
+    0px 100%,
+    0% calc(100% - 0px)
+  );
+}
