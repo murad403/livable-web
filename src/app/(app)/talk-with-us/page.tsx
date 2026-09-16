@@ -129,15 +129,15 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
 
     if (isSubmitted) {
         return (
-            <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
-                <div className="space-y-4 max-w-3xl mx-auto">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-title leading-tight">
+            <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10 mt-10 min-h-[50vh] flex items-center">
+                <div className="space-y-4 max-w-7xl mx-auto">
+                    <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
                         Thank you. We are looking forward to working with you.
                     </h2>
-                    <p className="text-lg sm:text-xl md:text-2xl text-title font-normal pt-2">
+                    <p className="font-medium text-2xl md:text-[36px] text-title text-left">
                         We have received your parameters and will review them before we connect.
                     </p>
-                    <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed max-w-xl mx-auto pt-2">
+                    <p className="text-xl md:text-2xl text-title">
                         Please check your inbox within 24 hours. We will send you your initial next steps and a personal invitation to schedule your 20-minute introductory conversation.
                     </p>
                     <div className="pt-8">
@@ -148,7 +148,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
                                 setIsSubmitted(false)
                                 window.scrollTo({ top: 0, behavior: 'smooth' })
                             }}
-                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-title hover:text-primary transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-3 text-sm md:text-base font-semibold text-title hover:text-primary transition-colors cursor-pointer"
                         >
                             <span>← Return Home</span>
                         </button>
@@ -159,7 +159,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
     }
 
     return (
-        <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
+        <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10 scroll-mt-32 mt-10">
             {/* Top Section Label (Matching User Image) */}
             <p className="font-medium text-2xl md:text-[34px] text-title text-left">
                 Talk With Us

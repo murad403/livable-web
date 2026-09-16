@@ -58,29 +58,25 @@ export const libraryArticles: ArticleItem[] = [
 
 export default function SubstackLibraryPage() {
     return (
-        <main className="px-6 sm:px-12 max-w-[1728px] mx-auto text-title scroll-mt-24 space-y-20 md:space-y-40">
+        <main className="px-6 sm:px-12 max-w-[1728px] mx-auto text-title scroll-mt-32 mt-10 space-y-10 md:space-y-20">
             {/* Header Section (Matching User Image) */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-title mb-8">
-                Substack Library
-            </h1>
-
-            {/* Two-Column Intro Paragraphs (Matching User Image) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
-                <div className="lg:col-span-7">
-                    <p className="text-base sm:text-lg text-title leading-relaxed font-normal">
+            <div className='space-y-4 md:space-y-8 flex items-center gap-13.5'>
+                <div className='space-y-4 md:space-y-8'>
+                    <h1 className="md:text-[86px] text-6xl font-medium text-title">
+                        Substack Library
+                    </h1>
+                    <p className="text-xl md:text-[22px] text-title leading-relaxed font-normal">
                         Browse our substack library—the somatization of relocation, the theory of building human networks, and everything in between. Each article is written with the global experience in mind and draws on cross- and trans-disciplinary research. Links below.
                     </p>
                 </div>
-
-                <div className="lg:col-span-5 lg:text-right">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-title leading-tight tracking-tight max-w-md lg:ml-auto">
-                        Cross-disciplinary clarity. International perspective.
-                    </h2>
+                <div className="">
+                    <h2 className='md:text-[58px] text-4xl font-medium text-title tracking-tighter text-center whitespace-nowrap'>Cross-disciplinary clarity.</h2>
+                    <h2 className='md:text-[58px] text-4xl font-medium text-title tracking-tighter text-center whitespace-nowrap'>International perspective.</h2>
                 </div>
-            </div>
 
+            </div>
             {/* 2-Column Articles Grid (Matching User Image) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {libraryArticles.map((article) => (
                     <SubstackLibraryCard key={article.id} article={article} />
                 ))}
