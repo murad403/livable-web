@@ -70,8 +70,8 @@ export default function LoginPage() {
                     <span className="text-xs font-bold text-primary uppercase tracking-widest block mb-2">
                         DASHBOARD LOGIN
                     </span>
-                    <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-title mb-3">
-                        Sign in to Livable<span className="text-sm sm:text-base align-super ml-0.5 font-normal">™</span>
+                    <h1 className="text-3xl sm:text-4xl font-medium tracking-tight text-title mb-3">
+                        Sign in to Livable™
                     </h1>
                     <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed max-w-xs mx-auto">
                         Access your personalized scouting itineraries, city dossiers, and advisor messages.

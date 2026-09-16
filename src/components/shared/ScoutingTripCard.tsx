@@ -17,12 +17,12 @@ const ScoutingTripCard: React.FC<ScoutingTripCardProps> = ({ title, description,
         >
             <div className='space-y-4 md:space-y-6'>
                 {/* Image Container */}
-                <div className="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden">
+                <div className="relative w-full h-56 sm:h-92 rounded-2xl overflow-hidden">
                     <Image
                         src={image}
                         alt={title}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 100vw, 45vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                 </div>
