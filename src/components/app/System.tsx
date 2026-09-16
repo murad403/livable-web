@@ -1,54 +1,55 @@
-'use client'
 import Image from 'next/image'
 import systemImg from '@/assets/system.png'
 
+const systems = [
+    {
+        title: "Pre-Scouting",
+        description: "We coordinate your parameters and goals in a single workspace. This data briefs your on-site experts to custom-build your walking routes before you fly."
+    },
+    {
+        title: "The Scouting Trip",
+        description: "Spend three structured days with local experts on the ground. Use this time to experience the physical environment and feel how each neighborhood fits your life."
+    },
+    {
+        title: "Post-Trip to Arrival",
+        description: "The dashboard instantly unlocks your physical relocation blueprint, delivering your comprehensive moving checklist, a detailed setup guide, and a downselected list of essential local partners."
+    }
+]
+
 const System = () => {
     return (
-        <section className="py-20 px-6 sm:px-12 max-w-7xl mx-auto">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* Top Label */}
-            <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-6">
-                The System
-            </span>
-
-            {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-12">
-                The Livable<span className="text-xl align-super ml-0.5 font-normal">™</span> Relocation System
-            </h2>
+            <div className='space-y-4 md:space-y-8'>
+                <p className="font-medium text-2xl md:text-[34px] text-title text-left">
+                    The System
+                </p>
+                {/* Headline */}
+                <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
+                    The Livable™ Relocation System
+                </h2>
+            </div>
 
             {/* Content 2 columns */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12.5 items-center">
                 {/* Left side text blocks */}
-                <div className="lg:col-span-5 space-y-10 md:space-y-12">
-                    <div>
-                        <h3 className="text-xl md:text-2xl font-semibold text-title mb-2">
-                            Pre-Scouting
-                        </h3>
-                        <p className="text-base md:text-lg text-title leading-relaxed">
-                            We coordinate your parameters and goals in a single workspace. This data briefs your on-site experts to custom-build your walking routes before you fly.
-                        </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-gray-100">
-                        <h3 className="text-xl md:text-2xl font-semibold text-title mb-2">
-                            The Scouting Trip
-                        </h3>
-                        <p className="text-base md:text-lg text-title leading-relaxed">
-                            Most importantly, it hands you your localized micro-social blueprint: the neighborhood routines, community networks, and informal spaces you need to integrate and feel at home from week one.
-                        </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-gray-100">
-                        <h3 className="text-xl md:text-2xl font-semibold text-title mb-2">
-                            Post-Trip to Arrival
-                        </h3>
-                        <p className="text-base md:text-lg text-title leading-relaxed">
-                            The dashboard instantly unlocks your physical relocation blueprint, delivering your comprehensive moving checklist, a detailed setup guide, and a downselected list of essential local partners. Most importantly, it hands you your localized micro-social blueprint: the neighborhood routines, community networks, and informal spaces you need to integrate and feel at home from week one.
-                        </p>
-                    </div>
+                <div className="lg:col-span-1 space-y-10 md:space-y-16">
+                    {
+                        systems.map((system, idx) => (
+                            <div key={idx} className="text-title space-y-4">
+                                <h3 className="text-3xl md:text-[36px] font-medium tracking-[1px] ">
+                                    {system.title}
+                                </h3>
+                                <p className="text-2xl md:text-3xl tracking-[1px] leading-[150%]">
+                                    {system.description}
+                                </p>
+                            </div>
+                        ))
+                    }
                 </div>
 
                 {/* Right side Dashboard Image */}
-                <div className="lg:col-span-7">
+                <div className="lg:col-span-1">
                     <Image
                         src={systemImg}
                         alt="The Livable Relocation System Portal"

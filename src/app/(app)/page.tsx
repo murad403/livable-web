@@ -5,8 +5,8 @@ import ScoutingTrip from '@/components/app/ScoutingTrip'
 import Places from '@/components/app/Places'
 import System from '@/components/app/System'
 import OurStory from '@/components/app/OurStory'
-import TalkWithUs from '@/components/app/TalkWithUs'
 import DetailsModal, { ModalData } from '@/components/app/DetailsModal'
+import GetStarted from '@/components/app/GetStarted'
 
 export default function Page() {
     const [modalData, setModalData] = useState<ModalData | null>(null)
@@ -58,7 +58,7 @@ export default function Page() {
             <OurStory onTalkClick={handleScrollToForm} />
 
             {/* Talk With Us Form Section */}
-            <TalkWithUs preselectedCity={preselectedCity} />
+            <GetStarted/>
 
             {/* Interactive Details Modal */}
             <DetailsModal

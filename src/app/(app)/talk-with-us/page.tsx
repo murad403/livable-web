@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
-import TalkStep1 from './TalkStep1'
-import TalkStep2 from './TalkStep2'
 import { useBookTalkWithUsMutation } from '@/redux/features/app/app.api'
+import TalkStep1 from '@/components/app/TalkStep1'
+import TalkStep2 from '@/components/app/TalkStep2'
 
 const formSchema = z.object({
     fullName: z.string().min(1, 'Please enter your full name'),
@@ -129,7 +129,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
 
     if (isSubmitted) {
         return (
-            <section id="talk-with-us" className="py-24 sm:py-32 px-6 sm:px-12 max-w-4xl mx-auto scroll-mt-24 text-center">
+            <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
                 <div className="space-y-4 max-w-3xl mx-auto">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-title leading-tight">
                         Thank you. We are looking forward to working with you.
@@ -159,7 +159,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
     }
 
     return (
-        <section id="talk-with-us" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto scroll-mt-24">
+        <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
             {/* Top Section Label (Matching User Image) */}
             <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-12">
                 Talk With Us
