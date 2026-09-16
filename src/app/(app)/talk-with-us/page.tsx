@@ -78,7 +78,7 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [bookTalkWithUs, { isLoading: isBooking }] = useBookTalkWithUsMutation()
 
-    const { register, handleSubmit , setValue, control, trigger, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
+    const { register, handleSubmit, setValue, control, trigger, reset, formState: { errors, isSubmitting } } = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             fullName: '',
@@ -161,23 +161,23 @@ const TalkWithUs: React.FC<TalkWithUsProps> = ({ preselectedCity }) => {
     return (
         <section id="talk-with-us" className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
             {/* Top Section Label (Matching User Image) */}
-            <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-12">
+            <p className="font-medium text-2xl md:text-[34px] text-title text-left">
                 Talk With Us
-            </span>
+            </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end text-start">
                 {/* Left Text Column (Matching User Image) */}
                 <div className="lg:col-span-6">
-                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-medium text-title tracking-tight leading-none mb-3">
-                        Hello, Europe.
-                    </h2>
-                    <p className="text-2xl sm:text-3xl text-title font-normal tracking-tight">
+                    <p className="text-4xl md:text-[48px] text-title font-normal tracking-[1px]">
                         Your first step starts here.
                     </p>
+                    <h2 className="font-medium text-title text-2xl md:text-[32px]">
+                        Hello, Europe.
+                    </h2>
                 </div>
 
                 {/* Right Form Card Column (Matching User Image) */}
-                <div className="lg:col-span-6 bg-white rounded-3xl p-8 sm:p-10 border border-gray-100 shadow-sm max-w-lg w-full lg:ml-auto">
+                <div className="lg:col-span-6 bg-white rounded-2xl p-8 sm:p-10 border border-gray-100 shadow-sm max-w-lg w-full lg:ml-auto">
                     {/* Top Center Progress Dots Indicator (Matching User Image) */}
                     <div className="flex items-center justify-center gap-2 mb-6">
                         <span

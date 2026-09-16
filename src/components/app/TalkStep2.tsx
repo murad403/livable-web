@@ -3,7 +3,8 @@
 import React from 'react'
 import { Control, UseFormSetValue, FieldErrors, useWatch } from 'react-hook-form'
 import { ArrowRight, Check } from 'lucide-react'
-import type { FormValues } from './TalkWithUs'
+import { FormValues } from '@/app/(app)/talk-with-us/page'
+import { Button } from '../ui/button'
 
 interface TalkStep2Props {
     control: Control<FormValues>
@@ -58,7 +59,7 @@ const TalkStep2: React.FC<TalkStep2Props> = ({ control, setValue, errors, onBack
         <div className="space-y-8">
             {/* Step Title */}
             <div>
-                <span className="text-base font-semibold text-primary">Step 2</span>
+                <span className="font-medium text-2xl md:text-[34px] text-title text-left">Step 2</span>
             </div>
 
             {/* Question 1: Stage */}
@@ -168,14 +169,13 @@ const TalkStep2: React.FC<TalkStep2Props> = ({ control, setValue, errors, onBack
                 >
                     ← Back
                 </button>
-                <button
+                <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 bg-primary hover:bg-primary-hover disabled:opacity-50 text-white py-3.5 px-6 rounded-full text-sm font-semibold transition-all shadow hover:shadow-md cursor-pointer flex items-center justify-center gap-2"
                 >
                     <span>{isSubmitting ? 'Booking...' : 'Book your introductory call'}</span>
                     <ArrowRight className="w-4 h-4" />
-                </button>
+                </Button>
             </div>
         </div>
     )

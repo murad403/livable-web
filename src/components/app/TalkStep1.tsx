@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { UseFormRegister, FieldErrors } from 'react-hook-form'
+import { Button } from '../ui/button'
 
 interface Step1FormData {
     fullName: string
@@ -20,7 +21,7 @@ const TalkStep1: React.FC<TalkStep1Props> = ({ register, errors, onNext }) => {
         <div className="space-y-5">
             {/* Step Header (Matching User Image) */}
             <div>
-                <span className="text-base font-semibold text-primary block mb-2">Step 1</span>
+                <span className="font-medium text-2xl md:text-[34px] text-title text-left">Step 1</span>
             </div>
 
             {/* Full Name */}
@@ -79,13 +80,12 @@ const TalkStep1: React.FC<TalkStep1Props> = ({ register, errors, onNext }) => {
 
             {/* Next Button (Matching User Image) */}
             <div className="pt-2">
-                <button
+                <Button
                     type="button"
                     onClick={onNext}
-                    className="bg-primary hover:bg-primary-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-sm cursor-pointer inline-flex items-center gap-1.5"
                 >
                     Next →
-                </button>
+                </Button>
             </div>
         </div>
     )
