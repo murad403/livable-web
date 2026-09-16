@@ -24,18 +24,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Livable - Relocation Advisory",
+  title: "Livable",
   description: "A premium, full-service relocation advisory platform helping intentional relocators plan scouting trips and streamline moving to European destinations.",
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Livable",
-  },
-  icons: {
-    icon: "/icons/icon-192x192.png",
-    apple: "/icons/apple-touch-icon.png",
-  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -49,19 +39,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
           <Toaster position="top-center" richColors />
         </ReduxProvider>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').catch(function(err) {
-                    console.log('ServiceWorker registration failed: ', err);
-                  });
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   );

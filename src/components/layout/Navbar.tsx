@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -103,7 +102,7 @@ const Navbar = () => {
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-medium tracking-tight text-title font-sans leading-none">
-                        Livable<span className="text-xl sm:text-2xl md:text-3xl align-top ml-0.5 sm:ml-1 font-light">TM</span>
+                        Livable™
                     </Link>
 
                     <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-1">
