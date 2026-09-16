@@ -8,24 +8,14 @@ import hero4 from '@/assets/hero4.png'
 import hero5 from '@/assets/hero5.png'
 import hero6 from '@/assets/hero6.png'
 
-interface HeroProps {
-    onSelectCard?: (data: {
-        title: string
-        location: string
-        image: any
-        description: string
-        metrics: { rank: string; title: string; subtitle: string }[]
-        mapImage?: any
-        neighborhoodsText?: string
-    }) => void
-}
+
 
 const heroItems = [
     {
-        id: 'lisbon-waterfront',
-        title: 'Lisbon',
+        id: 'porto',
+        title: 'Porto',
         subtitle: 'Tagus River Promenade',
-        image: hero1,
+        image: hero6,
         location: 'Lisbon • Waterfront',
         description: 'Enjoy sweeping views across the Tagus River, historic piers, and warm Mediterranean sunsets.',
         metrics: [
@@ -36,10 +26,10 @@ const heroItems = [
         neighborhoodsText: 'Historic Lisbon: Alfama, Baixa, Chiado River + West: Santos, Alcântara, Belém'
     },
     {
-        id: 'teleferico',
+        id: 'barcelona',
         title: 'Barcelona',
         subtitle: 'Montjuïc Sky Views',
-        image: hero2,
+        image: hero5,
         location: 'Barcelona • Skyway',
         description: 'Panoramic mountain and coastal views connecting the Mediterranean coastline to urban green hills.',
         metrics: [
@@ -51,9 +41,9 @@ const heroItems = [
     },
     {
         id: 'san-francisco',
-        title: 'San Francisco',
+        title: 'San Sebastián',
         subtitle: 'Coast & Beaches',
-        image: hero3,
+        image: hero4,
         location: 'Coastal Beaches',
         description: 'Iconic yellow tramways winding through steep cobblestone avenues and sun-drenched squares.',
         metrics: [
@@ -65,9 +55,9 @@ const heroItems = [
     },
     {
         id: 'seville-madrid',
-        title: 'Seville',
+        title: 'Valencia',
         subtitle: 'Spanish Architecture',
-        image: hero4,
+        image: hero2,
         location: 'Seville & Madrid',
         description: 'Terracotta roofs, majestic church spires, and vibrant plazas nestled in centuries of rich culture.',
         metrics: [
@@ -79,9 +69,9 @@ const heroItems = [
     },
     {
         id: 'tapas-dining',
-        title: 'Porto',
+        title: 'Málaga',
         subtitle: 'Culinary Experiences',
-        image: hero5,
+        image: hero3,
         location: 'Spain & Portugal',
         description: 'Fresh seafood, local wines, tapas, and vibrant neighborhood outdoor dining culture.',
         metrics: [
@@ -93,9 +83,9 @@ const heroItems = [
     },
     {
         id: 'cascais-terrace',
-        title: 'Cascais',
+        title: 'Lisbon',
         subtitle: 'Cascais & Porto',
-        image: hero6,
+        image: hero1,
         location: 'Cascais • Atlantic Coast',
         description: 'Cliffside vistas, golden beaches, ocean breezes, and peaceful residential havens.',
         metrics: [
@@ -107,33 +97,32 @@ const heroItems = [
     }
 ]
 
-const Hero: React.FC<HeroProps> = ({ onSelectCard }) => {
+const Hero: React.FC = () => {
     return (
-        <section className="pt-4 pb-16 px-6 sm:px-12 max-w-7xl mx-auto">
+        <section className="px-6 sm:px-12 max-w-7xl mx-auto space-y-16 md:space-y-28">
             {/* Subtitle */}
             <p className="text-3xl md:text-[62px] text-title font-normal max-w-5xl leading-tight tracking-tight">
                 Move from the U.S. to Spain or Portugal efficiently, joyfully, and without regret.
             </p>
 
             {/* 6 Hero Image Strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-end gap-3 sm:gap-4 min-h-90 pt-8 mb-18">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-end gap-3 md:gap-4 min-h-80">
                 {heroItems.map((item) => (
                     <HeroCard
                         key={item.id}
                         image={item.image}
                         title={item.title}
                         subtitle={item.subtitle}
-                        onClick={() => onSelectCard && onSelectCard(item)}
                     />
                 ))}
             </div>
 
             {/* Moving abroad text row (Under Hero cards) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start pt-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-title leading-snug tracking-tight">
-                    Moving abroad can turn into years of fragmented research, expensive mistakes, and second-guessing.
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 justify-between">
+                <h2 className="text-4xl md:text-[58px] font-medium text-title leading-snug tracking-tight">
+                    Moving abroad can turn into years of fragmented research, expensive false starts, and second-guessing.
                 </h2>
-                <p className="text-base sm:text-lg text-title leading-relaxed">
+                <p className="text-2xl md:text-3xl text-title leading-relaxed">
                     Livable™ is the first guided moving system designed to accelerate your move abroad—combining a personalized, expert-led scouting trip with a structured post-trip framework to get you smoothly to your final landing.
                 </p>
             </div>

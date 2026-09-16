@@ -43,7 +43,7 @@ export default function Page() {
     return (
         <main className="min-h-screen bg-white text-title font-sans selection:bg-primary selection:text-white">
             {/* Hero Section */}
-            <Hero onSelectCard={handleOpenModal} />
+            <Hero />
 
             {/* Scouting Trip Section */}
             <ScoutingTrip onSelectCard={handleOpenModal} />
