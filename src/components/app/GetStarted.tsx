@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 const GetStarted = () => {
     const router = useRouter();
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
+        <section id="get-started" className="scroll-mt-24 px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
             {/* Label */}
             <p className="font-medium text-2xl md:text-[34px] text-title text-left">
                 Get Started

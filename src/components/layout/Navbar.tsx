@@ -40,12 +40,12 @@ const Navbar = () => {
     const handleTalkWithUs = (e: React.MouseEvent) => {
         e.preventDefault()
         if (pathname === '/') {
-            const el = document.getElementById('talk-with-us')
+            const el = document.getElementById('get-started');
             if (el) {
                 el.scrollIntoView({ behavior: 'smooth' })
             }
         } else {
-            router.push('/#talk-with-us')
+            router.push('/#get-started')
         }
     }
 
@@ -168,7 +168,7 @@ const Navbar = () => {
                             </Link>
                         )}
                         <Button
-                            onClick={handleTalkWithUs}
+                            onClick={() => router.push("/talk-with-us")}
                             variant="customPill"
                             className="h-10 px-5 text-sm sm:text-base"
                         >

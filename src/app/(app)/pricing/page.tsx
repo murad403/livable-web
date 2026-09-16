@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect } from 'react'
 import Pricing from '@/components/app/Pricing'
 import Step from '@/components/app/Step'
@@ -19,14 +18,9 @@ export default function PricingPage() {
     }, [])
 
     return (
-        <main>
-            {/* Simple Pricing Section ($3,400 Flat Price Card) */}
+        <main className='space-y-24 md:space-y-37.5'>
             <Pricing />
-
-            {/* What's Included / The 3-Step Process Section */}
             <Step />
-
-            {/* FAQ Section */}
             <FAQ />
         </main>
     )

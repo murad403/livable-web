@@ -21,19 +21,19 @@ const Footer = () => {
     }, [pathname])
 
     return (
-        <footer className="border-t border-gray-100 bg-white py-14 px-6 sm:px-12 max-w-7xl mx-auto">
+        <footer className="border-t border-gray-100 py-14 px-6 sm:px-12 max-w-[1728px] mx-auto mt-10 md:mt-20">
             <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                 {/* Left Side: Brand Logo */}
                 <div>
-                    <Link href="/" className="text-3xl sm:text-4xl tracking-tight text-title font-satoshi">
+                    <Link href="/" className="text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi">
                         Livable™
                     </Link>
                 </div>
 
                 {/* Right Side: 2 Navigation Link Columns */}
-                <div className="flex flex-row items-start gap-12 sm:gap-20 text-base text-gray-500 font-normal">
+                <div className="flex flex-row items-start gap-20 text-xl md:text-2xl text-title">
                     {/* Column 1 */}
-                    <div className="flex flex-col space-y-3">
+                    <div className="flex flex-col space-y-2.5">
                         <Link href="/pricing" className="hover:text-black transition-colors">
                             Pricing
                         </Link>
@@ -52,7 +52,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 2 */}
-                    <div className="flex flex-col space-y-3">
+                    <div className="flex flex-col space-y-2.5">
                         <a href="#" className="hover:text-black transition-colors">
                             Privacy Policy
                         </a>

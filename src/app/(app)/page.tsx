@@ -41,7 +41,7 @@ export default function Page() {
     }
 
     return (
-        <main className="min-h-screen bg-white text-title font-sans selection:bg-primary selection:text-white md:space-y-37.5">
+        <main className="min-h-screen bg-white text-title font-sans selection:bg-primary selection:text-white space-y-24 md:space-y-37.5">
             {/* Hero Section */}
             <Hero />
 

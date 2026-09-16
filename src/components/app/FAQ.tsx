@@ -44,7 +44,7 @@ const FAQ = () => {
     }
 
     return (
-        <section className="py-20 px-6 sm:px-12 max-w-7xl mx-auto text-title font-sans">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* Top Left Label */}
             <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-8">
                 FAQ

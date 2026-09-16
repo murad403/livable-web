@@ -1,69 +1,62 @@
 'use client'
-
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const Pricing = () => {
     const [selectedOption, setSelectedOption] = useState<'single' | 'another'>('single')
 
     return (
-        <section className="pt-12 pb-20 px-6 sm:px-12 max-w-7xl mx-auto text-title font-sans">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* Main Header */}
-            <div className="text-center max-w-4xl mx-auto mb-16">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight text-title mb-4">
+            <div className="text-center space-y-5 md:space-y-9">
+                <h1 className="md:text-[86px] text-6xl font-medium text-title">
                     Simple Pricing
                 </h1>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-title mb-6">
-                    One flat price for the complete Livable<span className="text-xl align-super ml-0.5 font-normal">™</span> Relocation System.
+                <h2 className="md:text-[58px] text-4xl font-medium text-title">
+                    One flat price for the complete Livable™ Relocation System.
                 </h2>
-                <p className="text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-4">
+                <p className="text-2xl md:text-[36px] tracking-[1px] leading-[150%]">
                     Whether you're moving on your own or together, one price includes your guided scouting trip, full platform access, and the complete 3-step process.
                 </p>
-                <p className="text-sm sm:text-base leading-relaxed max-w-4xl mx-auto font-light">
-                    The Livable<span className="text-xs align-super ml-0.5 font-normal">™</span> system is priced to cover the full scope of the guided experience—expert sessions, logistical coordination, and full platform access. The flat fee is designed to be straightforward, with no hidden add-ons beyond the optional secondary location.
+                <p className="text-2xl md:text-[36px] tracking-[1px] leading-[150%]">
+                    The Livable™ system is priced to cover the full scope of the guided experience—expert sessions, logistical coordination, and full platform access. The flat fee is designed to be straightforward, with no hidden add-ons beyond the optional secondary location.
                 </p>
             </div>
 
             {/* Flat Price Card Container ($3,400 matching exact image design) */}
-            <div className="max-w-2xl mx-auto rounded-3xl p-8 sm:p-12 border border-red-200/90 shadow-sm bg-white text-center relative">
+            <div className="max-w-3xl mx-auto rounded-2xl p-5 md:p-8 border border-primary shadow-sm bg-white text-center relative space-y-4 md:space-y-6">
                 {/* Price */}
-                <div className="text-5xl sm:text-6xl font-bold text-title mb-2">
+                <div className="md:text-[58px] text-4xl font-medium text-title">
                     $3,400
                 </div>
 
                 {/* Subtitle */}
-                <div className="text-lg font-semibold text-title mb-2">
+                <div className="font-medium text-2xl md:text-[34px] text-title">
                     For one or two people
                 </div>
 
                 {/* Subtext */}
-                <p className="text-xs sm:text-sm max-w-md mx-auto mb-8 font-light leading-relaxed">
+                <p className="font-medium text-xl md:text-2xl text-title tracking-[1px]">
                     The flat price covers up to two people sharing a room, so couples and two-person households go together under a single fee.
                 </p>
 
                 {/* Features Header & Bullet list */}
-                <div className="text-left max-w-lg mx-auto mb-8 border-t border-gray-100 pt-6">
-                    <h3 className="text-sm font-semibold text-title mb-4">
-                        Included with every Livable<span className="text-xs align-super ml-0.5 font-normal">™</span> Relocation System:
+                <div className="text-left space-y-4 md:space-y-6">
+                    <h3 className="text-2xl md:text-[34px] text-title">
+                        Included with every Livable™ Relocation System:
                     </h3>
 
-                    <ul className="space-y-3.5 text-xs sm:text-sm text-gray-700 font-light">
+                    <ul className="space-y-4 md:space-y-6 text-title text-xl md:text-2xl">
                         <li className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-xs bg-title shrink-0 mt-1.5" />
-                            <span>
-                                <strong className="font-semibold text-title">3-Step Relocation Track:</strong> Full system access from planning to arrival checklists.
-                            </span>
+                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <p>3-Step Relocation Track: Full system access from planning to arrival checklists</p>
                         </li>
                         <li className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-xs bg-title shrink-0 mt-1.5" />
-                            <span>
-                                <strong className="font-semibold text-title">Guided Scouting Trip:</strong> Personalized itinerary with hotels, transport, and expert sessions.
-                            </span>
+                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <p>Guided Scouting Trip: Personalized itinerary with hotels, transport, and expert sessions.</p>
                         </li>
                         <li className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-xs bg-title shrink-0 mt-1.5" />
-                            <span>
-                                <strong className="font-semibold text-title">Relocation Dashboard:</strong> Single workspace for notes, partner referrals, and next steps.
-                            </span>
+                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <p>Relocation Dashboard: Single workspace for notes, partner referrals, and next steps.</p>
                         </li>
                     </ul>
                 </div>

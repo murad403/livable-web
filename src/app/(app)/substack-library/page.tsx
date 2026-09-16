@@ -58,7 +58,7 @@ export const libraryArticles: ArticleItem[] = [
 
 export default function SubstackLibraryPage() {
     return (
-        <main className="py-16 px-6 sm:px-12 max-w-7xl mx-auto text-title font-sans">
+        <main className="px-6 sm:px-12 max-w-[1728px] mx-auto text-title scroll-mt-24 space-y-20 md:space-y-40">
             {/* Header Section (Matching User Image) */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-title mb-8">
                 Substack Library
