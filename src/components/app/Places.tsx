@@ -86,7 +86,7 @@ export const placesList = [
     {
         id: 'valencia',
         badge: 'More →',
-        title: 'VALENCIA',
+        title: 'San Sebastián',
         locationText: 'Turia Gardens • El Carmen • Ruzafa',
         image: hero4,
         mapImage: mapImg,
@@ -103,7 +103,7 @@ export const placesList = [
     {
         id: 'madrid',
         badge: 'More →',
-        title: 'MADRID',
+        title: 'Málaga',
         locationText: 'Salamanca • Chamberí • Malasaña',
         image: hero3,
         mapImage: mapImg,
@@ -124,18 +124,18 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
 
     const scrollLeft = () => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollBy({ left: -360, behavior: 'smooth' });
+            scrollContainerRef.current.scrollBy({ left: -504, behavior: 'smooth' });
         }
     }
 
     const scrollRight = () => {
         if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollBy({ left: 360, behavior: 'smooth' });
+            scrollContainerRef.current.scrollBy({ left: 504, behavior: 'smooth' });
         }
     }
 
     return (
-        <section className="px-6 sm:px-12 max-w-7xl mx-auto">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* 1. Top Section Label: Left-aligned (Matching User Image) */}
             <div className="text-center space-y-4 md:space-y-8">
                 <p className="font-medium text-2xl md:text-[34px] text-title text-left">
@@ -144,7 +144,7 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
                 <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
                     We currently run scouting trips in six locations across Spain and Portugal.
                 </h2>
-                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] max-w-5xl mx-auto">
+                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] mx-auto">
                     Our trips encompass the broader regional system—the city center, but also connected rail towns and coastal neighborhoods—to evaluate each area for livability, social infrastructure, and lifestyle fit.
                 </p>
             </div>

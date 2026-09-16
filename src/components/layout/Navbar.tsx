@@ -67,7 +67,7 @@ const Navbar = () => {
             <header
                 className={`w-full transition-all duration-300 ${
                     scrolled ? 'opacity-0 pointer-events-none -translate-y-4' : 'opacity-100 translate-y-0'
-                } pt-6 pb-4 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto z-40`}
+                } pt-6 pb-4 px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto z-40`}
             >
                 {/* Top line: Pricing & Login/Portal links */}
                 <div className="flex justify-center items-center gap-6 sm:gap-8 md:mb-20 mb-8 sm:mb-12">
@@ -102,7 +102,7 @@ const Navbar = () => {
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-normal tracking-tight text-title font-satoshi leading-none pb-6">
+                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[200px] md:text-[230px] lg:text-[298px] font-normal tracking-tight text-title font-satoshi leading-none py-10">
                         Livable™
                     </Link>
 
@@ -132,7 +132,7 @@ const Navbar = () => {
                         : '-translate-y-full opacity-0 pointer-events-none'
                 }`}
             >
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between">
+                <div className="max-w-[1728px] mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between">
                     {/* Left: Livable Brand Logo */}
                     <Link href="/" className="text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi">
                         Livable™

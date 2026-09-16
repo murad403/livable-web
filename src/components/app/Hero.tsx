@@ -99,7 +99,7 @@ const heroItems = [
 
 const Hero: React.FC = () => {
     return (
-        <section className="px-6 sm:px-12 max-w-7xl mx-auto space-y-16 md:space-y-28">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto space-y-16 md:space-y-28">
             {/* Subtitle */}
             <p className="text-3xl md:text-[62px] text-title font-normal max-w-5xl leading-tight tracking-tight">
                 Move from the U.S. to Spain or Portugal efficiently, joyfully, and without regret.
@@ -119,10 +119,10 @@ const Hero: React.FC = () => {
 
             {/* Moving abroad text row (Under Hero cards) */}
             <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 justify-between">
-                <h2 className="text-4xl md:text-[58px] font-medium text-title leading-snug tracking-tight">
+                <h2 className="text-4xl md:text-[58px] font-medium text-title tracking-[1px] leading-[150%]">
                     Moving abroad can turn into years of fragmented research, expensive false starts, and second-guessing.
                 </h2>
-                <p className="text-2xl md:text-3xl text-title leading-relaxed">
+                <p className="text-2xl md:text-[36px] text-title tracking-[1px] leading-[150%]">
                     Livable™ is the first guided moving system designed to accelerate your move abroad—combining a personalized, expert-led scouting trip with a structured post-trip framework to get you smoothly to your final landing.
                 </p>
             </div>

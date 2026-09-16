@@ -53,16 +53,16 @@ const scoutingTripsData = [
 
 const ScoutingTrip: React.FC<ScoutingTripProps> = ({ onSelectCard }) => {
     return (
-        <section id="scouting-trip" className="px-6 sm:px-12 max-w-7xl mx-auto md:space-y-20 space-y-10">
+        <section id="scouting-trip" className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* Scouting Trip Header */}
             <div className="text-center space-y-4 md:space-y-8">
                 <p className="font-medium text-2xl md:text-[34px] text-title">
                     The Scouting Trip
                 </p>
-                <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
+                <h2 className="md:text-[58px] text-4xl font-medium text-title">
                     Three days, Three experts. Your priorities. Insider info.
                 </h2>
-                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] max-w-5xl mx-auto">
+                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px]">
                     One carefully designed three-day scouting trip, giving you the real-world experience to replace guesswork before you commit to the move. Every neighborhood layout and local consultation is prepared around your priorities before you arrive, so you can decide with confidence.
                 </p>
             </div>
