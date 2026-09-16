@@ -61,20 +61,33 @@ const Pricing = () => {
                     </ul>
                 </div>
 
-                {/* Location Switcher toggle at bottom */}
-                <div className="flex items-center justify-center gap-3 text-xs sm:text-sm pt-4 border-t border-gray-100">
+                {/* Location Switcher toggle at bottom matching Figma image */}
+                <div className="flex items-center justify-center gap-4 text-xl md:text-2xl font-medium text-title">
                     <button
                         onClick={() => setSelectedOption('single')}
-                        className={`font-semibold cursor-pointer transition-colors ${
-                            selectedOption === 'single' ? 'text-primary' : 'text-gray-400 hover:text-title'
+                        className={`font-medium cursor-pointer transition-colors ${
+                            selectedOption === 'single' ? 'text-primary' : 'text-title hover:text-primary'
                         }`}
                     >
                         Single location
                     </button>
-                    <span className="text-gray-300">or</span>
+
+                    {/* Red Pill Toggle Switch */}
+                    <button
+                        onClick={() => setSelectedOption(selectedOption === 'single' ? 'another' : 'single')}
+                        className="w-10 h-5.5 rounded-full border-2 border-primary flex items-center p-0.5 cursor-pointer transition-colors shrink-0"
+                        aria-label="Toggle location option"
+                    >
+                        <span
+                            className={`w-3.5 h-3.5 rounded-full bg-primary transition-transform duration-300 transform ${
+                                selectedOption === 'single' ? 'translate-x-0' : 'translate-x-4.5'
+                            }`}
+                        />
+                    </button>
+
                     <button
                         onClick={() => setSelectedOption('another')}
-                        className={`font-semibold cursor-pointer transition-colors ${
+                        className={`font-medium cursor-pointer transition-colors ${
                             selectedOption === 'another' ? 'text-primary' : 'text-title hover:text-primary'
                         }`}
                     >
