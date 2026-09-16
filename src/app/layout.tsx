@@ -34,6 +34,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${neueMontreal.variable} font-sans h-full antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-white">
         <ReduxProvider>
           {children}

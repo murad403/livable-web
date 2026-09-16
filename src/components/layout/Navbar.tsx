@@ -101,7 +101,7 @@ const Navbar = () => {
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-medium tracking-tight text-title font-satoshi leading-none">
+                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-normal tracking-tight text-title font-satoshi leading-none">
                         Livable™
                     </Link>
 
