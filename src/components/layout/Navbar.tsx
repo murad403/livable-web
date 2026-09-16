@@ -101,17 +101,11 @@ const Navbar = () => {
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-medium tracking-tight text-title font-sans leading-none">
+                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-medium tracking-tight text-title font-satoshi leading-none">
                         Livable™
                     </Link>
 
                     <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-1">
-                        <button
-                            onClick={handleTalkWithUs}
-                            className="bg-primary hover:bg-primary-hover text-white px-6 sm:px-7 py-2.5 rounded-full text-sm sm:text-base font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
-                        >
-                            Get started
-                        </button>
                         <a
                             href="/pricing#how-it-works"
                             onClick={handleSeeHowItWorks}
@@ -119,6 +113,12 @@ const Navbar = () => {
                         >
                             SEE HOW IT WORKS →
                         </a>
+                        <button
+                            onClick={handleTalkWithUs}
+                            className="bg-primary hover:bg-primary-hover text-white px-6 sm:px-7 py-2.5 rounded-full text-sm sm:text-base font-medium transition-all shadow-sm hover:shadow-md cursor-pointer"
+                        >
+                            Get started
+                        </button>
                     </div>
                 </div>
             </header>
@@ -133,8 +133,8 @@ const Navbar = () => {
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between">
                     {/* Left: Livable Brand Logo */}
-                    <Link href="/" className="text-xl sm:text-2xl md:text-3xl font-normal tracking-tight text-title">
-                        Livable<span className="text-xs align-super ml-0.5 font-normal">™</span>
+                    <Link href="/" className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-title font-satoshi">
+                        Livable™
                     </Link>
 
                     {/* Right: Navigation actions */}

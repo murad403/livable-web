@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Hero from '@/components/app/Hero'
 import ScoutingTrip from '@/components/app/ScoutingTrip'
 import Places from '@/components/app/Places'

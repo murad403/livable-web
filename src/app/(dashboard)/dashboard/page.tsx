@@ -128,8 +128,8 @@ export default function DashboardPage() {
         <div className="min-h-screen bg-white text-title font-sans p-6 sm:p-10 md:p-12 max-w-375 mx-auto selection:bg-primary selection:text-white">
             {/* Top Navigation Bar inside Dashboard */}
             <div className="flex items-center justify-between pb-8 mb-8 border-b border-gray-100 text-xs sm:text-sm">
-                <Link href="/" className="font-normal text-xl sm:text-2xl text-title">
-                    Livable<span className="text-xs align-super font-light ml-0.5">TM</span>
+                <Link href="/" className="font-satoshi font-normal tracking-tight text-xl sm:text-2xl text-title">
+                    Livable™
                 </Link>
                 <div className="flex items-center gap-3">
                     <button

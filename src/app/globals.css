@@ -1,7 +1,9 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: var(--font-neue-montreal), "PP Neue Montreal", "Neue Montreal", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-satoshi: 'Satoshi', var(--font-neue-montreal), sans-serif;
   --color-primary: #FE3F39;
   --color-primary-hover: #e0322d;
   --color-title: #282828;

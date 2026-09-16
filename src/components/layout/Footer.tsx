@@ -25,8 +25,8 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                 {/* Left Side: Brand Logo */}
                 <div>
-                    <Link href="/" className="text-3xl sm:text-4xl font-normal tracking-tight text-title font-sans">
-                        Livable<span className="text-base align-top ml-0.5 font-normal">™</span>
+                    <Link href="/" className="text-3xl sm:text-4xl tracking-tight text-title font-satoshi">
+                        Livable™
                     </Link>
                 </div>
 
