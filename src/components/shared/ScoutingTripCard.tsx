@@ -1,30 +1,23 @@
 'use client'
-
 import React from 'react'
 import Image, { StaticImageData } from 'next/image'
 
 interface ScoutingTripCardProps {
-    day?: string
     title: string
     description: string
     image: StaticImageData | string
     onClick?: () => void
 }
 
-const ScoutingTripCard: React.FC<ScoutingTripCardProps> = ({ day, title, description, image, onClick }) => {
+const ScoutingTripCard: React.FC<ScoutingTripCardProps> = ({ title, description, image, onClick }) => {
     return (
         <div
             onClick={onClick}
-            className="bg-[#F2F2F2] rounded-3xl p-4 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all duration-300 cursor-pointer group"
+            className="bg-[#ECECEC] rounded-2xl p-4 flex flex-col justify-between hover:shadow-md transition-all duration-300 cursor-pointer group"
         >
-            <div>
-                {/* Day Badge */}
-                <span className="text-xs font-semibold text-title uppercase tracking-wider block mb-3">
-                    {day}
-                </span>
-
+            <div className='space-y-4 md:space-y-6'>
                 {/* Image Container */}
-                <div className="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden mb-5">
+                <div className="relative w-full h-48 sm:h-56 rounded-2xl overflow-hidden">
                     <Image
                         src={image}
                         alt={title}
@@ -35,18 +28,18 @@ const ScoutingTripCard: React.FC<ScoutingTripCardProps> = ({ day, title, descrip
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-medium tracking-tight text-title mb-3 leading-snug group-hover:text-primary transition-colors">
+                <h3 className="tracking-tight text-title group-hover:text-primary transition-colors text-3xl md:text-[46px] font-normal">
                     {title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-title font-light leading-relaxed mb-6">
+                <p className="text-2xl md:text-[36px] text-title tracking-tighter">
                     {description}
                 </p>
             </div>
 
             {/* Footer action link */}
-            <div className="flex items-center gap-1 text-xs sm:text-sm font-light text-title group-hover:text-primary transition-colors">
+            <div className="flex items-center gap-1 mt-4 md:mt-6 font-medium text-lg md:text-2xl text-title group-hover:text-primary transition-colors">
                 <span>Hover to learn more →</span>
             </div>
         </div>

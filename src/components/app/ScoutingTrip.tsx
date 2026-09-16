@@ -12,9 +12,8 @@ interface ScoutingTripProps {
 const scoutingTripsData = [
     {
         id: 'day-1',
-        day: 'Day 1',
-        title: 'Protected Time to Decide',
-        description: 'We handle the logistics so your attention stays on evaluating the place, not managing the trip.',
+        title: 'Frictionless Travel Logistics',
+        description: 'We take care of every travel detail so your full energy goes toward analyzing the city, not navigating it.',
         image: trip1,
         location: 'Spain & Portugal • Orientation',
         metrics: [
@@ -26,7 +25,6 @@ const scoutingTripsData = [
     },
     {
         id: 'day-2',
-        day: 'Day 2',
         title: 'Expertise Through Your Priorities',
         description: 'Spend your hours with local guides who are thoroughly pre-briefed on your budget, lifestyle, and housing parameters.',
         image: trip2,
@@ -40,7 +38,6 @@ const scoutingTripsData = [
     },
     {
         id: 'day-3',
-        day: 'Day 3',
         title: 'Independent Daily Routines',
         description: 'Use your unguided hours to test everyday micro-social textures with total independence, but zero aimless wandering.',
         image: trip3,
@@ -56,26 +53,25 @@ const scoutingTripsData = [
 
 const ScoutingTrip: React.FC<ScoutingTripProps> = ({ onSelectCard }) => {
     return (
-        <section id="scouting-trip" className="py-16 px-6 sm:px-12 max-w-7xl mx-auto scroll-mt-24">
+        <section id="scouting-trip" className="px-6 sm:px-12 max-w-7xl mx-auto md:space-y-20 space-y-10">
             {/* Scouting Trip Header */}
-            <div className="text-center mb-16">
-                <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-6">
+            <div className="text-center space-y-2 md:space-y-3">
+                <p className="font-medium text-2xl md:text-[34px] text-title">
                     The Scouting Trip
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-6 max-w-4xl mx-auto">
+                </p>
+                <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
                     Three days, Three experts. Your priorities. Insider info.
                 </h2>
-                <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">
+                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] max-w-4xl mx-auto">
                     One carefully designed three-day scouting trip, giving you the real-world experience to replace guesswork before you commit to the move. Every neighborhood layout and local consultation is prepared around your priorities before you arrive, so you can decide with confidence.
                 </p>
             </div>
 
             {/* 3 Day Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                 {scoutingTripsData.map((trip) => (
                     <ScoutingTripCard
                         key={trip.id}
-                        day={trip.day}
                         title={trip.title}
                         description={trip.description}
                         image={trip.image}
