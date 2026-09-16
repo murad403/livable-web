@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
 
@@ -44,14 +43,14 @@ const FAQ = () => {
     }
 
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
+        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto space-y-10">
             {/* Top Left Label */}
-            <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-8">
+            <p className="font-medium text-2xl md:text-[34px] text-title text-left  border-b pb-10 border-gray-100">
                 FAQ
-            </span>
+            </p>
 
             {/* Accordion List */}
-            <div className="divide-y divide-gray-100 border-t border-b border-gray-100">
+            <div className="divide-y divide-gray-100">
                 {faqItems.map((item) => {
                     const isOpen = openId === item.id
                     return (
@@ -60,7 +59,7 @@ const FAQ = () => {
                                 onClick={() => toggle(item.id)}
                                 className="w-full flex items-center justify-between text-left group cursor-pointer"
                             >
-                                <h3 className="text-lg md:text-xl font-medium text-title group-hover:text-primary transition-colors">
+                                <h3 className="text-2xl md:text-[36px] tracking-[1px] leading-[150%]">
                                     {item.question}
                                 </h3>
                                 <span className="text-gray-400 group-hover:text-title transition-colors ml-4 shrink-0">
@@ -69,7 +68,7 @@ const FAQ = () => {
                             </button>
 
                             {isOpen && (
-                                <p className="mt-3 text-sm text-gray-600 leading-relaxed font-light max-w-4xl animate-fadeIn">
+                                <p className="text-xl md:text-2xl text-title animate-fadeIn">
                                     {item.answer}
                                 </p>
                             )}

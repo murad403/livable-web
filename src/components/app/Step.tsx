@@ -1,5 +1,3 @@
-'use client'
-
 
 const Step = () => {
     const stepsData = [
@@ -45,30 +43,30 @@ const Step = () => {
     return (
         <section id="how-it-works" className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
             {/* Top Left Label */}
-            <span className="text-xs sm:text-sm font-semibold text-title uppercase tracking-widest block mb-4">
+            <p className="font-medium text-2xl md:text-[34px] text-title text-left">
                 What's Included
-            </span>
+            </p>
 
             {/* Main Header */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-16 text-center">
+            <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter text-center">
                 The 3-Step Process
             </h2>
 
             {/* 3 Columns Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
                 {stepsData.map((col, idx) => (
-                    <div key={idx} className="space-y-3">
-                        <span className="text-lg md:text-xl font-semibold text-title block text-center sm:text-left">
+                    <div key={idx} className="space-y-4 md:space-y-6">
+                        <p className="font-medium text-2xl md:text-[36px] text-title text-center">
                             {col.stepNumber}
-                        </span>
-                        <h3 className="text-lg md:text-xl font-medium text-title mb-6 text-center sm:text-left">
+                        </p>
+                        <h3 className="text-2xl md:text-[34px] text-title text-center">
                             {col.title}
                         </h3>
 
-                        <ul className="space-y-3 text-sm text-gray-700 font-light">
+                        <ul className="text-xl md:text-2xl text-title space-y-4">
                             {col.bullets.map((bullet, bIdx) => (
                                 <li key={bIdx} className="flex items-start gap-2.5">
-                                    <span className="w-1.5 h-1.5 bg-title shrink-0 mt-1.5" />
+                                    <span className="size-2 bg-title shrink-0 mt-3" />
                                     <span>{bullet}</span>
                                 </li>
                             ))}
