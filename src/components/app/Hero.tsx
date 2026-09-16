@@ -111,7 +111,7 @@ const Hero: React.FC<HeroProps> = ({ onSelectCard }) => {
     return (
         <section className="pt-4 pb-16 px-6 sm:px-12 max-w-7xl mx-auto">
             {/* Subtitle */}
-            <p className="text-2xl sm:text-3xl md:text-4xl text-title/90 font-normal max-w-4xl leading-tight tracking-tight">
+            <p className="text-3xl md:text-[62px] text-title font-normal max-w-5xl leading-tight tracking-tight">
                 Move from the U.S. to Spain or Portugal efficiently, joyfully, and without regret.
             </p>
 

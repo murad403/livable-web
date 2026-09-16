@@ -73,7 +73,7 @@ const Navbar = () => {
                 <div className="flex justify-center items-center gap-6 sm:gap-8 md:mb-20 mb-8 sm:mb-12">
                     <Link
                         href="/pricing"
-                        className={`text-xs sm:text-sm font-medium transition-colors ${
+                        className={`text-2xl font-medium transition-colors ${
                             pathname === '/pricing' ? 'text-primary' : 'text-title'
                         }`}
                     >
@@ -82,7 +82,7 @@ const Navbar = () => {
                     {isLoggedIn ? (
                         <Link
                             href="/dashboard"
-                            className={`text-xs sm:text-sm font-medium transition-colors ${
+                            className={`text-2xl font-medium transition-colors ${
                                 pathname === '/dashboard' ? 'text-primary' : 'text-title'
                             }`}
                         >
@@ -91,7 +91,7 @@ const Navbar = () => {
                     ) : (
                         <Link
                             href="/login"
-                            className={`text-xs sm:text-sm font-medium transition-colors ${
+                            className={`text-2xl font-medium transition-colors ${
                                 pathname === '/login' ? 'text-primary' : 'text-title'
                             }`}
                         >
@@ -102,11 +102,11 @@ const Navbar = () => {
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-normal tracking-tight text-title font-satoshi leading-none">
+                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[160px] md:text-[200px] lg:text-[225px] font-normal tracking-tight text-title font-satoshi leading-none pb-6">
                         Livable™
                     </Link>
 
-                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-1">
+                    <div className="flex flex-wrap items-center gap-4 md:gap-6">
                         <a
                             href="/pricing#how-it-works"
                             onClick={handleSeeHowItWorks}
@@ -134,7 +134,7 @@ const Navbar = () => {
             >
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between">
                     {/* Left: Livable Brand Logo */}
-                    <Link href="/" className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-title font-satoshi">
+                    <Link href="/" className="text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi">
                         Livable™
                     </Link>
 
@@ -142,7 +142,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
                         <Link
                             href="/pricing"
-                            className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
+                            className={`text-base md:text-2xl font-medium transition-colors ${
                                 pathname === '/pricing' ? 'text-primary' : 'text-title hover:text-black'
                             }`}
                         >
@@ -151,7 +151,7 @@ const Navbar = () => {
                         {isLoggedIn ? (
                             <Link
                                 href="/dashboard"
-                                className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
+                                className={`text-base md:text-2xl font-medium transition-colors ${
                                     pathname === '/dashboard' ? 'text-primary' : 'text-title hover:text-black'
                                 }`}
                             >
@@ -160,7 +160,7 @@ const Navbar = () => {
                         ) : (
                             <Link
                                 href="/login"
-                                className={`text-xs sm:text-sm md:text-base font-medium transition-colors ${
+                                className={`text-base md:text-2xl font-medium transition-colors ${
                                     pathname === '/login' ? 'text-primary' : 'text-title hover:text-black'
                                 }`}
                             >
