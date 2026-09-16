@@ -135,18 +135,16 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
     }
 
     return (
-        <section className="py-16 px-6 sm:px-12 max-w-7xl mx-auto">
+        <section className="px-6 sm:px-12 max-w-7xl mx-auto">
             {/* 1. Top Section Label: Left-aligned (Matching User Image) */}
-            <span className="text-xs sm:text-sm font-semibold text-start text-title uppercase tracking-widest block mb-6">
-                The Places
-            </span>
-
-            {/* 2. Centered Headline & Paragraph (Matching User Image) */}
-            <div className="text-center max-w-4xl mx-auto mb-10">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-title tracking-tight mb-6 max-w-4xl mx-auto">
+            <div className="text-center space-y-4 md:space-y-8">
+                <p className="font-medium text-2xl md:text-[34px] text-title text-left">
+                    The Places
+                </p>
+                <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
                     We currently run scouting trips in six locations across Spain and Portugal.
                 </h2>
-                <p className="text-title max-w-5xl mx-auto text-base sm:text-lg leading-relaxed">
+                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] max-w-5xl mx-auto">
                     Our trips encompass the broader regional system—the city center, but also connected rail towns and coastal neighborhoods—to evaluate each area for livability, social infrastructure, and lifestyle fit.
                 </p>
             </div>
