@@ -64,14 +64,7 @@ html {
 }
 
 
-.chamfer-pill {
+/* Pill button: radius only on left and right sides, flat top and bottom */
+.pill-button {
   border-radius: 9999px;
-  clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    100% calc(100% - 10px),
-    calc(100% - 10px) 100%,
-    0px 100%,
-    0% calc(100% - 10px)
-  );
 }

@@ -102,7 +102,6 @@ const Navbar = () => {
                         <Button
                             onClick={() => router.push("/talk-with-us")}
                             variant="customPill"
-                            className="h-10 px-5 text-sm sm:text-base"
                         >
                             Talk With Us
                         </Button>
@@ -151,13 +150,14 @@ const Navbar = () => {
                         Livable™
                     </Link>
 
-                    <div className="flex flex-wrap items-center gap-4 md:gap-6">
+                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8">
                         <a
                             href="/pricing#how-it-works"
                             onClick={handleSeeHowItWorks}
-                            className="text-xs sm:text-sm font-semibold tracking-wider text-title uppercase underline underline-offset-4 hover:text-primary transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-wider text-title uppercase hover:text-primary transition-colors cursor-pointer group"
                         >
-                            SEE HOW IT WORKS →
+                            <span className="underline underline-offset-4 decoration-1">SEE HOW IT WORKS</span>
+                            <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
                         </a>
                         <Button
                             onClick={handleTalkWithUs}
