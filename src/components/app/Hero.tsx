@@ -134,7 +134,7 @@ const Hero: React.FC<HeroProps> = ({ onSelectCard }) => {
                     Moving abroad can turn into years of fragmented research, expensive mistakes, and second-guessing.
                 </h2>
                 <p className="text-base sm:text-lg text-title leading-relaxed">
-                    Every detail of our scouting trip program is designed to shortcut years of guesswork into a focused three-day experience that helps you clarify your priorities and move with confidence.
+                    Livable™ is the first guided moving system designed to accelerate your move abroad—combining a personalized, expert-led scouting trip with a structured post-trip framework to get you smoothly to your final landing.
                 </p>
             </div>
         </section>
