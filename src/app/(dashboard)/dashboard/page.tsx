@@ -233,7 +233,7 @@ export default function DashboardPage() {
                         )}
 
                         <Button
-                            onClick={() => setLocationModalOpen(true)}
+                        className='w-full'
                         >
                             View Location Details
                         </Button>
