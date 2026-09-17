@@ -220,7 +220,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                 'A cleaner financial lifestyle',
                                 'Still figuring it out'
                             ].map((opt, idx) => (
-                                <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                     <input
                                         type="checkbox"
                                         value={opt}
@@ -239,7 +239,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('motivationOther')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
                     </div>
@@ -249,38 +249,38 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                         <h3 className="text-lg font-semibold text-title">Housing & Living Targets</h3>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 What monthly housing budget would feel comfortable?
                             </label>
                             <input
                                 type="text"
                                 placeholder="Your response..."
                                 {...register('comfortableHousingBudget')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 What monthly housing budget would feel stretch, even in the same sentence?
                             </label>
                             <input
                                 type="text"
                                 placeholder="Your response..."
                                 {...register('stretchHousingBudget')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 What is your general monthly living budget target?
                             </label>
                             <input
                                 type="text"
                                 placeholder="Your response..."
                                 {...register('generalLivingTarget')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
                             />
                         </div>
                     </div>
@@ -301,7 +301,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                     'Spend less overall by simplifying my requirements',
                                     'Still figuring this out'
                                 ].map((opt, idx) => (
-                                    <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                    <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                         <input
                                             type="radio"
                                             value={opt}
@@ -315,14 +315,14 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 What is your general monthly living budget target?
                             </label>
                             <input
                                 type="text"
                                 placeholder="Your response..."
                                 {...register('monthlyLivingBudgetTarget')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all"
                             />
                         </div>
                     </div>
@@ -343,7 +343,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                     'Investment income',
                                     'Still figuring it out'
                                 ].map((opt, idx) => (
-                                    <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                    <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                         <input
                                             type="radio"
                                             value={opt}
@@ -364,7 +364,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('incomePathsOther')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
                     </div>
@@ -390,7 +390,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                     'Personal space',
                                     'Other'
                                 ].map((opt, idx) => (
-                                    <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                    <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                         <input
                                             type="checkbox"
                                             value={opt}
@@ -404,14 +404,14 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 Are there any tradeoffs you would not want to make?
                             </label>
                             <textarea
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('tradeoffsNotWantToMake')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
                     </div>
@@ -435,7 +435,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                     'I need to stay within a specific budget.',
                                     'Something else'
                                 ].map((opt, idx) => (
-                                    <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                    <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                         <input
                                             type="checkbox"
                                             value={opt}
@@ -449,26 +449,26 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 Tell us a bit more...
                             </label>
                             <textarea
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('constraintsMoreInfo')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 Are there any specific constraints you would like us to keep in mind?
                             </label>
                             <textarea
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('constraintsSpecific')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
                     </div>
@@ -493,7 +493,7 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                                     'Having lower fixed monthly living costs',
                                     'Something else'
                                 ].map((opt, idx) => (
-                                    <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                    <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                         <input
                                             type="checkbox"
                                             value={opt}
@@ -507,14 +507,14 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-title mb-2">
                                 What else are you looking forward to?
                             </label>
                             <textarea
                                 rows={3}
                                 placeholder="Your response..."
                                 {...register('lifestyleOutlookOther')}
-                                className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                                className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                             />
                         </div>
                     </div>

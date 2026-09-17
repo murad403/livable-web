@@ -1,6 +1,4 @@
 'use client'
-
-import React, { useState } from 'react'
 import { X } from 'lucide-react'
 import { Button } from '../ui/button'
 
@@ -12,17 +10,8 @@ interface TravelPreparationModalProps {
 }
 
 const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
-    const [selected, setSelected] = useState<number[]>([])
 
-    if (!isOpen) return null
-
-    const toggleCheck = (idx: number) => {
-        if (selected.includes(idx)) {
-            setSelected(selected.filter(i => i !== idx))
-        } else {
-            setSelected([...selected, idx])
-        }
-    }
+    if (!isOpen) return null;
 
     const items = [
         {
@@ -59,15 +48,15 @@ const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen,
             </div>
 
             {/* Intro paragraph */}
-            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-                Let's get the practical side of your move into one place. Some questions are about money, while others focus on your personal priorities. Together, they'll help shape your scouting trip and give us a clear picture of what you’re building.
+            <p className="text-xs sm:text-sm text-title font-light leading-relaxed">
+                We have you completely covered on the ground. Your travel preparation is about transitioning out of the cognitive phase and clearing mental clutter, so you can get a true, authentic feel for the city the moment you land.
             </p>
 
             {/* Section Subheading */}
             <div>
-                <h3 className="text-base font-semibold text-title mb-1">Motivation</h3>
-                <p className="text-xs sm:text-sm text-gray-600 font-light">
-                    What is motivating the financial side of your move? (Select all that apply)
+                <h3 className="text-base font-semibold text-title mb-1">The Groundwork</h3>
+                <p className="text-xs sm:text-sm text-title font-light">
+                    To make the most of your time with our on-site team, take a quiet moment to focus your thoughts before you head to the airport:
                 </p>
             </div>
 
@@ -76,20 +65,14 @@ const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen,
                 {items.map((item, idx) => (
                     <div
                         key={idx}
-                        onClick={() => toggleCheck(idx)}
-                        className="flex items-start gap-4 cursor-pointer group"
+                        className="flex items-start gap-4"
                     >
-                        <input
-                            type="checkbox"
-                            checked={selected.includes(idx)}
-                            onChange={() => {}}
-                            className="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary shrink-0 cursor-pointer"
-                        />
+                        <span className="w-1.5 h-1.5 bg-title shrink-0 mt-1.5 rounded-none" />
                         <div>
-                            <h4 className="text-sm font-medium text-title mb-1 group-hover:text-primary transition-colors">
+                            <h4 className="text-sm font-medium text-title mb-1 transition-colors">
                                 {item.title}
                             </h4>
-                            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                            <p className="text-xs sm:text-sm text-title font-light leading-relaxed">
                                 {item.desc}
                             </p>
                         </div>

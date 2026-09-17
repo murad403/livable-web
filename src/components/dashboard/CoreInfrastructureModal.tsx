@@ -63,12 +63,12 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
         <div className="bg-white p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
             {/* Header */}
             <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
-                <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
-                    Core Relocation Infrastructure
+                <h2 className="text-2xl sm:text-3xl tracking-tight text-title">
+                    Core Infrastructure & Verified Networks
                 </h2>
                 <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
+                    className="text-gray-500 hover:text-black transition-colors p-2 cursor-pointer"
                 >
                     <X className="w-5 h-5" />
                 </button>
@@ -76,7 +76,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
 
                 {/* Title & Introduction */}
                 <div className="mb-10">
-                    <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-title mb-4">
+                    <h2 className="text-2xl sm:text-3xl tracking-tight text-title mb-4">
                         Core Infrastructure & Verified Networks
                     </h2>
                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
@@ -86,10 +86,10 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
 
                 {/* SECTION 1: Legal & Immigration Network */}
                 <div className="mb-12">
-                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] font-medium text-title uppercase tracking-wider block mb-1">
                         LIVABLE PREFERRED PARTNERS // PRE-VETTED AND NOTIFIED
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-title mb-8 pb-3 border-b border-gray-100">
+                    <h3 className="text-xl sm:text-2xl text-title mb-8 pb-3 border-b border-gray-100">
                         Verified Legal & Immigration Network
                     </h3>
 
@@ -97,31 +97,31 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                         {legalPartners.map((item) => (
                             <div key={item.id} className="space-y-4">
                                 <div>
-                                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-1">
+                                    <span className="text-[11px] font-medium text-gray-500 uppercase tracking-wider block mb-1">
                                         {item.id}
                                     </span>
-                                    <h4 className="text-lg font-bold text-title">
+                                    <h4 className="text-lg text-title">
                                         {item.name}
                                     </h4>
                                 </div>
 
                                 <div className="space-y-2 text-xs sm:text-sm max-w-2xl">
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Role</span>
+                                        <span className="font-medium text-title">Role</span>
                                         <span className="text-gray-700">{item.role}</span>
                                     </div>
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Track Record</span>
+                                        <span className="font-medium text-title">Track Record</span>
                                         <span className="text-gray-700">{item.trackRecord}</span>
                                     </div>
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Specializations</span>
+                                        <span className="font-medium text-title">Specializations</span>
                                         <span className="text-gray-700">{item.specializations}</span>
                                     </div>
                                 </div>
 
                                 <div className="pt-2">
-                                    <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
+                                    <span className="text-[11px] text-gray-600 uppercase tracking-wider block mb-2">
                                         WHY WE RECOMMEND THEM
                                     </span>
                                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
@@ -130,7 +130,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                 </div>
 
                                 <div className="bg-gray-50/80 p-4 rounded-xl border border-gray-100 space-y-1 my-3">
-                                    <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block">
+                                    <span className="text-[11px] text-gray-600 uppercase tracking-wider block">
                                         LIVABLE™ PARTNERSHIP NOTE
                                     </span>
                                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
@@ -139,10 +139,10 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                 </div>
 
                                 {/* <div>
-                                    <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
+                                    <span className="text-[11px] text-gray-600 uppercase tracking-wider block mb-2">
                                         DIRECT CONTACT VECTORS
                                     </span>
-                                    <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-medium text-title">
+                                    <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-title">
                                         <a href="#" className="underline underline-offset-4 hover:text-primary transition-colors">
                                             Website Link ↗
                                         </a>
@@ -161,10 +161,10 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
 
                 {/* SECTION 2: Tax & Wealth Advisors */}
                 <div className="mb-12">
-                    <span className="text-[11px] font-semibold text-gray-500 uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] font-medium text-title uppercase tracking-wider block mb-1">
                         LIVABLE PREFERRED PARTNERS // CROSS-BORDER SPECIALISTS
                     </span>
-                    <h3 className="text-xl sm:text-2xl font-bold text-title mb-8 pb-3 border-b border-gray-100">
+                    <h3 className="text-xl sm:text-2xl text-title mb-8 pb-3 border-b border-gray-100">
                         Certified Tax & Wealth Advisors
                     </h3>
 
@@ -172,31 +172,31 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                         {taxAdvisors.map((item) => (
                             <div key={item.id} className="space-y-4">
                                 <div>
-                                    <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-1">
+                                    <span className="text-[11px] font-medium text-gray-500 uppercase tracking-wider block mb-1">
                                         {item.id}
                                     </span>
-                                    <h4 className="text-lg font-bold text-title">
+                                    <h4 className="text-lg text-title">
                                         {item.name}
                                     </h4>
                                 </div>
 
                                 <div className="space-y-2 text-xs sm:text-sm max-w-2xl">
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Role</span>
+                                        <span className="font-medium text-title">Role</span>
                                         <span className="text-gray-700">{item.role}</span>
                                     </div>
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Track Record</span>
+                                        <span className="font-medium text-title">Track Record</span>
                                         <span className="text-gray-700">{item.trackRecord}</span>
                                     </div>
                                     <div className="grid grid-cols-[120px_1fr] items-baseline gap-2">
-                                        <span className="font-semibold text-title">Specializations</span>
+                                        <span className="font-medium text-title">Specializations</span>
                                         <span className="text-gray-700">{item.specializations}</span>
                                     </div>
                                 </div>
 
                                 <div className="pt-2">
-                                    <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
+                                    <span className="text-[11px] text-gray-600 uppercase tracking-wider block mb-2">
                                         WHY WE RECOMMEND THEM
                                     </span>
                                     <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
@@ -205,10 +205,10 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                                 </div>
 
                                 {/* <div>
-                                    <span className="text-[11px] font-bold text-gray-600 uppercase tracking-wider block mb-2">
+                                    <span className="text-[11px] text-gray-600 uppercase tracking-wider block mb-2">
                                         DIRECT CONTACT VECTORS
                                     </span>
-                                    <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm font-medium text-title">
+                                    <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-title">
                                         <a href="#" className="underline underline-offset-4 hover:text-primary transition-colors">
                                             Website Link ↗
                                         </a>
@@ -227,14 +227,14 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
 
                 {/* SECTION 3: Integrated Healthcare Solutions */}
                 <div className="mb-12 border-b border-gray-100 pb-8">
-                    <h3 className="text-xl sm:text-2xl font-bold text-title mb-4">
+                    <h3 className="text-xl sm:text-2xl text-title mb-4">
                         Integrated Healthcare Solutions
                     </h3>
                 </div>
 
                 {/* SECTION 4: Pet Relocation Logistics */}
                 <div className="mb-10">
-                    <h3 className="text-xl sm:text-2xl font-bold text-title mb-4">
+                    <h3 className="text-xl sm:text-2xl text-title mb-4">
                         Certified Pet Relocation Logistics
                     </h3>
 
@@ -245,17 +245,17 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                     <div className="space-y-6">
                         <div className="space-y-3 text-xs sm:text-sm pt-2 border-t border-b border-gray-100 py-4">
                             <div className="grid grid-cols-[180px_1fr] items-baseline gap-2">
-                                <span className="font-semibold text-title">Recommended Airline</span>
+                                <span className="font-medium text-title">Recommended Airline</span>
                                 <span className="text-gray-700">[ Air Carrier Name ]</span>
                             </div>
                             <div className="grid grid-cols-[180px_1fr] items-baseline gap-2">
-                                <span className="font-semibold text-title">Carrier Specifications</span>
+                                <span className="font-medium text-title">Carrier Specifications</span>
                                 <span className="text-gray-700">[ Approved Carrier Dimensions & Model ]</span>
                             </div>
                         </div>
 
                         {/* <div className="space-y-1">
-                            <span className="font-semibold text-title block text-xs sm:text-sm">The Blueprint:</span>
+                            <span className="font-medium text-title block text-xs sm:text-sm">The Blueprint:</span>
                             <a href="#" className="text-xs sm:text-sm font-normal text-title underline underline-offset-4 hover:text-primary transition-colors inline-block">
                                 Download Step-by-Step International Pet Transit PDF Manual 📌
                             </a>
@@ -265,7 +265,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                         </div>
 
                         <div className="space-y-2 pt-2">
-                            <span className="font-semibold text-title block text-xs sm:text-sm">On-the-Ground Airport Navigation:</span>
+                            <span className="font-medium text-title block text-xs sm:text-sm">On-the-Ground Airport Navigation:</span>
                             <div className="space-y-1">
                                 <a href="#" className="text-xs sm:text-sm font-normal text-title underline underline-offset-4 hover:text-primary transition-colors block">
                                     View Lisbon (LIS) Pet Registration Terminal Location Map ↗

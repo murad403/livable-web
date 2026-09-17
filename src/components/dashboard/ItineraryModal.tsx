@@ -16,44 +16,33 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, onDone
 
     const schedule = [
         {
-            dayTag: 'Day 00',
-            title: 'Arrival & App Activation',
+            dayTag: 'Day 01 — Day 12',
+            title: 'Arrival & Orientation',
             bullets: [
-                'Basecamp: Private airport transfer to your hotel in Belém.',
-                'Onboarding: Open the Livable™ app to unlock your Guided Independent Discovery.',
-                'Early Birds: Landed early? Complete 1-2 Mini-Tests to log initial questions.',
-                'Tonight: Run The Evening Paseo test — curated dinner recommendations.'
+                'Airport pickup and hotel check-in (Chiado)',
+                'Welcome briefing with Livable™ local liaison',
+                'Evening walk: Príncipe Real and Santos'
             ]
         },
         {
-            dayTag: 'Day 01',
-            title: 'Neighborhood Immersion',
+            dayTag: 'Day 02 — Day 13',
+            title: 'Neighbourhood Exploration',
             bullets: [
-                '09:00 - 12:00: Tour 3 distinct profiles (Cascais, Campo de Ourique, Príncipe Real) with your debriefed local guide.',
-                'Lunch & Synthesis: Drop-off at a profile-matched spot to digest info.',
-                'Afternoon: Independent Personal Infrastructure Test (grocery, transit, daily living).',
-                'Evening: Social Infrastructure Test to feel the local neighborhood heartbeat.'
+                'Morning: Alfama and Mouraria',
+                'Afternoon: Parque das Nações and Oriente',
+                'Evening: Dinner with expat community'
             ]
         },
         {
-            dayTag: 'Day 02',
-            title: 'Bespoke Housing & Culture',
+            dayTag: 'Day 03 — Day 14',
+            title: 'Practical Discovery',
             bullets: [
-                '10:00 - 12:00: Custom market overview with our Real Estate Partner (tailored to your exact specs).',
-                'Lunch: Run a quick app-mini-test to source your own meal.',
-                'Afternoon: Protected Rest Block to avoid cognitive relocation burnout.',
-                'Evening: 3 hour Culture Host Dinner (one paired prix fixe) for raw Q&A with a local.'
+                'Healthcare facility tours',
+                'International school visit (if applicable)',
+                'Legal and financial advisor introductions',
+                'Evening debrief with Livable™ advisor'
             ]
         },
-        {
-            dayTag: 'Day 03',
-            title: 'Independent Autonomy',
-            bullets: [
-                'Morning: Hotel checkout at noon. No human guides today.',
-                'The Transition: Step completely into the shoes of a self-sufficient local.',
-                'Final Sprint: Complete your remaining Mini-Tests to stress-test assumptions and build autonomous confidence before departure.'
-            ]
-        }
     ]
 
     const content = (
@@ -72,7 +61,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, onDone
             </div>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+            <p className="text-xs sm:text-sm text-title font-light leading-relaxed">
                 Your itinerary is ready. Below is your three-day scouting schedule for Lisbon, coordinated by the Livable™ team to maximize your time on the ground.
             </p>
 
@@ -86,7 +75,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, onDone
                         <h3 className="text-lg sm:text-xl font-medium text-title mb-3">
                             {day.title}
                         </h3>
-                        <ul className="space-y-2 text-xs sm:text-sm text-gray-600 font-light">
+                        <ul className="space-y-2 text-xs sm:text-sm text-title font-light">
                             {day.bullets.map((b, bIdx) => (
                                 <li key={bIdx} className="flex items-start gap-2.5">
                                     <span className="w-1.5 h-1.5 bg-title shrink-0 mt-1.5 rounded-none" />
@@ -100,8 +89,8 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, onDone
 
             {/* Departure Note */}
             <div className="border-t border-gray-100 pt-5">
-                <p className="text-xs sm:text-sm text-gray-500 font-light">
-                    Departure: Oct 15. Return transfer arranged by Livable™.
+                <p className="text-xs sm:text-sm text-title font-light">
+                    Departure: Day 15. Return transfer arranged by Livable™.
                 </p>
             </div>
 

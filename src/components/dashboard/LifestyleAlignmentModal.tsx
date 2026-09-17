@@ -187,7 +187,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                 {/* SECTION 1: Daily Rhythms */}
                 <div className="space-y-5">
                     <h3 className="text-lg font-semibold text-title">Daily Rhythms</h3>
-                    
+
                     <div>
                         <label className="block text-sm text-title font-light mb-3">
                             What do you want more of in daily life? <em>(Select all that apply)</em>
@@ -213,7 +213,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                                 'Ease',
                                 'Something else'
                             ].map((opt, idx) => (
-                                <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                     <input
                                         type="checkbox"
                                         value={opt}
@@ -237,38 +237,38 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-title mb-2">
                             What does a good weekday look like?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('goodWeekday')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-title mb-2">
                             What does a good weekend look like?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('goodWeekend')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-title mb-2">
                             What routines would make this feel like your real life?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('routinesRealLife')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                 </div>
@@ -281,14 +281,14 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                     </p>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-title mb-2">
                             What does a great day look like? (e.g., discovering your absolute favorite local bakery, setting up your workspace, going to a meet-up, discovering a great events calendar or successfully finding a great nearby gym or yoga studio)
                         </label>
                         <textarea
                             rows={4}
                             placeholder="Your response.."
                             {...register('greatDayArrival')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
 
@@ -328,7 +328,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                                 'A place that feels more like me',
                                 'Something else'
                             ].map((opt, idx) => (
-                                <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                     <input
                                         type="checkbox"
                                         value={opt}
@@ -349,7 +349,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                             rows={3}
                             placeholder="Your response.."
                             {...register('environmentalDrawsAdd')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                 </div>
@@ -376,7 +376,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                                 'I\'m still figuring it out.',
                                 'Something else'
                             ].map((opt, idx) => (
-                                <label key={idx} className="flex items-center gap-3 text-sm text-gray-700 font-light cursor-pointer select-none">
+                                <label key={idx} className="flex items-center gap-3 text-sm text-title font-light cursor-pointer select-none">
                                     <input
                                         type="checkbox"
                                         value={opt}
@@ -397,7 +397,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                             rows={3}
                             placeholder="Your response.."
                             {...register('internalDrawsAdd')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                 </div>
@@ -407,71 +407,75 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
                     <div>
                         <h3 className="text-lg font-semibold text-title mb-1">Sincerity & Fear Check-in</h3>
                         <p className="text-xs sm:text-sm text-gray-600 font-light">
-                            Let's be completely honest with ourselves.
+                            To build a resilient transition, you have to look at the whole picture—including the heavy parts. Take an honest minute to write down the private context behind your answers.
                         </p>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            What is the shadow fear you are quietly carrying about this move?
+                        <label className="block text-sm font-medium text-title mb-2">
+                            <strong>The Shadow:</strong> When you think about leaving your current life behind, what are you most afraid of? What are you deeply worried you might regret?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('theShadowFear')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            What is the anchor secret or private aspiration you haven't told anyone else?
+                        <label className="block text-sm font-medium text-title mb-2">
+                            <strong>The Anchor:</strong> What is the secret, quirky, or hyper-specific thing you secretly imagine your future European self doing? (Think completely honest, vulnerable, or aspirational—like buying a small wooden sailboat, leveling up or pivoting in your career, or harvesting local olives). What is that one thing you have waited years to do?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('theAnchorSecret')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                 </div>
 
                 {/* SECTION 8: The One-Year Horizon (Reflection) */}
                 <div className="space-y-5 pt-6 border-t border-gray-100">
-                    <h3 className="text-lg font-semibold text-title">The One-Year Horizon (Reflection)</h3>
+                    <h3 className="text-lg font-semibold text-title">The One-Year Horizon</h3>
+
+                    <p className="block text-sm font-medium text-title mb-2">
+                        Imagine it is exactly one year after your arrival.
+                    </p>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Picture your life working. What does it look like?
+                        <label className="block text-sm font-medium text-title mb-2">
+                            When you imagine this life working, what do you picture?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('pictureLifeWorking')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            What are the emotions you hope to feel on a regular Tuesday?
+                        <label className="block text-sm font-medium text-title mb-2">
+                            What emotions do you hope to feel more often?
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('emotionsHopeToFeel')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            When you look back three years from now and are glad you did this, what is true?
+                        <label className="block text-sm font-medium text-title mb-2">
+                            Imagine you are sitting in your new neighborhood. What would make you think, "I'm really glad I did this?"
                         </label>
                         <textarea
                             rows={3}
                             placeholder="Your response.."
                             {...register('gladIDidThis')}
-                            className="w-full p-3.5 rounded-2xl border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
+                            className="w-full p-3.5 border border-gray-200 text-sm text-title placeholder:text-gray-400 focus:outline-none focus:border-title transition-all resize-none"
                         />
                     </div>
                 </div>

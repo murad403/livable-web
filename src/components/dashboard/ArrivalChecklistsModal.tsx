@@ -53,10 +53,10 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
 
                 {/* Introduction */}
                 <div className="mb-10 space-y-4">
-                    <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-title leading-relaxed font-normal">
                         Welcome to your new place! Well done on executing an incredible heavy lift to get here.
                     </p>
-                    <p className="text-xs sm:text-sm text-gray-700 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-title leading-relaxed font-normal">
                         This checklist covers the essential, practical tasks that will anchor your daily life during your first days and weeks in the country. Work through each section at your own pace, check items off as you go, and download a copy using the sidebar link if you'd like one for offline use. Every topic below includes a short overview, step-by-step instructions, official resource links, maps, common questions, and a downloadable PDF.
                     </p>
                 </div>
@@ -91,7 +91,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['taxId'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-1">
                                     <h4 className="font-medium text-title">Why you need it</h4>
                                     <p className="leading-relaxed">
@@ -171,16 +171,16 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['address'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">WHEN REGISTRATION IS REQUIRED</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">WHEN REGISTRATION IS REQUIRED</h4>
                                     <p className="leading-relaxed">
                                         Most countries require residents to register their address with the local municipality within 30–90 days of arrival. This is the legal anchor for your residency status and affects mail, voting eligibility, and access to local services.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">STEP-BY-STEP INSTRUCTIONS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">STEP-BY-STEP INSTRUCTIONS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Obtain a signed rental agreement or proof of ownership from your landlord.</li>
                                         <li>• Complete the address registration form from your municipality's website.</li>
@@ -191,7 +191,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">REQUIRED DOCUMENTATION CHECKLIST</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">REQUIRED DOCUMENTATION CHECKLIST</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Valid passport (original + photocopy)</li>
                                         <li>• Residency visa or permit</li>
@@ -202,14 +202,14 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">OFFICE LOCATIONS & INTERACTIVE MAPS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">OFFICE LOCATIONS & INTERACTIVE MAPS</h4>
                                     <p className="leading-relaxed">
                                         Find your municipal civil registry office via the national registry locator or your city's official website.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">OFFICIAL MUNICIPAL RESOURCE LINKS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">OFFICIAL MUNICIPAL RESOURCE LINKS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• National civil registry portal</li>
                                         <li>• Municipal address registration form download</li>
@@ -253,7 +253,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['banking'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-2">
                                     <h4 className="font-medium text-title">Livable recommended banks</h4>
                                     <ul className="space-y-1 pl-1">
@@ -326,16 +326,16 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['phone'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">ESIM VS. PHYSICAL LOCAL SIM MECHANICS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">ESIM VS. PHYSICAL LOCAL SIM MECHANICS</h4>
                                     <p className="leading-relaxed">
                                         eSIMs let you activate a local plan remotely before or immediately after landing — ideal if your phone is unlocked. Physical SIMs require a carrier store visit but are necessary for older devices. Both offer equivalent coverage on the same network.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">RECOMMENDED LOCAL TELECOM PROVIDERS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">RECOMMENDED LOCAL TELECOM PROVIDERS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Provider A — best value prepaid, wide 5G coverage</li>
                                         <li>• Provider B — best for data-heavy users, unlimited plans</li>
@@ -344,14 +344,14 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">STORE LOCATOR MAPS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">STORE LOCATOR MAPS</h4>
                                     <p className="leading-relaxed">
                                         Each carrier maintains an interactive store locator on their website. Airport locations typically stock tourist and resident SIMs and can activate immediately.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">TYPICAL ACTIVATION & SETUP PROCESS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">TYPICAL ACTIVATION & SETUP PROCESS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Present your passport and local tax ID at the carrier store.</li>
                                         <li>• Choose a monthly or prepaid plan.</li>
@@ -362,7 +362,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">OFFICIAL CARRIER RESOURCE LINKS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">OFFICIAL CARRIER RESOURCE LINKS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• National telecom regulatory authority</li>
                                         <li>• Number portability request form</li>
@@ -406,16 +406,16 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['transit'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">RESIDENT TRANSIT CARDS AND MONTHLY PASSES</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">RESIDENT TRANSIT CARDS AND MONTHLY PASSES</h4>
                                     <p className="leading-relaxed">
                                         Most cities offer a monthly resident pass at a significant discount over per-ride pricing. You will need proof of local address and your tax ID to qualify for the resident rate.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">WHERE TO PURCHASE THEM IN THE CITY</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">WHERE TO PURCHASE THEM IN THE CITY</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Main transit authority offices (city center)</li>
                                         <li>• Major metro stations — customer service windows</li>
@@ -425,7 +425,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">ESSENTIAL LOCAL TRANSIT MOBILE APPS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">ESSENTIAL LOCAL TRANSIT MOBILE APPS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Official transit authority app — real-time arrivals, route planner</li>
                                         <li>• Citymapper — available in most major cities</li>
@@ -434,7 +434,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">OFFICIAL PUBLIC TRANSIT RESOURCES</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">OFFICIAL PUBLIC TRANSIT RESOURCES</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Transit authority journey planner</li>
                                         <li>• System map and line guide (PDF)</li>
@@ -478,16 +478,16 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                         </button>
 
                         {openSections['pet'] && (
-                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-gray-700 font-normal">
+                            <div className="pt-4 pb-6 pl-8 space-y-6 text-xs sm:text-sm text-title font-normal">
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">LOCAL REGISTRATION REQUIREMENTS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">LOCAL REGISTRATION REQUIREMENTS</h4>
                                     <p className="leading-relaxed">
                                         Most municipalities require dogs and some cats to be registered within 30 days of arrival or ownership. Registration is tied to your address and requires proof of vaccinations and microchipping.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">REGIONAL REGULATIONS & LEASH LAWS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">REGIONAL REGULATIONS & LEASH LAWS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Dogs must be leashed in all public spaces unless in designated off-leash areas.</li>
                                         <li>• Certain breeds may require muzzling — check local breed-specific legislation.</li>
@@ -496,7 +496,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">REQUIRED VETERINARY AND HEALTH DOCUMENTS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">REQUIRED VETERINARY AND HEALTH DOCUMENTS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• EU Pet Passport or equivalent health certificate</li>
                                         <li>• Rabies vaccination record (within 12 months)</li>
@@ -506,14 +506,14 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                                 </div>
 
                                 <div className="space-y-1">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">LOCAL VETERINARY NETWORKS AND EMERGENCY RESOURCES</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">LOCAL VETERINARY NETWORKS AND EMERGENCY RESOURCES</h4>
                                     <p className="leading-relaxed">
                                         Register with a local vet within the first two weeks. Ask for a 24-hour emergency clinic referral — most regular vets maintain a network. International Veterinary Association listings are available online.
                                     </p>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h4 className="text-xs font-semibold text-gray-800 uppercase tracking-wider">OFFICIAL MUNICIPALITY LINKS</h4>
+                                    <h4 className="text-sm md:text-base font-semibold text-title uppercase tracking-wider">OFFICIAL MUNICIPALITY LINKS</h4>
                                     <ul className="space-y-1 pl-1">
                                         <li>• Municipal pet registration portal</li>
                                         <li>• Animal control and welfare authority</li>
