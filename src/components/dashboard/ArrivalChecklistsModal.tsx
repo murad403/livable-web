@@ -6,19 +6,20 @@ import { X, Plus, Minus, CheckSquare, Square } from 'lucide-react'
 interface ArrivalChecklistsModalProps {
     isOpen: boolean
     onClose: () => void
+    isInline?: boolean
 }
 
-const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen, onClose }) => {
+const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen, onClose, isInline = true }) => {
     if (!isOpen) return null
 
     // Track open state for each accordion section
     const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-        taxId: true,
-        address: true,
-        banking: true,
-        phone: true,
-        transit: true,
-        pet: true
+        taxId: false,
+        address: false,
+        banking: false,
+        phone: false,
+        transit: false,
+        pet: false
     })
 
     // Track checked items
@@ -33,21 +34,20 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
         setCheckedItems((prev) => ({ ...prev, [id]: !prev[id] }))
     }
 
-    return (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
-                {/* Top Header Bar */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-8">
-                    <span className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
-                        Arrival Checklist
-                    </span>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-black transition-colors p-1 cursor-pointer"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
+    const content = (
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+            {/* Top Header Bar */}
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
+                <span className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
+                    Arrival Checklist
+                </span>
+                <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-black transition-colors p-1 cursor-pointer"
+                >
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
 
                 {/* Introduction */}
                 <div className="mb-10 space-y-4">
@@ -531,18 +531,22 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                 </div>
 
                 {/* Modal Footer */}
-                <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    {/* <a href="#" className="text-xs sm:text-sm text-title underline underline-offset-4 hover:text-primary transition-colors font-medium">
-                        Download Complete Arrival Guide (PDF) ↓
-                    </a> */}
+                <div className="mt-8 pt-6 border-t border-gray-200/80 flex items-center justify-start">
                     <button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-xs cursor-pointer w-full sm:w-auto"
+                        className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-all shadow-xs cursor-pointer"
                     >
                         Done
                     </button>
                 </div>
-            </div>
+        </div>
+    )
+
+    if (isInline) return content
+
+    return (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+            {content}
         </div>
     )
 }

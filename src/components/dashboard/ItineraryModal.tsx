@@ -6,109 +6,120 @@ import { X } from 'lucide-react'
 interface ItineraryModalProps {
     isOpen: boolean
     onClose: () => void
+    isInline?: boolean
 }
 
-const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose }) => {
+const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, isInline = true }) => {
     if (!isOpen) return null
 
     const schedule = [
         {
-            dayTag: 'Day 01 — Oct 12',
-            title: 'Arrival & Orientation',
+            dayTag: 'Day 00',
+            title: 'Arrival & App Activation',
             bullets: [
-                'Airport pickup and hotel check-in (Chiado)',
-                'Welcome briefing with Livable™ local liaison',
-                'Evening walk: Príncipe Real and Santos'
+                'Basecamp: Private airport transfer to your hotel in Belém.',
+                'Onboarding: Open the Livable™ app to unlock your Guided Independent Discovery.',
+                'Early Birds: Landed early? Complete 1-2 Mini-Tests to log initial questions.',
+                'Tonight: Run The Evening Paseo test — curated dinner recommendations.'
             ]
         },
         {
-            dayTag: 'Day 02 — Oct 13',
-            title: 'Neighbourhood Exploration',
+            dayTag: 'Day 01',
+            title: 'Neighborhood Immersion',
             bullets: [
-                'Morning: Alfama and Mouraria',
-                'Afternoon: Parque das Nações and Oriente',
-                'Evening: Dinner with expat community'
+                '09:00 - 12:00: Tour 3 distinct profiles (Cascais, Campo de Ourique, Príncipe Real) with your debriefed local guide.',
+                'Lunch & Synthesis: Drop-off at a profile-matched spot to digest info.',
+                'Afternoon: Independent Personal Infrastructure Test (grocery, transit, daily living).',
+                'Evening: Social Infrastructure Test to feel the local neighborhood heartbeat.'
             ]
         },
         {
-            dayTag: 'Day 03 — Oct 14',
-            title: 'Practical Discovery',
+            dayTag: 'Day 02',
+            title: 'Bespoke Housing & Culture',
             bullets: [
-                'Healthcare facility tours',
-                'International school visit (if applicable)',
-                'Legal and financial advisor introductions',
-                'Evening debrief with Livable™ advisor'
+                '10:00 - 12:00: Custom market overview with our Real Estate Partner (tailored to your exact specs).',
+                'Lunch: Run a quick app-mini-test to source your own meal.',
+                'Afternoon: Protected Rest Block to avoid cognitive relocation burnout.',
+                'Evening: 3 hour Culture Host Dinner (one paired prix fixe) for raw Q&A with a local.'
+            ]
+        },
+        {
+            dayTag: 'Day 03',
+            title: 'Independent Autonomy',
+            bullets: [
+                'Morning: Hotel checkout at noon. No human guides today.',
+                'The Transition: Step completely into the shoes of a self-sufficient local.',
+                'Final Sprint: Complete your remaining Mini-Tests to stress-test assumptions and build autonomous confidence before departure.'
             ]
         }
     ]
 
+    const content = (
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
+                <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
+                    Your Scouting Itinerary
+                </h2>
+                <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
+                >
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
+
+            {/* Subtitle */}
+            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                Your itinerary is ready. Below is your three-day scouting schedule for Lisbon, coordinated by the Livable™ team to maximize your time on the ground.
+            </p>
+
+            {/* Days Schedule */}
+            <div className="space-y-6">
+                {schedule.map((day, idx) => (
+                    <div key={idx} className="border-t border-gray-100 pt-5">
+                        <span className="text-xs font-normal text-gray-400 block mb-1">
+                            {day.dayTag}
+                        </span>
+                        <h3 className="text-lg sm:text-xl font-medium text-title mb-3">
+                            {day.title}
+                        </h3>
+                        <ul className="space-y-2 text-xs sm:text-sm text-gray-600 font-light">
+                            {day.bullets.map((b, bIdx) => (
+                                <li key={bIdx} className="flex items-start gap-2.5">
+                                    <span className="w-1.5 h-1.5 bg-title shrink-0 mt-1.5 rounded-none" />
+                                    <span>{b}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+
+            {/* Departure Note */}
+            <div className="border-t border-gray-100 pt-5">
+                <p className="text-xs sm:text-sm text-gray-500 font-light">
+                    Departure: Oct 15. Return transfer arranged by Livable™.
+                </p>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
+                <button
+                    onClick={onClose}
+                    className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
+                >
+                    Done
+                </button>
+            </div>
+        </div>
+    )
+
+    if (isInline) return content
+
     return (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
-                        Your Scouting Itinerary
-                    </h2>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
-
-                {/* Subtitle */}
-                <p className="text-sm sm:text-base text-gray-700 font-light leading-relaxed mb-8">
-                    Your itinerary is ready. Below is your three-day scouting schedule for Lisbon, coordinated by the Livable™ team to maximize your time on the ground.
-                </p>
-
-                {/* Days Schedule */}
-                <div className="space-y-8 mb-8">
-                    {schedule.map((day, idx) => (
-                        <div key={idx} className="border-t border-gray-100 pt-6">
-                            <span className="text-xs sm:text-sm font-normal text-gray-500 block mb-1">
-                                {day.dayTag}
-                            </span>
-                            <h3 className="text-lg md:text-xl font-medium text-title mb-4">
-                                {day.title}
-                            </h3>
-                            <ul className="space-y-2.5 text-sm sm:text-base text-gray-700 font-light">
-                                {day.bullets.map((b, bIdx) => (
-                                    <li key={bIdx} className="flex items-start gap-3">
-                                        <span className="w-1.5 h-1.5 bg-gray-400 shrink-0 mt-2 rounded-none" />
-                                        <span>{b}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Departure Note */}
-                <div className="border-t border-gray-100 pt-6 mb-10">
-                    <p className="text-sm sm:text-base text-gray-700 font-light">
-                        Departure: Oct 15. Return transfer arranged by Livable™.
-                    </p>
-                </div>
-
-                {/* Modal Footer */}
-                <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    {/* <a
-                        href="#"
-                        onClick={(e) => { e.preventDefault(); alert('Downloading itinerary PDF...') }}
-                        className="text-sm sm:text-base font-medium text-title underline underline-offset-4 hover:text-primary transition-colors cursor-pointer"
-                    >
-                        Download Scouting Itinerary →
-                    </a> */}
-                    <button
-                        onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer self-end sm:self-auto"
-                    >
-                        Done
-                    </button>
-                </div>
-            </div>
+            {content}
         </div>
     )
 }

@@ -5,9 +5,10 @@ import { X } from 'lucide-react'
 interface CoreInfrastructureModalProps {
     isOpen: boolean
     onClose: () => void
+    isInline?: boolean
 }
 
-const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpen, onClose }) => {
+const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpen, onClose, isInline = true }) => {
     if (!isOpen) return null
 
     const legalPartners = [
@@ -56,21 +57,20 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
         }
     ]
 
-    return (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
-                {/* Header bar */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-8">
-                    <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
-                        Core Infrastructure & Verified Networks
-                    </h2>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-black transition-colors p-1 cursor-pointer"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
+    const content = (
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
+                <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
+                    Core Relocation Infrastructure
+                </h2>
+                <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
+                >
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
 
                 {/* Title & Introduction */}
                 <div className="mb-10">
@@ -280,15 +280,22 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                 </div>
 
                 {/* Modal Footer */}
-                <div className="pt-6 border-t border-gray-100 flex justify-start">
+                <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
                     <button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-xs cursor-pointer"
+                        className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
                     >
                         Done
                     </button>
                 </div>
-            </div>
+        </div>
+    )
+
+    if (isInline) return content
+
+    return (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+            {content}
         </div>
     )
 }

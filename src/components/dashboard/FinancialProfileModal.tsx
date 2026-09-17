@@ -11,6 +11,7 @@ import { FinancialProfileRequest } from '@/redux/features/app/app.type'
 interface FinancialProfileModalProps {
     isOpen: boolean
     onClose: () => void
+    isInline?: boolean
 }
 
 export interface FinancialProfileFormValues {
@@ -119,11 +120,11 @@ const mapExcitement = (val: string): string => {
     }
 }
 
-const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, onClose }) => {
-    const { data: userData } = useGetMeQuery(undefined, { skip: !isOpen });
+const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, onClose, isInline = true }) => {
+    const { data: userData } = useGetMeQuery()
     const [saveFinancialProfile, { isLoading: isSaving }] = useSaveFinancialProfileMutation()
 
-    const { register, handleSubmit, formState: { isSubmitting } } = useForm<FinancialProfileFormValues>({
+    const { register, handleSubmit, watch, setValue, formState: { isSubmitting } } = useForm<FinancialProfileFormValues>({
         defaultValues: {
             motivationOptions: [],
             tradeoffsOptions: [],
@@ -173,29 +174,28 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
         }
     }
 
-    return (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
-                {/* Header */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-6">
-                    <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
-                        Financial Profile
-                    </h2>
-                    <button
-                        type="button"
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
+    const content = (
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
+                <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
+                    Financial Profile
+                </h2>
+                <button
+                    type="button"
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
+                >
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
 
-                {/* Intro text */}
-                <p className="text-sm text-title font-light leading-relaxed mb-8">
-                    Let's get the practical side of your move into one place. Some questions are about money, while others focus on your personal priorities. Together, they'll help shape your scouting trip and give us a clear picture of what you’re building. There are no right answers here—the goal is simply to understand the realities your move needs to work within.
-                </p>
+            {/* Intro text */}
+            <p className="text-sm text-title font-light leading-relaxed">
+                Let's get the practical side of your move into one place. Some questions are about money, while others focus on your personal priorities. Together, they'll help shape your scouting trip and give us a clear picture of what you’re building. There are no right answers here—the goal is simply to understand the realities your move needs to work within.
+            </p>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
 
                     {/* SECTION 1: Motivation */}
                     <div className="space-y-4">
@@ -514,18 +514,25 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
                     </div>
 
                     {/* Submit Button */}
-                    <div className="pt-6 border-t border-gray-100 flex items-center justify-start">
+                    <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
                         <button
                             type="submit"
                             disabled={isSubmitting || isSaving}
-                            className="bg-primary hover:bg-primary-hover disabled:opacity-60 text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer disabled:cursor-not-allowed"
+                            className="bg-primary hover:bg-primary-hover disabled:opacity-60 text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
                         >
                             {isSubmitting || isSaving ? 'Submitting...' : 'Submit'}
                         </button>
                     </div>
 
                 </form>
-            </div>
+        </div>
+    )
+
+    if (isInline) return content
+
+    return (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+            {content}
         </div>
     )
 }

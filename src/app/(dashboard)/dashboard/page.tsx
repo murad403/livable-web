@@ -127,57 +127,83 @@ export default function DashboardPage() {
     return (
         <div className="min-h-screen bg-white text-title font-sans p-6 sm:p-10 md:p-12 max-w-375 mx-auto selection:bg-primary selection:text-white">
             {/* Top Navigation Bar inside Dashboard */}
-            <div className="flex items-center justify-between pb-8 mb-8 border-b border-gray-100 text-xs sm:text-sm">
+            <div className="flex items-center justify-between pb-6 mb-8 border-b border-gray-200/80 text-xs sm:text-sm">
                 <Link href="/" className="font-satoshi font-normal tracking-tight text-xl sm:text-2xl text-title">
                     Livable™
                 </Link>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-4">
                     <button
                         onClick={() => setChangePasswordModalOpen(true)}
-                        className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 text-xs font-semibold text-title hover:border-primary hover:text-primary transition-all cursor-pointer shadow-xs hover:shadow-sm"
+                        className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-title transition-colors cursor-pointer"
                     >
                         <Lock className="w-3.5 h-3.5" />
                         <span>Change Password</span>
                     </button>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 hover:bg-red-100 text-xs font-semibold transition-all cursor-pointer shadow-xs hover:shadow-sm"
+                        className="flex items-center gap-1.5 text-xs text-red-600 hover:text-red-700 transition-colors cursor-pointer"
                     >
                         <LogOut className="w-3.5 h-3.5" />
                         <span>Logout</span>
                     </button>
+                    <a
+                        href="mailto:support@livable.com"
+                        className="text-xs font-normal text-title hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                        Message Support ↗
+                    </a>
                 </div>
             </div>
 
-            {/* Sub-Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 sm:mb-12 gap-4">
-                <h1 className="text-2xl sm:text-3xl font-semibold text-title tracking-tight">
+            {/* Header Title Section */}
+            <div className="text-center mb-10 space-y-1">
+                <span className="text-xs text-gray-400 font-normal block">
                     Hi, {trip?.client_name || 'Sarah'}
-                </h1>
-                <h2 className="text-3xl sm:text-4xl font-semibold text-title tracking-tight text-center translate-x-0 md:-translate-x-12">
+                </span>
+                <h1 className="text-4xl sm:text-5xl font-medium text-title tracking-tight">
                     Dashboard
-                </h2>
-                <div className="hidden md:block w-24" />
+                </h1>
             </div>
 
-            {/* Main 3-Column Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Main 2-Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pt-4">
                 
-                {/* LEFT COLUMN: Welcome & Trip Details (3 cols) */}
-                <div className="lg:col-span-3 space-y-8">
-                    <div>
-                        <h3 className="text-2xl font-semibold text-title mb-3 tracking-tight">
-                            Welcome Back
-                        </h3>
+                {/* LEFT COLUMN: Dashboard Overview & Trip Details (4 cols - STICKY) */}
+                <div className="lg:col-span-4 space-y-8 lg:border-r border-gray-200/80 lg:pr-10 lg:sticky lg:top-8 self-start">
+                    <div className="space-y-4">
+                        <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                            Dashboard
+                        </span>
+                        <h2 className="text-4xl sm:text-5xl font-medium text-title tracking-tight leading-[1.05]">
+                            Welcome<br />Back
+                        </h2>
+                    </div>
+
+                    <div className="border-t border-gray-200/80 pt-6">
                         <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
                             Making an intentional move is an exciting, smart decision. Use this command center to track your ongoing milestones, coordinate your core relocation data, and communicate with our team as we build your future life in Europe.
                         </p>
                     </div>
 
-                    <div className="border-t border-gray-100 pt-6">
-                        <span className="text-xs font-semibold text-title uppercase tracking-wider block mb-4">
+                    <div className="space-y-4">
+                        <h3 className="text-xl sm:text-2xl font-medium text-title tracking-tight">
+                            Your Relocation Timeline
+                        </h3>
+                        <div className="space-y-2">
+                            <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                                Overview
+                            </span>
+                            <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
+                                This dashboard coordinates your three core steps from initial parameters to final arrival. Track your milestones, log active field research, and access your verified network.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="border-t border-gray-200/80 pt-6 space-y-4">
+                        <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
                             Trip Details
                         </span>
+                        
                         {isTripsLoading ? (
                             <div className="space-y-3 py-2 animate-pulse">
                                 <div className="h-4 bg-gray-100 rounded w-full" />
@@ -187,302 +213,309 @@ export default function DashboardPage() {
                                 <div className="h-4 bg-gray-100 rounded w-full" />
                             </div>
                         ) : (
-                            <div className="space-y-3 text-xs sm:text-sm text-gray-600 font-light">
+                            <div className="space-y-2 text-xs sm:text-sm font-light text-gray-600">
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-500">Client Name</span>
-                                    <span className="font-medium text-title">{trip?.client_name || '—'}</span>
+                                    <span className="text-gray-400">Target</span>
+                                    <span className="font-normal text-title">{trip?.city || 'Lisbon'}</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-500">City</span>
-                                    <span className="font-medium text-title">{trip?.city || '—'}</span>
+                                    <span className="text-gray-400">Timeline</span>
+                                    <span className="font-normal text-title">{trip?.timeline || 'Oct 12 – Oct 15'}</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-500">Visa</span>
-                                    <span className="font-medium text-title">{trip?.visa || '—'}</span>
+                                    <span className="text-gray-400">Duration</span>
+                                    <span className="font-normal text-title">3 Days</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-500">Timeline</span>
-                                    <span className="font-medium text-title">{trip?.timeline || '—'}</span>
+                                    <span className="text-gray-400">Phase</span>
+                                    <span className="font-normal text-title">Pre-Scouting</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-500">Guide Name</span>
-                                    <span className="font-medium text-title">{trip?.guide_name || '—'}</span>
+                                    <span className="text-gray-400">Advisor</span>
+                                    <span className="font-normal text-title">{trip?.guide_name || 'Livable Team'}</span>
                                 </div>
                             </div>
                         )}
+
+                        <button
+                            onClick={() => setLocationModalOpen(true)}
+                            className="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-3.5 px-6 rounded-xl font-normal text-xs sm:text-sm transition-all cursor-pointer shadow-xs hover:shadow-md text-center block"
+                        >
+                            View Location Details
+                        </button>
                     </div>
                 </div>
 
-                {/* MIDDLE COLUMN: Step Cards (6 cols) */}
-                <div className="lg:col-span-6 space-y-6">
-                    {/* STEP 01 CARD */}
-                    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm space-y-6">
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <span className="text-xs text-gray-400 font-normal block mb-1">
-                                    Step 01
-                                </span>
-                                <h4 className="text-lg sm:text-xl font-medium text-title">
-                                    Pre-Scouting
-                                </h4>
+                {/* RIGHT COLUMN: The Journey (8 cols) */}
+                <div className="lg:col-span-8 space-y-8">
+                    <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                        The Journey
+                    </span>
+
+                    {activeModal === null ? (
+                        <>
+                            {/* STEP 01 CARD */}
+                            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
+                                <div className="flex items-start justify-between">
+                                    <div>
+                                        <span className="text-xs text-gray-400 font-normal block mb-1">
+                                            Step 01
+                                        </span>
+                                        <h4 className="text-2xl sm:text-3xl font-medium text-title tracking-tight">
+                                            Pre-Scouting
+                                        </h4>
+                                    </div>
+                                    <span className="text-xs font-normal text-gray-400">
+                                        {step1CompletedCount}/3
+                                    </span>
+                                </div>
+
+                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                    <button
+                                        onClick={() => handleStepClick('orientation')}
+                                        disabled={!isStepUnlocked('orientation')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('orientation')
+                                                ? 'text-gray-300 cursor-not-allowed'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('orientation') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span>01 Orientation</span>
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleStepClick('financial')}
+                                        disabled={!isStepUnlocked('financial')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('financial')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('financial') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span>02 Financial Profile</span>
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleStepClick('lifestyle')}
+                                        disabled={!isStepUnlocked('lifestyle')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('lifestyle')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('lifestyle') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span>03 Lifestyle Alignment</span>
+                                    </button>
+                                </div>
+
+                                <div className="flex items-center justify-between pt-1">
+                                    <button
+                                        onClick={() => handleStepClick(step1CompletedCount === 0 ? 'orientation' : step1CompletedCount === 1 ? 'financial' : 'lifestyle')}
+                                        className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
+                                    >
+                                        {step1CompletedCount === 3 ? 'Done' : 'Start'}
+                                    </button>
+                                    <span className="text-xs text-gray-400 font-light">
+                                        Ready for your next step
+                                    </span>
+                                </div>
                             </div>
-                            <span className="text-xs font-semibold text-gray-400">
-                                {step1CompletedCount}/3
-                            </span>
-                        </div>
 
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
-                            <button
-                                onClick={() => handleStepClick('orientation')}
-                                disabled={!isStepUnlocked('orientation')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('orientation')
-                                        ? 'text-gray-300 cursor-not-allowed'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>01 Orientation</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('orientation') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
+                            {/* STEP 02 CARD */}
+                            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
+                                <div className="flex items-start justify-between">
+                                    <div>
+                                        <span className="text-xs text-gray-400 font-normal block mb-1">
+                                            Step 02
+                                        </span>
+                                        <h4 className="text-2xl sm:text-3xl font-medium text-title tracking-tight">
+                                            The Scouting Trip
+                                        </h4>
+                                    </div>
+                                    <span className="text-xs font-normal text-gray-400">
+                                        {step2CompletedCount}/3
+                                    </span>
+                                </div>
 
-                            <button
-                                onClick={() => handleStepClick('financial')}
-                                disabled={!isStepUnlocked('financial')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('financial')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>02 Financial Profile</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('financial') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
+                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                    <button
+                                        onClick={() => handleStepClick('itinerary')}
+                                        disabled={!isStepUnlocked('itinerary')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('itinerary')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('itinerary') ? 'bg-title' : 'bg-title'}`} />
+                                        <span>01 Itinerary</span>
+                                    </button>
 
-                            <button
-                                onClick={() => handleStepClick('lifestyle')}
-                                disabled={!isStepUnlocked('lifestyle')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('lifestyle')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>03 Lifestyle Alignment</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('lifestyle') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-                        </div>
+                                    <button
+                                        onClick={() => handleStepClick('travel')}
+                                        disabled={!isStepUnlocked('travel')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('travel')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('travel') ? 'bg-title' : 'bg-title'}`} />
+                                        <span>02 Travel Preparation</span>
+                                    </button>
 
-                        {step1CompletedCount === 3 && (
-                            <div className="flex items-center justify-end pt-1">
-                                <span className="text-xs text-gray-500 font-light">
-                                    Ready for you next step!
-                                </span>
+                                    <button
+                                        onClick={() => handleStepClick('guided')}
+                                        disabled={!isStepUnlocked('guided')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('guided')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('guided') ? 'bg-title' : 'bg-title'}`} />
+                                        <span>03 Guided Discovery</span>
+                                    </button>
+                                </div>
+
+                                <div className="flex items-center justify-between pt-1">
+                                    <button
+                                        onClick={() => handleStepClick(step2CompletedCount === 0 ? 'itinerary' : step2CompletedCount === 1 ? 'travel' : 'guided')}
+                                        className="bg-title hover:bg-black text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
+                                    >
+                                        {step2CompletedCount === 3 ? 'Done' : 'Start'}
+                                    </button>
+                                    <span className="text-xs text-gray-400 font-light">
+                                        Ready for your next step
+                                    </span>
+                                </div>
                             </div>
-                        )}
-                    </div>
 
-                    {/* STEP 02 CARD */}
-                    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm space-y-6">
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <span className="text-xs text-gray-400 font-normal block mb-1">
-                                    Step 02
-                                </span>
-                                <h4 className="text-lg sm:text-xl font-medium text-title">
-                                    The Scouting Trip
-                                </h4>
+                            {/* STEP 03 CARD */}
+                            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
+                                <div className="flex items-start justify-between">
+                                    <div>
+                                        <span className="text-xs text-gray-400 font-normal block mb-1">
+                                            Step 03
+                                        </span>
+                                        <h4 className="text-2xl sm:text-3xl font-medium text-title tracking-tight">
+                                            Post-Trip to Move
+                                        </h4>
+                                    </div>
+                                    <span className="text-xs font-normal text-gray-400">
+                                        {step3CompletedCount}/3
+                                    </span>
+                                </div>
+
+                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                    <button
+                                        onClick={() => handleStepClick('core')}
+                                        disabled={!isStepUnlocked('core')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('core')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('core') ? 'bg-title' : 'bg-title'}`} />
+                                        <span>01 Core Infrastructure</span>
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleStepClick('arrival')}
+                                        disabled={!isStepUnlocked('arrival')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('arrival')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('arrival') ? 'bg-title' : 'bg-gray-300'}`} />
+                                        <span>02 Arrival Checklist</span>
+                                    </button>
+
+                                    <button
+                                        onClick={() => handleStepClick('social')}
+                                        disabled={!isStepUnlocked('social')}
+                                        className={`flex items-center gap-2 transition-colors ${
+                                            !isStepUnlocked('social')
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : 'hover:text-primary cursor-pointer text-title'
+                                        }`}
+                                    >
+                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('social') ? 'bg-title' : 'bg-gray-300'}`} />
+                                        <span>03 Micro-Social Blueprint</span>
+                                    </button>
+                                </div>
+
+                                <div className="flex items-center justify-between pt-1">
+                                    <button
+                                        onClick={() => handleStepClick(step3CompletedCount === 0 ? 'core' : step3CompletedCount === 1 ? 'arrival' : 'social')}
+                                        className="bg-title hover:bg-black text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
+                                    >
+                                        {step3CompletedCount === 3 ? 'Done' : 'Start'}
+                                    </button>
+                                    <span className="text-xs text-gray-400 font-light">
+                                        Ready for your next step
+                                    </span>
+                                </div>
                             </div>
-                            <span className="text-xs font-semibold text-gray-400">
-                                {step2CompletedCount}/3
-                            </span>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
-                            <button
-                                onClick={() => handleStepClick('itinerary')}
-                                disabled={!isStepUnlocked('itinerary')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('itinerary')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>01 Itinerary</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('itinerary') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-
-                            <button
-                                onClick={() => handleStepClick('travel')}
-                                disabled={!isStepUnlocked('travel')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('travel')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>02 Travel Preparation</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('travel') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-
-                            <button
-                                onClick={() => handleStepClick('guided')}
-                                disabled={!isStepUnlocked('guided')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('guided')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>03 Guided Discovery</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('guided') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-                        </div>
-
-                        {step2CompletedCount === 3 && (
-                            <div className="flex items-center justify-end pt-1">
-                                <span className="text-xs text-gray-500 font-light">
-                                    Ready for you next step!
-                                </span>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* STEP 03 CARD */}
-                    <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm space-y-6">
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <span className="text-xs text-gray-400 font-normal block mb-1">
-                                    Step 03
-                                </span>
-                                <h4 className="text-lg sm:text-xl font-medium text-title">
-                                    Post-Trip to Move
-                                </h4>
-                            </div>
-                            <span className="text-xs font-semibold text-gray-400">
-                                {step3CompletedCount}/3
-                            </span>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-medium border-t border-b border-gray-100 py-4">
-                            <button
-                                onClick={() => handleStepClick('core')}
-                                disabled={!isStepUnlocked('core')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('core')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>01 Core Infrastructure</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('core') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-
-                            <button
-                                onClick={() => handleStepClick('arrival')}
-                                disabled={!isStepUnlocked('arrival')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('arrival')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>02 Arrival Checklists</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('arrival') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-
-                            <button
-                                onClick={() => handleStepClick('social')}
-                                disabled={!isStepUnlocked('social')}
-                                className={`flex items-center gap-1.5 transition-colors ${
-                                    !isStepUnlocked('social')
-                                        ? 'text-gray-300 cursor-not-allowed opacity-60'
-                                        : 'hover:text-primary cursor-pointer text-title'
-                                }`}
-                            >
-                                <span>03 Micro-Social Blueprint</span>
-                                <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('social') ? 'bg-title' : 'bg-gray-300'}`} />
-                            </button>
-                        </div>
-
-                        {step3CompletedCount === 3 && (
-                            <div className="flex items-center justify-end pt-1">
-                                <span className="text-xs text-gray-500 font-light">
-                                    Ready for you next step!
-                                </span>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {/* RIGHT COLUMN: Overview Timeline (3 cols) */}
-                <div className="lg:col-span-3 space-y-6">
-                    <div>
-                        <span className="text-xs font-normal text-gray-400 uppercase tracking-wider block mb-2">
-                            Overview
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl font-semibold text-title tracking-tight mb-4">
-                            Your Relocation Timeline
-                        </h3>
-                        <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed mb-8">
-                            This dashboard coordinates your three core steps from initial parameters to final arrival. Track your milestones, log active field research, and access your verified network.
-                        </p>
-                    </div>
-
-                    <div className="space-y-4 text-xs sm:text-sm font-semibold text-title">
-                        <div className="flex items-center gap-2">
-                            <span>01 PRE-SCOUTING</span>
-                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step1CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span>02 The Scouting Trip</span>
-                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step2CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <span>03 Post-Trip to Move</span>
-                            <span className={`w-2 h-2 shrink-0 rounded-xs ${step3CompletedCount === 3 ? 'bg-title' : 'bg-gray-300'}`} />
-                        </div>
-                    </div>
+                        </>
+                    ) : (
+                        <>
+                            <OrientationModal
+                                isOpen={activeModal === 'orientation'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <FinancialProfileModal
+                                isOpen={activeModal === 'financial'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <LifestyleAlignmentModal
+                                isOpen={activeModal === 'lifestyle'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <ItineraryModal
+                                isOpen={activeModal === 'itinerary'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <TravelPreparationModal
+                                isOpen={activeModal === 'travel'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <GuidedDiscoveryModal
+                                isOpen={activeModal === 'guided'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <CoreInfrastructureModal
+                                isOpen={activeModal === 'core'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <ArrivalChecklistsModal
+                                isOpen={activeModal === 'arrival'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                            <MicroSocialBlueprintModal
+                                isOpen={activeModal === 'social'}
+                                onClose={handleCloseActiveModal}
+                                isInline={true}
+                            />
+                        </>
+                    )}
                 </div>
 
             </div>
-
-            {/* MODALS */}
-            <OrientationModal
-                isOpen={activeModal === 'orientation'}
-                onClose={handleCloseActiveModal}
-            />
-            <FinancialProfileModal
-                isOpen={activeModal === 'financial'}
-                onClose={handleCloseActiveModal}
-            />
-            <LifestyleAlignmentModal
-                isOpen={activeModal === 'lifestyle'}
-                onClose={handleCloseActiveModal}
-            />
-            <ItineraryModal
-                isOpen={activeModal === 'itinerary'}
-                onClose={handleCloseActiveModal}
-            />
-            <TravelPreparationModal
-                isOpen={activeModal === 'travel'}
-                onClose={handleCloseActiveModal}
-            />
-            <GuidedDiscoveryModal
-                isOpen={activeModal === 'guided'}
-                onClose={handleCloseActiveModal}
-            />
-            <CoreInfrastructureModal
-                isOpen={activeModal === 'core'}
-                onClose={handleCloseActiveModal}
-            />
-            <ArrivalChecklistsModal
-                isOpen={activeModal === 'arrival'}
-                onClose={handleCloseActiveModal}
-            />
-            <MicroSocialBlueprintModal
-                isOpen={activeModal === 'social'}
-                onClose={handleCloseActiveModal}
-            />
 
             {/* Location Details Modal */}
             <DetailsModal

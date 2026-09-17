@@ -6,9 +6,10 @@ import { X } from 'lucide-react'
 interface TravelPreparationModalProps {
     isOpen: boolean
     onClose: () => void
+    isInline?: boolean
 }
 
-const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen, onClose }) => {
+const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen, onClose, isInline = true }) => {
     const [selected, setSelected] = useState<number[]>([])
 
     if (!isOpen) return null
@@ -40,71 +41,77 @@ const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen,
         }
     ]
 
+    const content = (
+        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
+                <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
+                    Travel Preparation
+                </h2>
+                <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
+                >
+                    <X className="w-5 h-5" />
+                </button>
+            </div>
+
+            {/* Intro paragraph */}
+            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                Let's get the practical side of your move into one place. Some questions are about money, while others focus on your personal priorities. Together, they'll help shape your scouting trip and give us a clear picture of what you’re building.
+            </p>
+
+            {/* Section Subheading */}
+            <div>
+                <h3 className="text-base font-semibold text-title mb-1">Motivation</h3>
+                <p className="text-xs sm:text-sm text-gray-600 font-light">
+                    What is motivating the financial side of your move? (Select all that apply)
+                </p>
+            </div>
+
+            {/* Checkbox List */}
+            <div className="space-y-5">
+                {items.map((item, idx) => (
+                    <div
+                        key={idx}
+                        onClick={() => toggleCheck(idx)}
+                        className="flex items-start gap-4 cursor-pointer group"
+                    >
+                        <input
+                            type="checkbox"
+                            checked={selected.includes(idx)}
+                            onChange={() => {}}
+                            className="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary shrink-0 cursor-pointer"
+                        />
+                        <div>
+                            <h4 className="text-sm font-medium text-title mb-1 group-hover:text-primary transition-colors">
+                                {item.title}
+                            </h4>
+                            <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                                {item.desc}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* Border Divider & Bottom Action */}
+            <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
+                <button
+                    onClick={onClose}
+                    className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
+                >
+                    Done
+                </button>
+            </div>
+        </div>
+    )
+
+    if (isInline) return content
+
     return (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-            <div className="bg-white rounded-3xl max-w-3xl w-full p-8 md:p-12 relative shadow-xl border border-gray-100 max-h-[90vh] overflow-y-auto font-sans text-title">
-                {/* Header */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100 mb-6">
-                    <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-title">
-                        Travel Preparation
-                    </h2>
-                    <button
-                        onClick={onClose}
-                        className="text-gray-400 hover:text-black transition-colors p-2 cursor-pointer"
-                    >
-                        <X className="w-5 h-5" />
-                    </button>
-                </div>
-
-                {/* Intro paragraph */}
-                <p className="text-sm text-title font-light leading-relaxed mb-8">
-                    Let's get the practical side of your move into one place. Some questions are about money, while others focus on your personal priorities. Together, they'll help shape your scouting trip and give us a clear picture of what you’re building. There are no right answers here—the goal is simply to understand the realities your move needs to work within.
-                </p>
-
-                {/* Section Subheading */}
-                <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-title mb-1">Motivation</h3>
-                    <p className="text-sm text-title font-light">
-                        What is motivating the financial side of your move? (Select all that apply)
-                    </p>
-                </div>
-
-                {/* Checkbox List */}
-                <div className="space-y-6 mb-10">
-                    {items.map((item, idx) => (
-                        <div
-                            key={idx}
-                            onClick={() => toggleCheck(idx)}
-                            className="flex items-start gap-4 cursor-pointer group"
-                        >
-                            <input
-                                type="checkbox"
-                                checked={selected.includes(idx)}
-                                onChange={() => {}}
-                                className="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary accent-primary shrink-0 cursor-pointer"
-                            />
-                            <div>
-                                <h4 className="text-sm font-semibold text-title mb-1 group-hover:text-primary transition-colors">
-                                    {item.title}
-                                </h4>
-                                <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
-                                    {item.desc}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Border Divider & Bottom Action */}
-                <div className="pt-6 border-t border-gray-100 flex items-center justify-start">
-                    <button
-                        onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-10 py-3 rounded-xl text-base font-semibold transition-all shadow-sm cursor-pointer"
-                    >
-                        Done
-                    </button>
-                </div>
-            </div>
+            {content}
         </div>
     )
 }
