@@ -59,9 +59,9 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
     const currentMapImage = data.mapImage || mapImg
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/60 backdrop-blur-sm animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto no-scrollbar bg-black/60 backdrop-blur-sm animate-fadeIn">
             {/* Modal Container (Matching Exact Image Layout) */}
-            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-100 relative p-6 sm:p-10 space-y-10 animate-scaleUp">
+            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto no-scrollbar shadow-2xl border border-gray-100 relative p-6 sm:p-10 space-y-10 animate-scaleUp">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
