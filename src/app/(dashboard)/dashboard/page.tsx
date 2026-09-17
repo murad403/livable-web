@@ -20,6 +20,7 @@ import { useGetMeQuery } from '@/redux/features/auth/auth.api'
 import { removeToken } from '@/utils/auth'
 import lisbonImg from '@/assets/place1.jpg'
 import mapImg from '@/assets/map.png'
+import { Button } from '@/components/ui/button'
 
 const ALL_STEPS = [
     'orientation',
@@ -128,7 +129,7 @@ export default function DashboardPage() {
         <div className="min-h-screen bg-white text-title font-sans p-6 sm:p-10 md:p-12 max-w-375 mx-auto selection:bg-primary selection:text-white">
             {/* Top Navigation Bar inside Dashboard */}
             <div className="flex items-center justify-between pb-6 mb-8 border-b border-gray-200/80 text-xs sm:text-sm">
-                <Link href="/" className="font-satoshi font-normal tracking-tight text-xl sm:text-2xl text-title">
+                <Link href="/" className="font-satoshi font-normal tracking-tight text-2xl md:text-[32px] text-title">
                     Livable™
                 </Link>
                 <div className="flex items-center gap-4">
@@ -146,19 +147,13 @@ export default function DashboardPage() {
                         <LogOut className="w-3.5 h-3.5" />
                         <span>Logout</span>
                     </button>
-                    <a
-                        href="mailto:support@livable.com"
-                        className="text-xs font-normal text-title hover:text-primary transition-colors flex items-center gap-1"
-                    >
-                        Message Support ↗
-                    </a>
                 </div>
             </div>
 
             {/* Header Title Section */}
             <div className="text-center mb-10 space-y-1">
                 <span className="text-xs text-gray-400 font-normal block">
-                    Hi, {trip?.client_name || 'Sarah'}
+                    Hi, {trip?.client_name || ''}
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-medium text-title tracking-tight">
                     Dashboard
@@ -237,12 +232,11 @@ export default function DashboardPage() {
                             </div>
                         )}
 
-                        <button
+                        <Button
                             onClick={() => setLocationModalOpen(true)}
-                            className="w-full mt-4 bg-primary hover:bg-primary-hover text-white py-3.5 px-6 rounded-xl font-normal text-xs sm:text-sm transition-all cursor-pointer shadow-xs hover:shadow-md text-center block"
                         >
                             View Location Details
-                        </button>
+                        </Button>
                     </div>
                 </div>
 

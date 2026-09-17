@@ -4,14 +4,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] cursor-pointer rounded-full",
+  "inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] cursor-pointer customPill",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-white hover:bg-primary-hover shadow-xs hover:shadow-md rounded-full",
+          "bg-primary text-white hover:bg-primary-hover shadow-xs hover:shadow-md",
         customPill:
-          "bg-primary text-white hover:bg-primary-hover font-medium rounded-full shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer",
+          "bg-primary text-white hover:bg-primary-hover font-medium shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer px-4 py-4 inline-flex items-center justify-center rounded-[10px_10px_50%_50% / 50%_50%_10px_10px]",
         destructive:
           "bg-red-500 text-white hover:bg-red-600 shadow-xs rounded-full",
         outline:
@@ -39,7 +39,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 

@@ -161,7 +161,6 @@ const Navbar = () => {
                         </a>
                         <Button
                             onClick={handleTalkWithUs}
-                            variant="customPill"
                         >
                             Get started
                         </Button>
@@ -208,8 +207,6 @@ const Navbar = () => {
                         )}
                         <Button
                             onClick={() => router.push("/talk-with-us")}
-                            variant="customPill"
-                            className="h-10 px-5 text-sm sm:text-base"
                         >
                             Talk With Us
                         </Button>

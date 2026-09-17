@@ -162,13 +162,13 @@ const TalkStep2: React.FC<TalkStep2Props> = ({ control, setValue, errors, onBack
 
             {/* Submit & Back Buttons */}
             <div className="pt-4 flex items-center gap-3">
-                <button
+                <Button
+                variant={"outline"}
                     type="button"
                     onClick={onBack}
-                    className="px-5 py-3.5 rounded-full border border-gray-200 text-xs font-semibold text-gray-600 hover:bg-gray-50 transition-colors cursor-pointer"
                 >
                     ← Back
-                </button>
+                </Button>
                 <Button
                     type="submit"
                     disabled={isSubmitting}
