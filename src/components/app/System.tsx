@@ -53,7 +53,9 @@ const System = () => {
                     <Image
                         src={systemImg}
                         alt="The Livable Relocation System Portal"
-                        className="w-full h-auto rounded-2xl object-cover"
+                        width={500}
+                        height={500}
+                        className="w-full h-auto border border-gray-100 object-cover"
                         priority
                     />
                 </div>
