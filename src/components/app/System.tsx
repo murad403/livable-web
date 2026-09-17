@@ -4,15 +4,15 @@ import systemImg from '@/assets/system.png'
 const systems = [
     {
         title: "Pre-Scouting",
-        description: "We coordinate your parameters and goals in a single workspace. This data briefs your on-site experts to custom-build your walking routes before you fly."
+        description: "We map your lifestyle, budget, and motivations to pick the right neighborhoods and brief your real estate and culture experts."
     },
     {
         title: "The Scouting Trip",
-        description: "Spend three structured days with local experts on the ground. Use this time to experience the physical environment and feel how each neighborhood fits your life."
+        description: "Spend three structured days with local experts experiencing the neighborhoods, real estate options, and local culture firsthand."
     },
     {
         title: "Post-Trip to Arrival",
-        description: "The dashboard instantly unlocks your physical relocation blueprint, delivering your comprehensive moving checklist, a detailed setup guide, and a downselected list of essential local partners."
+        description: "Your dashboard unlocks a custom relocation blueprint, providing a complete moving checklist, setup guide, and vetted local partners."
     }
 ]
 
