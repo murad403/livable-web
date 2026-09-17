@@ -22,7 +22,7 @@ const MicroSocialBlueprintModal: React.FC<MicroSocialBlueprintModalProps> = ({ i
     }
 
     const content = (
-        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+        <div className="bg-white p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
             {/* Header Bar */}
             <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
                 <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
