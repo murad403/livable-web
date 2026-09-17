@@ -6,10 +6,11 @@ import { Button } from '../ui/button'
 interface CoreInfrastructureModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     const legalPartners = [
@@ -283,7 +284,7 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
                 {/* Modal Footer */}
                 <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
                     <Button
-                        onClick={onClose}
+                        onClick={onDone || onClose}
                     >
                         Done
                     </Button>

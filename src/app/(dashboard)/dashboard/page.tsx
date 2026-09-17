@@ -75,10 +75,20 @@ export default function DashboardPage() {
         });
     };
 
-    const handleCloseActiveModal = () => {
+    const handleDismissModal = () => {
+        setActiveModal(null);
+    };
+
+    const handleDoneActiveModal = () => {
         if (activeModal) {
             markStepCompleted(activeModal);
-            setActiveModal(null);
+            const currentIndex = ALL_STEPS.indexOf(activeModal);
+            if (currentIndex >= 0 && currentIndex < ALL_STEPS.length - 1) {
+                const nextStep = ALL_STEPS[currentIndex + 1];
+                setActiveModal(nextStep);
+            } else {
+                setActiveModal(null);
+            }
         }
     };
 
@@ -135,7 +145,7 @@ export default function DashboardPage() {
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => setChangePasswordModalOpen(true)}
-                        className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-title transition-colors cursor-pointer"
+                        className="flex items-center gap-1.5 text-xs text-title transition-colors cursor-pointer"
                     >
                         <Lock className="w-3.5 h-3.5" />
                         <span>Change Password</span>
@@ -152,7 +162,7 @@ export default function DashboardPage() {
 
             {/* Header Title Section */}
             <div className="text-center mb-10 space-y-1">
-                <span className="text-xs text-gray-400 font-normal block">
+                <span className="text-sm text-gray-500 font-normal block">
                     Hi, {trip?.client_name || ''}
                 </span>
                 <h1 className="text-4xl sm:text-5xl font-medium text-title tracking-tight">
@@ -166,36 +176,36 @@ export default function DashboardPage() {
                 {/* LEFT COLUMN: Dashboard Overview & Trip Details (4 cols - STICKY) */}
                 <div className="lg:col-span-4 space-y-8 lg:border-r border-gray-200/80 lg:pr-10 lg:sticky lg:top-8 self-start">
                     <div className="space-y-4">
-                        <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                        <span className="text-xs font-normal  text-gray-600 tracking-[0.25em] uppercase block">
                             Dashboard
                         </span>
-                        <h2 className="text-4xl sm:text-5xl font-medium text-title tracking-tight leading-[1.05]">
-                            Welcome<br />Back
+                        <h2 className="text-3xl md:text-[32px] font-medium text-title tracking-tight leading-[1.05]">
+                            Welcome Back
                         </h2>
                     </div>
 
                     <div className="border-t border-gray-200/80 pt-6">
-                        <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
+                        <p className="text-sm md:text-base text-title leading-relaxed">
                             Making an intentional move is an exciting, smart decision. Use this command center to track your ongoing milestones, coordinate your core relocation data, and communicate with our team as we build your future life in Europe.
                         </p>
                     </div>
 
                     <div className="space-y-4">
-                        <h3 className="text-xl sm:text-2xl font-medium text-title tracking-tight">
+                        <h3 className="text-2xl md:text-[28px] font-medium text-title tracking-tight">
                             Your Relocation Timeline
                         </h3>
                         <div className="space-y-2">
-                            <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                            <span className="text-xs font-normal  text-gray-600 tracking-[0.25em] uppercase block">
                                 Overview
                             </span>
-                            <p className="text-xs sm:text-sm text-gray-500 font-light leading-relaxed">
+                            <p className="text-sm md:text-base text-title leading-relaxed">
                                 This dashboard coordinates your three core steps from initial parameters to final arrival. Track your milestones, log active field research, and access your verified network.
                             </p>
                         </div>
                     </div>
 
                     <div className="border-t border-gray-200/80 pt-6 space-y-4">
-                        <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                        <span className="text-xs font-normal text-gray-600 tracking-[0.25em] uppercase block">
                             Trip Details
                         </span>
                         
@@ -210,24 +220,24 @@ export default function DashboardPage() {
                         ) : (
                             <div className="space-y-2 text-xs sm:text-sm font-light text-gray-600">
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-400">Target</span>
-                                    <span className="font-normal text-title">{trip?.city || 'Lisbon'}</span>
+                                    <span className="text-gray-500">Target</span>
+                                    <span className="text-title">{trip?.city || 'Lisbon'}</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-400">Timeline</span>
-                                    <span className="font-normal text-title">{trip?.timeline || 'Oct 12 – Oct 15'}</span>
+                                    <span className="text-gray-500">Timeline</span>
+                                    <span className="text-title">{trip?.timeline || 'Oct 12 – Oct 15'}</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-400">Duration</span>
-                                    <span className="font-normal text-title">3 Days</span>
+                                    <span className="text-gray-500">Duration</span>
+                                    <span className="text-title">3 Days</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-400">Phase</span>
-                                    <span className="font-normal text-title">Pre-Scouting</span>
+                                    <span className="text-gray-500">Phase</span>
+                                    <span className="text-title">Pre-Scouting</span>
                                 </div>
                                 <div className="flex justify-between items-center py-1">
-                                    <span className="text-gray-400">Advisor</span>
-                                    <span className="font-normal text-title">{trip?.guide_name || 'Livable Team'}</span>
+                                    <span className="text-gray-500">Advisor</span>
+                                    <span className="text-title">{trip?.guide_name || 'Livable Team'}</span>
                                 </div>
                             </div>
                         )}
@@ -242,7 +252,7 @@ export default function DashboardPage() {
 
                 {/* RIGHT COLUMN: The Journey (8 cols) */}
                 <div className="lg:col-span-8 space-y-8">
-                    <span className="text-xs font-normal text-gray-400 tracking-[0.25em] uppercase block">
+                    <span className="text-xs font-normal  text-gray-600 tracking-[0.25em] uppercase block">
                         The Journey
                     </span>
 
@@ -252,7 +262,7 @@ export default function DashboardPage() {
                             <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs space-y-6">
                                 <div className="flex items-start justify-between">
                                     <div>
-                                        <span className="text-xs text-gray-400 font-normal block mb-1">
+                                        <span className="text-xs text-gray-500 font-normal block mb-1">
                                             Step 01
                                         </span>
                                         <h4 className="text-2xl sm:text-3xl font-medium text-title tracking-tight">
@@ -270,11 +280,13 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('orientation')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('orientation')
-                                                ? 'text-gray-300 cursor-not-allowed'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('orientation')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('orientation') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('orientation') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>01 Orientation</span>
                                     </button>
 
@@ -284,10 +296,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('financial')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('financial')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('financial') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('financial') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>02 Financial Profile</span>
                                     </button>
 
@@ -297,10 +311,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('lifestyle')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('lifestyle')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('lifestyle') ? 'bg-primary' : 'bg-primary'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('lifestyle') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>03 Lifestyle Alignment</span>
                                     </button>
                                 </div>
@@ -341,10 +357,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('itinerary')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('itinerary')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('itinerary') ? 'bg-title' : 'bg-title'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('itinerary') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>01 Itinerary</span>
                                     </button>
 
@@ -354,10 +372,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('travel')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('travel')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('travel') ? 'bg-title' : 'bg-title'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('travel') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>02 Travel Preparation</span>
                                     </button>
 
@@ -367,10 +387,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('guided')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('guided')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('guided') ? 'bg-title' : 'bg-title'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('guided') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>03 Guided Discovery</span>
                                     </button>
                                 </div>
@@ -378,7 +400,7 @@ export default function DashboardPage() {
                                 <div className="flex items-center justify-between pt-1">
                                     <button
                                         onClick={() => handleStepClick(step2CompletedCount === 0 ? 'itinerary' : step2CompletedCount === 1 ? 'travel' : 'guided')}
-                                        className="bg-title hover:bg-black text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
+                                        className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
                                     >
                                         {step2CompletedCount === 3 ? 'Done' : 'Start'}
                                     </button>
@@ -411,10 +433,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('core')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('core')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('core') ? 'bg-title' : 'bg-title'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('core') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>01 Core Infrastructure</span>
                                     </button>
 
@@ -424,10 +448,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('arrival')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('arrival')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('arrival') ? 'bg-title' : 'bg-gray-300'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('arrival') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>02 Arrival Checklist</span>
                                     </button>
 
@@ -437,10 +463,12 @@ export default function DashboardPage() {
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('social')
                                                 ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                : completedSteps.includes('social')
+                                                ? 'text-primary font-medium cursor-pointer'
                                                 : 'hover:text-primary cursor-pointer text-title'
                                         }`}
                                     >
-                                        <span className={`w-2 h-2 shrink-0 rounded-xs ${completedSteps.includes('social') ? 'bg-title' : 'bg-gray-300'}`} />
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('social') ? 'bg-primary' : 'bg-gray-300'}`} />
                                         <span>03 Micro-Social Blueprint</span>
                                     </button>
                                 </div>
@@ -448,7 +476,7 @@ export default function DashboardPage() {
                                 <div className="flex items-center justify-between pt-1">
                                     <button
                                         onClick={() => handleStepClick(step3CompletedCount === 0 ? 'core' : step3CompletedCount === 1 ? 'arrival' : 'social')}
-                                        className="bg-title hover:bg-black text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
+                                        className="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full text-xs font-normal transition-colors cursor-pointer"
                                     >
                                         {step3CompletedCount === 3 ? 'Done' : 'Start'}
                                     </button>
@@ -459,53 +487,62 @@ export default function DashboardPage() {
                             </div>
                         </>
                     ) : (
-                        <>
+                        <div className="space-y-4">
                             <OrientationModal
                                 isOpen={activeModal === 'orientation'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <FinancialProfileModal
                                 isOpen={activeModal === 'financial'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <LifestyleAlignmentModal
                                 isOpen={activeModal === 'lifestyle'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <ItineraryModal
                                 isOpen={activeModal === 'itinerary'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <TravelPreparationModal
                                 isOpen={activeModal === 'travel'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <GuidedDiscoveryModal
                                 isOpen={activeModal === 'guided'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <CoreInfrastructureModal
                                 isOpen={activeModal === 'core'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <ArrivalChecklistsModal
                                 isOpen={activeModal === 'arrival'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
                             <MicroSocialBlueprintModal
                                 isOpen={activeModal === 'social'}
-                                onClose={handleCloseActiveModal}
+                                onClose={handleDismissModal}
+                                onDone={handleDoneActiveModal}
                                 isInline={true}
                             />
-                        </>
+                        </div>
                     )}
                 </div>
 

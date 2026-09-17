@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 interface GuidedDiscoveryModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const GuidedDiscoveryModal: React.FC<GuidedDiscoveryModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const GuidedDiscoveryModal: React.FC<GuidedDiscoveryModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     const content = (
@@ -55,7 +56,7 @@ const GuidedDiscoveryModal: React.FC<GuidedDiscoveryModalProps> = ({ isOpen, onC
             {/* Modal Footer */}
             <div className="pt-5 border-t border-gray-200/80 flex items-center justify-start">
                 <Button
-                    onClick={onClose}
+                    onClick={onDone || onClose}
                 >
                     Done
                 </Button>

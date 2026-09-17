@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 interface ItineraryModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     const schedule = [
@@ -107,7 +108,7 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, isInli
             {/* Modal Footer */}
             <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
                 <Button
-                    onClick={onClose}
+                    onClick={onDone || onClose}
                 >
                     Done
                 </Button>

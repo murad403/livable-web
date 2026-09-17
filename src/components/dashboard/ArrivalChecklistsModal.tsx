@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 interface ArrivalChecklistsModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     // Track open state for each accordion section
@@ -534,7 +535,7 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
                 {/* Modal Footer */}
                 <div className="mt-8 pt-6 border-t border-gray-200/80 flex items-center justify-start">
                     <Button
-                        onClick={onClose}
+                        onClick={onDone || onClose}
                     >
                         Done
                     </Button>

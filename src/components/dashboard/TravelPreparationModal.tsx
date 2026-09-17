@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 interface TravelPreparationModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     const [selected, setSelected] = useState<number[]>([])
 
     if (!isOpen) return null
@@ -99,7 +100,7 @@ const TravelPreparationModal: React.FC<TravelPreparationModalProps> = ({ isOpen,
             {/* Border Divider & Bottom Action */}
             <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
                 <Button
-                    onClick={onClose}
+                    onClick={onDone || onClose}
                 >
                     Done
                 </Button>

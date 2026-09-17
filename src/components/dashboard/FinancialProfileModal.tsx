@@ -12,6 +12,7 @@ import { Button } from '../ui/button'
 interface FinancialProfileModalProps {
     isOpen: boolean
     onClose: () => void
+     onDone?: () => void
     isInline?: boolean
 }
 
@@ -121,7 +122,7 @@ const mapExcitement = (val: string): string => {
     }
 }
 
-const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     const { data: userData } = useGetMeQuery()
     const [saveFinancialProfile, { isLoading: isSaving }] = useSaveFinancialProfileMutation()
 
@@ -164,7 +165,11 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
             const clientId = userData?.client_id || 1
             const res = await saveFinancialProfile({ clientId, body: payload }).unwrap()
             toast.success(res.message || res.detail || 'Financial profile submitted successfully!')
-            onClose()
+            if (onDone) {
+                onDone()
+            } else {
+                onClose()
+            }
         } catch (err: any) {
             const errorMsg =
                 err?.data?.detail ||

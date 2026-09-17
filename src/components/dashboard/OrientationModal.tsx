@@ -7,14 +7,15 @@ import { Button } from '../ui/button'
 interface OrientationModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const OrientationModal: React.FC<OrientationModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const OrientationModal: React.FC<OrientationModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     const content = (
-        <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
+        <div className="bg-white p-6 sm:p-8 border border-gray-200/80 shadow-xs font-sans text-title space-y-6">
             {/* Header */}
             <div className="flex items-center justify-between pb-6 border-b border-gray-200/80">
                 <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-title">
@@ -107,7 +108,7 @@ const OrientationModal: React.FC<OrientationModalProps> = ({ isOpen, onClose, is
             {/* Border Divider & Bottom Action */}
             <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
                 <Button
-                    onClick={onClose}
+                    onClick={onDone || onClose}
                 >
                     Done
                 </Button>

@@ -7,10 +7,11 @@ import { Button } from '../ui/button'
 interface MicroSocialBlueprintModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
-const MicroSocialBlueprintModal: React.FC<MicroSocialBlueprintModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const MicroSocialBlueprintModal: React.FC<MicroSocialBlueprintModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     if (!isOpen) return null
 
     // Interactive checkbox state
@@ -205,7 +206,7 @@ const MicroSocialBlueprintModal: React.FC<MicroSocialBlueprintModalProps> = ({ i
             {/* Modal Footer */}
             <div className="pt-6 border-t border-gray-200/80 flex justify-start">
                 <Button
-                    onClick={onClose}
+                    onClick={onDone || onClose}
                 >
                     Done
                 </Button>

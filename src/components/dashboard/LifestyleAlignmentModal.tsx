@@ -11,6 +11,7 @@ import { Button } from '../ui/button'
 interface LifestyleAlignmentModalProps {
     isOpen: boolean
     onClose: () => void
+    onDone?: () => void
     isInline?: boolean
 }
 
@@ -103,7 +104,7 @@ const mapInternalDraw = (val: string): string => {
     }
 }
 
-const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpen, onClose, isInline = true }) => {
+const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpen, onClose, onDone, isInline = true }) => {
     const { data: userData } = useGetMeQuery(undefined, { skip: !isOpen })
     const [saveLifestyleAlignment, { isLoading: isSaving }] = useSaveLifestyleAlignmentMutation()
 
@@ -115,7 +116,7 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
         }
     })
 
-    if (!isOpen && !isInline) return null
+    if (!isOpen) return null
 
     const onSubmit = async (data: LifestyleAlignmentFormValues) => {
         try {
@@ -145,7 +146,11 @@ const LifestyleAlignmentModal: React.FC<LifestyleAlignmentModalProps> = ({ isOpe
             const clientId = userData?.client_id || 1
             const res = await saveLifestyleAlignment({ clientId, body: payload }).unwrap()
             toast.success(res.message || res.detail || 'Lifestyle alignment saved successfully!')
-            onClose()
+            if (onDone) {
+                onDone()
+            } else {
+                onClose()
+            }
         } catch (err: any) {
             const errorMsg =
                 err?.data?.detail ||
