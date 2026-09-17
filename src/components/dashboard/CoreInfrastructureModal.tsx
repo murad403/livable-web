@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { X } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface CoreInfrastructureModalProps {
     isOpen: boolean
@@ -281,12 +282,11 @@ const CoreInfrastructureModal: React.FC<CoreInfrastructureModalProps> = ({ isOpe
 
                 {/* Modal Footer */}
                 <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
-                    <button
+                    <Button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
                     >
                         Done
-                    </button>
+                    </Button>
                 </div>
         </div>
     )

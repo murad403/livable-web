@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { X, Plus, Minus, CheckSquare, Square } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface ArrivalChecklistsModalProps {
     isOpen: boolean
@@ -532,12 +533,11 @@ const ArrivalChecklistsModal: React.FC<ArrivalChecklistsModalProps> = ({ isOpen,
 
                 {/* Modal Footer */}
                 <div className="mt-8 pt-6 border-t border-gray-200/80 flex items-center justify-start">
-                    <button
+                    <Button
                         onClick={onClose}
-                        className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-all shadow-xs cursor-pointer"
                     >
                         Done
-                    </button>
+                    </Button>
                 </div>
         </div>
     )

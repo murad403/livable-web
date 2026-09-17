@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { X } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface ItineraryModalProps {
     isOpen: boolean
@@ -105,12 +106,11 @@ const ItineraryModal: React.FC<ItineraryModalProps> = ({ isOpen, onClose, isInli
 
             {/* Modal Footer */}
             <div className="pt-5 border-t border-gray-100 flex items-center justify-between">
-                <button
+                <Button
                     onClick={onClose}
-                    className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
                 >
                     Done
-                </button>
+                </Button>
             </div>
         </div>
     )

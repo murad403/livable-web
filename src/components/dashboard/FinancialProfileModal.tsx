@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 import { useSaveFinancialProfileMutation } from '@/redux/features/app/app.api'
 import { useGetMeQuery } from '@/redux/features/auth/auth.api'
 import { FinancialProfileRequest } from '@/redux/features/app/app.type'
+import { Button } from '../ui/button'
 
 interface FinancialProfileModalProps {
     isOpen: boolean
@@ -515,13 +516,12 @@ const FinancialProfileModal: React.FC<FinancialProfileModalProps> = ({ isOpen, o
 
                     {/* Submit Button */}
                     <div className="pt-6 border-t border-gray-200/80 flex items-center justify-start">
-                        <button
+                        <Button
                             type="submit"
                             disabled={isSubmitting || isSaving}
-                            className="bg-primary hover:bg-primary-hover disabled:opacity-60 text-white px-8 py-2.5 rounded-full text-sm font-semibold transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
                         >
                             {isSubmitting || isSaving ? 'Submitting...' : 'Submit'}
-                        </button>
+                        </Button>
                     </div>
 
                 </form>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { X, CheckSquare, Square } from 'lucide-react'
+import { Button } from '../ui/button'
 
 interface MicroSocialBlueprintModalProps {
     isOpen: boolean
@@ -203,12 +204,11 @@ const MicroSocialBlueprintModal: React.FC<MicroSocialBlueprintModalProps> = ({ i
 
             {/* Modal Footer */}
             <div className="pt-6 border-t border-gray-200/80 flex justify-start">
-                <button
+                <Button
                     onClick={onClose}
-                    className="bg-primary hover:bg-primary-hover text-white px-8 py-2.5 rounded-full text-xs font-normal transition-all shadow-xs cursor-pointer"
                 >
                     Done
-                </button>
+                </Button>
             </div>
         </div>
     )
