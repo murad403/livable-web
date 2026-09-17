@@ -274,20 +274,23 @@ export default function DashboardPage() {
                                     </span>
                                 </div>
 
-                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                <div className="flex flex-wrap justify-between items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
                                     <button
                                         onClick={() => handleStepClick('orientation')}
                                         disabled={!isStepUnlocked('orientation')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('orientation')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('orientation')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('orientation') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>01 Orientation</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('orientation') ? 'bg-primary' : !isStepUnlocked('orientation') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('orientation') ? 'text-primary' : isStepUnlocked('orientation') ? 'text-gray-400' : 'text-gray-300'}>01 </span>
+                                            <span className={completedSteps.includes('orientation') ? 'text-primary font-medium' : isStepUnlocked('orientation') ? 'text-title' : 'text-gray-300'}>Orientation</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -295,14 +298,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('financial')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('financial')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('financial')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('financial') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>02 Financial Profile</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('financial') ? 'bg-primary' : !isStepUnlocked('financial') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('financial') ? 'text-primary' : isStepUnlocked('financial') ? 'text-gray-400' : 'text-gray-300'}>02 </span>
+                                            <span className={completedSteps.includes('financial') ? 'text-primary font-medium' : isStepUnlocked('financial') ? 'text-title' : 'text-gray-300'}>Financial Profile</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -310,14 +316,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('lifestyle')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('lifestyle')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('lifestyle')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('lifestyle') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>03 Lifestyle Alignment</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('lifestyle') ? 'bg-primary' : !isStepUnlocked('lifestyle') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('lifestyle') ? 'text-primary' : isStepUnlocked('lifestyle') ? 'text-gray-400' : 'text-gray-300'}>03 </span>
+                                            <span className={completedSteps.includes('lifestyle') ? 'text-primary font-medium' : isStepUnlocked('lifestyle') ? 'text-title' : 'text-gray-300'}>Lifestyle Alignment</span>
+                                        </span>
                                     </button>
                                 </div>
 
@@ -350,20 +359,23 @@ export default function DashboardPage() {
                                     </span>
                                 </div>
 
-                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                <div className="flex flex-wrap justify-between items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
                                     <button
                                         onClick={() => handleStepClick('itinerary')}
                                         disabled={!isStepUnlocked('itinerary')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('itinerary')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('itinerary')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('itinerary') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>01 Itinerary</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('itinerary') ? 'bg-primary' : !isStepUnlocked('itinerary') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('itinerary') ? 'text-primary' : isStepUnlocked('itinerary') ? 'text-gray-400' : 'text-gray-300'}>01 </span>
+                                            <span className={completedSteps.includes('itinerary') ? 'text-primary font-medium' : isStepUnlocked('itinerary') ? 'text-title' : 'text-gray-300'}>Itinerary</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -371,14 +383,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('travel')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('travel')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('travel')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('travel') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>02 Travel Preparation</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('travel') ? 'bg-primary' : !isStepUnlocked('travel') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('travel') ? 'text-primary' : isStepUnlocked('travel') ? 'text-gray-400' : 'text-gray-300'}>02 </span>
+                                            <span className={completedSteps.includes('travel') ? 'text-primary font-medium' : isStepUnlocked('travel') ? 'text-title' : 'text-gray-300'}>Travel Preparation</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -386,14 +401,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('guided')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('guided')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('guided')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('guided') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>03 Guided Discovery</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('guided') ? 'bg-primary' : !isStepUnlocked('guided') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('guided') ? 'text-primary' : isStepUnlocked('guided') ? 'text-gray-400' : 'text-gray-300'}>03 </span>
+                                            <span className={completedSteps.includes('guided') ? 'text-primary font-medium' : isStepUnlocked('guided') ? 'text-title' : 'text-gray-300'}>Guided Discovery</span>
+                                        </span>
                                     </button>
                                 </div>
 
@@ -426,20 +444,23 @@ export default function DashboardPage() {
                                     </span>
                                 </div>
 
-                                <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
+                                <div className="flex flex-wrap justify-between items-center gap-6 sm:gap-10 text-xs sm:text-sm font-normal border-t border-b border-gray-200/80 py-4">
                                     <button
                                         onClick={() => handleStepClick('core')}
                                         disabled={!isStepUnlocked('core')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('core')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('core')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('core') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>01 Core Infrastructure</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('core') ? 'bg-primary' : !isStepUnlocked('core') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('core') ? 'text-primary' : isStepUnlocked('core') ? 'text-gray-400' : 'text-gray-300'}>01 </span>
+                                            <span className={completedSteps.includes('core') ? 'text-primary font-medium' : isStepUnlocked('core') ? 'text-title' : 'text-gray-300'}>Core Infrastructure</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -447,14 +468,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('arrival')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('arrival')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('arrival')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('arrival') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>02 Arrival Checklist</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('arrival') ? 'bg-primary' : !isStepUnlocked('arrival') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('arrival') ? 'text-primary' : isStepUnlocked('arrival') ? 'text-gray-400' : 'text-gray-300'}>02 </span>
+                                            <span className={completedSteps.includes('arrival') ? 'text-primary font-medium' : isStepUnlocked('arrival') ? 'text-title' : 'text-gray-300'}>Arrival Checklist</span>
+                                        </span>
                                     </button>
 
                                     <button
@@ -462,14 +486,17 @@ export default function DashboardPage() {
                                         disabled={!isStepUnlocked('social')}
                                         className={`flex items-center gap-2 transition-colors ${
                                             !isStepUnlocked('social')
-                                                ? 'text-gray-300 cursor-not-allowed opacity-60'
+                                                ? 'text-gray-300 cursor-not-allowed opacity-50'
                                                 : completedSteps.includes('social')
                                                 ? 'text-primary font-medium cursor-pointer'
-                                                : 'hover:text-primary cursor-pointer text-title'
+                                                : 'hover:text-primary cursor-pointer'
                                         }`}
                                     >
-                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('social') ? 'bg-primary' : 'bg-gray-300'}`} />
-                                        <span>03 Micro-Social Blueprint</span>
+                                        <span className={`w-2.5 h-2.5 shrink-0 rounded-xs transition-colors ${completedSteps.includes('social') ? 'bg-primary' : !isStepUnlocked('social') ? 'bg-gray-200' : 'bg-title'}`} />
+                                        <span>
+                                            <span className={completedSteps.includes('social') ? 'text-primary' : isStepUnlocked('social') ? 'text-gray-400' : 'text-gray-300'}>03 </span>
+                                            <span className={completedSteps.includes('social') ? 'text-primary font-medium' : isStepUnlocked('social') ? 'text-title' : 'text-gray-300'}>Micro-Social Blueprint</span>
+                                        </span>
                                     </button>
                                 </div>
 
@@ -480,9 +507,6 @@ export default function DashboardPage() {
                                     >
                                         {step3CompletedCount === 3 ? 'Done' : 'Start'}
                                     </button>
-                                    <span className="text-xs text-gray-400 font-light">
-                                        Ready for your next step
-                                    </span>
                                 </div>
                             </div>
                         </>
