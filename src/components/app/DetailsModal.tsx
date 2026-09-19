@@ -59,22 +59,22 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
     const currentMapImage = data.mapImage || mapImg
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto no-scrollbar bg-black/60 backdrop-blur-sm animate-fadeIn">
-            {/* Modal Container (Matching Exact Image Layout) */}
-            <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto no-scrollbar shadow-2xl border border-gray-100 relative p-6 sm:p-10 space-y-10 animate-scaleUp">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto no-scrollbar bg-black/60 backdrop-blur-sm animate-fadeIn">
+            {/* Modal Container */}
+            <div className="bg-white rounded-2xl sm:rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto no-scrollbar shadow-2xl border border-gray-100 relative p-4 sm:p-8 md:p-10 space-y-6 sm:space-y-10 animate-scaleUp">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-5 right-5 z-20 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-title flex items-center justify-center transition-colors cursor-pointer"
+                    className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-title flex items-center justify-center transition-colors cursor-pointer"
                     aria-label="Close modal"
                 >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
 
                 {/* 1. Hero Header Image & Title Block */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-start">
                     {/* Top Left Image */}
-                    <div className="md:col-span-6 relative h-64 sm:h-72 rounded-2xl overflow-hidden shadow-sm">
+                    <div className="md:col-span-6 relative h-48 sm:h-64 md:h-72 rounded-2xl overflow-hidden shadow-sm">
                         <Image
                             src={data.image}
                             alt={data.title}
@@ -85,8 +85,8 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
                     </div>
 
                     {/* Top Right Content */}
-                    <div className="md:col-span-6 space-y-3 pt-1">
-                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-title uppercase font-sans">
+                    <div className="md:col-span-6 space-y-2 sm:space-y-3 pt-1">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-title uppercase font-sans">
                             {data.title}
                         </h2>
                         {data.location && (
@@ -94,24 +94,24 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
                                 {data.location}
                             </p>
                         )}
-                        <p className="text-base sm:text-lg text-title leading-relaxed font-normal pt-1">
+                        <p className="text-sm sm:text-base md:text-lg text-title leading-relaxed font-normal pt-1">
                             {data.description}
                         </p>
                     </div>
                 </div>
 
-                {/* 2. Three Metric Cards Grid (Matching User Image) */}
+                {/* 2. Three Metric Cards Grid */}
                 {data.metrics && data.metrics.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
                         {data.metrics.map((m, idx) => (
                             <div
                                 key={idx}
-                                className="border border-gray-800 rounded-2xl p-6 text-center bg-white shadow-xs"
+                                className="border border-gray-800 rounded-2xl p-4 sm:p-6 text-center bg-white shadow-xs"
                             >
-                                <span className="text-xl sm:text-2xl font-medium text-title block mb-1">
+                                <span className="text-lg sm:text-xl md:text-2xl font-medium text-title block mb-1">
                                     {m.rank}
                                 </span>
-                                <h4 className="text-base sm:text-lg font-semibold text-title leading-snug mb-1">
+                                <h4 className="text-sm sm:text-base md:text-lg font-semibold text-title leading-snug mb-1">
                                     {m.title}
                                 </h4>
                                 <p className="text-xs text-gray-500 font-normal">
@@ -122,9 +122,9 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
                     </div>
                 )}
 
-                {/* 3. Map & Neighborhoods Section (Always showing map.png from assets) */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
-                    <div className="md:col-span-6 relative h-52 sm:h-60 rounded-2xl overflow-hidden border border-gray-200 shadow-xs">
+                {/* 3. Map & Neighborhoods Section */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-8 items-center pt-2">
+                    <div className="md:col-span-6 relative h-44 sm:h-52 md:h-60 rounded-2xl overflow-hidden border border-gray-200 shadow-xs">
                         <Image
                             src={currentMapImage}
                             alt="Map View"
@@ -134,16 +134,16 @@ const DetailsModal: React.FC<DetailsModalProps> = ({
                     </div>
                     <div className="md:col-span-6 space-y-2">
                         {data.neighborhoodsText && (
-                            <p className="text-lg sm:text-xl text-title font-normal leading-relaxed">
+                            <p className="text-base sm:text-lg md:text-xl text-title font-normal leading-relaxed">
                                 {data.neighborhoodsText}
                             </p>
                         )}
                     </div>
                 </div>
 
-                {/* 4. Bottom CTA Block (Matching User Image Exact Design) */}
-                <div className="pt-6 text-center space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-medium text-title">
+                {/* 4. Bottom CTA Block */}
+                <div className="pt-4 sm:pt-6 text-center space-y-2">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-title">
                         Ready to see how {data.title} fits your life?
                     </h3>
                     <button

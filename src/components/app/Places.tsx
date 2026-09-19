@@ -135,33 +135,33 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
     }
 
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
-            {/* 1. Top Section Label: Left-aligned (Matching User Image) */}
-            <div className="text-center space-y-4 md:space-y-8">
-                <p className="font-medium text-2xl md:text-[34px] text-title text-left">
+        <section className="px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-8 sm:space-y-12">
+            {/* 1. Top Section Label */}
+            <div className="text-center space-y-3 sm:space-y-6 md:space-y-8">
+                <p className="font-medium text-lg sm:text-2xl md:text-[34px] text-title text-left">
                     The Places
                 </p>
-                <h2 className="md:text-[58px] text-4xl font-medium text-title tracking-tighter">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] xl:text-[58px] font-medium text-title tracking-tight leading-tight">
                     We currently run scouting trips in six locations across Spain and Portugal.
                 </h2>
-                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px] mx-auto">
+                <p className="text-title text-base sm:text-xl md:text-2xl lg:text-[30px] xl:text-[34px] font-normal tracking-[0.5px] sm:tracking-[1px] mx-auto leading-relaxed max-w-6xl">
                     Our trips encompass the broader regional system—the city center, but also connected rail towns and coastal neighborhoods—to evaluate each area for livability, social infrastructure, and lifestyle fit.
                 </p>
             </div>
 
-            {/* 3. Arrow buttons above the cards on the right side (Matching User Image) */}
-            <div className="flex justify-end items-center gap-3 mb-4">
+            {/* 3. Arrow buttons above the cards on the right side */}
+            <div className="flex justify-end items-center gap-3 mb-2 sm:mb-4">
                 <button
                     onClick={scrollLeft}
                     aria-label="Scroll left"
-                    className="p-1 text-title hover:text-primary transition-colors cursor-pointer"
+                    className="p-2.5 rounded-full border border-gray-200 text-title hover:text-primary hover:border-primary transition-colors cursor-pointer"
                 >
                     <ArrowLeft className="w-5 h-5" />
                 </button>
                 <button
                     onClick={scrollRight}
                     aria-label="Scroll right"
-                    className="p-1 text-title hover:text-primary transition-colors cursor-pointer"
+                    className="p-2.5 rounded-full border border-gray-200 text-title hover:text-primary hover:border-primary transition-colors cursor-pointer"
                 >
                     <ArrowRight className="w-5 h-5" />
                 </button>
@@ -170,7 +170,7 @@ const Places: React.FC<PlacesProps> = ({ onSelectLocation }) => {
             {/* 4. Scrollable Cards Carousel */}
             <div
                 ref={scrollContainerRef}
-                className="flex items-center gap-6 overflow-x-auto scrollbar-none pb-6 scroll-smooth snap-x snap-mandatory"
+                className="flex items-center gap-4 sm:gap-6 overflow-x-auto scrollbar-none pb-6 scroll-smooth snap-x snap-mandatory"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
                 {placesList.map((place) => (

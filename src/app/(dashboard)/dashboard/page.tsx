@@ -136,13 +136,13 @@ export default function DashboardPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white text-title font-sans p-6 sm:p-10 md:p-12 max-w-375 mx-auto selection:bg-primary selection:text-white">
+        <div className="min-h-screen bg-white text-title font-sans p-4 sm:p-8 md:p-12 max-w-[1728px] mx-auto selection:bg-primary selection:text-white">
             {/* Top Navigation Bar inside Dashboard */}
-            <div className="flex items-center justify-between pb-6 mb-8 border-b border-gray-200/80 text-xs sm:text-sm">
-                <Link href="/" className="font-satoshi font-normal tracking-tight text-2xl md:text-[32px] text-title">
+            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-gray-200/80 text-xs sm:text-sm">
+                <Link href="/" className="font-satoshi font-normal tracking-tight text-xl sm:text-2xl md:text-[32px] text-title">
                     Livable™
                 </Link>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                     <button
                         onClick={() => setChangePasswordModalOpen(true)}
                         className="flex items-center gap-1.5 text-xs text-title transition-colors cursor-pointer"

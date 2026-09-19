@@ -99,14 +99,14 @@ const heroItems = [
 
 const Hero: React.FC = () => {
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto space-y-16 md:space-y-28">
+        <section className="px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto space-y-10 sm:space-y-16 md:space-y-28">
             {/* Subtitle */}
-            <p className="text-3xl md:text-[62px] text-title font-normal max-w-5xl leading-tight tracking-tight">
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-[52px] xl:text-[62px] text-title font-normal max-w-5xl leading-tight tracking-tight">
                 Move from the U.S. to Spain or Portugal efficiently, joyfully, and without regret.
             </p>
 
             {/* 6 Hero Image Strip */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-end gap-3 md:gap-4 min-h-80">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-end gap-3 md:gap-4 min-h-64 sm:min-h-80">
                 {heroItems.map((item) => (
                     <HeroCard
                         key={item.id}
@@ -118,11 +118,11 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Moving abroad text row (Under Hero cards) */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 justify-between">
-                <h2 className="text-4xl md:text-[58px] font-medium text-title tracking-[1px] leading-[150%]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-6 sm:gap-8 justify-between">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[48px] xl:text-[58px] font-medium text-title tracking-[0.5px] sm:tracking-[1px] leading-snug lg:leading-[150%]">
                     Moving abroad can turn into years of fragmented research, expensive false starts, and second-guessing.
                 </h2>
-                <p className="text-2xl md:text-[36px] text-title tracking-[1px] leading-[150%]">
+                <p className="text-lg sm:text-xl md:text-2xl lg:text-[30px] xl:text-[36px] text-title tracking-[0.5px] sm:tracking-[1px] leading-relaxed lg:leading-[150%]">
                     Livable™ is the first guided moving system designed to accelerate your move abroad—combining a personalized, expert-led scouting trip with a structured post-trip framework to get you smoothly to your final landing.
                 </p>
             </div>

@@ -18,20 +18,20 @@ const OurStory: React.FC<OurStoryProps> = ({ onTalkClick }) => {
     }
 
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-10">
+        <section className="px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto text-center md:space-y-20 space-y-8 sm:space-y-12">
             {/* Label */}
-            <p className="font-medium text-2xl md:text-[34px] text-title text-left">
+            <p className="font-medium text-lg sm:text-2xl md:text-[34px] text-title text-left">
                 Our Story
             </p>
 
             {/* Headline */}
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12.5'>
-                <h2 className="md:text-[58px] text-left text-4xl font-medium text-title tracking-tighter">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12.5">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] xl:text-[58px] text-left font-medium text-title tracking-tight leading-tight">
                     We built the relocation company we wished had existed when we moved.
                 </h2>
 
                 {/* Paragraphs */}
-                <div className="text-2xl md:text-[32px] text-title md:space-y-12.5 space-y-8 text-left">
+                <div className="text-base sm:text-xl md:text-2xl lg:text-[28px] xl:text-[32px] text-title space-y-4 sm:space-y-8 md:space-y-12.5 text-left leading-relaxed">
                     <p>
                         Livable began when a forensic anthropologist and a systems designer discovered they had both spent their careers solving the exact same problem: helping people make sound decisions in unfamiliar environments.
                     </p>

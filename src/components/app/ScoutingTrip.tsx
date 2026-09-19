@@ -53,22 +53,22 @@ const scoutingTripsData = [
 
 const ScoutingTrip: React.FC<ScoutingTripProps> = ({ onSelectCard }) => {
     return (
-        <section id="scouting-trip" className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
+        <section id="scouting-trip" className="px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-8 sm:space-y-12">
             {/* Scouting Trip Header */}
-            <div className="text-center space-y-4 md:space-y-8">
-                <p className="font-medium text-2xl md:text-[34px] text-title">
+            <div className="text-center space-y-3 sm:space-y-6 md:space-y-8">
+                <p className="font-medium text-lg sm:text-2xl md:text-[34px] text-title">
                     The Scouting Trip
                 </p>
-                <h2 className="md:text-[58px] text-4xl font-medium text-title">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] xl:text-[58px] font-medium text-title leading-tight">
                     Three days, Three experts. Your priorities. Insider info.
                 </h2>
-                <p className="text-title text-2xl md:text-[34px] font-normal tracking-[1px]">
+                <p className="text-title text-base sm:text-xl md:text-2xl lg:text-[30px] xl:text-[34px] font-normal tracking-[0.5px] sm:tracking-[1px] leading-relaxed max-w-6xl mx-auto">
                     One carefully designed three-day scouting trip, giving you the real-world experience to replace guesswork before you commit to the move. Every neighborhood layout and local consultation is prepared around your priorities before you arrive, so you can decide with confidence.
                 </p>
             </div>
 
             {/* 3 Day Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 {scoutingTripsData.map((trip) => (
                     <ScoutingTripCard
                         key={trip.id}

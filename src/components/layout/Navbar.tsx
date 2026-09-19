@@ -64,17 +64,17 @@ const Navbar = () => {
     if (pathname !== '/') {
         return (
             <header className="w-full bg-white border-b border-gray-100 shadow-xs z-50 sticky top-0">
-                <div className="max-w-[1728px] mx-auto px-4 sm:px-8 md:px-12 py-4 flex items-center justify-between">
+                <div className="max-w-[1728px] mx-auto px-4 sm:px-8 md:px-12 py-3 sm:py-4 flex items-center justify-between gap-3">
                     {/* Left: Livable Brand Logo */}
-                    <Link href="/" className="text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi">
+                    <Link href="/" className="text-2xl sm:text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi shrink-0">
                         Livable™
                     </Link>
 
                     {/* Right: Navigation actions */}
-                    <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+                    <div className="flex items-center gap-2.5 sm:gap-6 md:gap-8">
                         <Link
                             href="/pricing"
-                            className={`text-base md:text-2xl font-medium transition-colors ${
+                            className={`text-sm sm:text-base md:text-2xl font-medium transition-colors ${
                                 pathname === '/pricing' ? 'text-primary' : 'text-title hover:text-black'
                             }`}
                         >
@@ -83,7 +83,7 @@ const Navbar = () => {
                         {isLoggedIn ? (
                             <Link
                                 href="/dashboard"
-                                className={`text-base md:text-2xl font-medium transition-colors ${
+                                className={`text-sm sm:text-base md:text-2xl font-medium transition-colors ${
                                     pathname === '/dashboard' ? 'text-primary' : 'text-title hover:text-black'
                                 }`}
                             >
@@ -92,7 +92,7 @@ const Navbar = () => {
                         ) : (
                             <Link
                                 href="/login"
-                                className={`text-base md:text-2xl font-medium transition-colors ${
+                                className={`text-sm sm:text-base md:text-2xl font-medium transition-colors ${
                                     pathname === '/login' ? 'text-primary' : 'text-title hover:text-black'
                                 }`}
                             >
@@ -102,6 +102,7 @@ const Navbar = () => {
                         <Button
                             onClick={() => router.push("/talk-with-us")}
                             variant="customPill"
+                            className="px-3 py-1.5 sm:px-6 sm:py-3 text-xs sm:text-base"
                         >
                             Talk With Us
                         </Button>
@@ -117,27 +118,27 @@ const Navbar = () => {
             <header
                 className={`w-full transition-all duration-300 ${
                     scrolled ? 'opacity-0 pointer-events-none -translate-y-4' : 'opacity-100 translate-y-0'
-                } pt-6 pb-4 px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto z-40`}
+                } pt-4 sm:pt-6 pb-4 px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto z-40`}
             >
                 {/* Top line: Pricing & Login/Portal links */}
-                <div className="flex justify-center items-center gap-6 sm:gap-8 md:mb-20 mb-8 sm:mb-12">
+                <div className="flex justify-center items-center gap-4 sm:gap-8 mb-4 sm:mb-12 md:mb-20">
                     <Link
                         href="/pricing"
-                        className="text-2xl font-medium transition-colors text-title hover:text-primary"
+                        className="text-lg sm:text-2xl font-medium transition-colors text-title hover:text-primary"
                     >
                         Pricing
                     </Link>
                     {isLoggedIn ? (
                         <Link
                             href="/dashboard"
-                            className="text-2xl font-medium transition-colors text-title hover:text-primary"
+                            className="text-lg sm:text-2xl font-medium transition-colors text-title hover:text-primary"
                         >
                             Portal
                         </Link>
                     ) : (
                         <Link
                             href="/login"
-                            className="text-2xl font-medium transition-colors text-title hover:text-primary"
+                            className="text-lg sm:text-2xl font-medium transition-colors text-title hover:text-primary"
                         >
                             Login
                         </Link>
@@ -145,12 +146,12 @@ const Navbar = () => {
                 </div>
 
                 {/* Main Header line: Livable Brand Title on Left + CTA Actions on Right */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                    <Link href="/" className="text-6xl xs:text-8xl sm:text-[200px] md:text-[230px] lg:text-[298px] font-normal tracking-tight text-title font-satoshi leading-none py-10">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+                    <Link href="/" className="text-5xl sm:text-7xl md:text-9xl lg:text-[180px] xl:text-[240px] 2xl:text-[298px] font-normal tracking-tight text-title font-satoshi leading-none py-4 sm:py-8 md:py-10 wrap-break-word">
                         Livable™
                     </Link>
 
-                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-6 md:gap-8">
                         <a
                             href="/pricing#how-it-works"
                             onClick={handleSeeHowItWorks}
@@ -176,37 +177,38 @@ const Navbar = () => {
                         : '-translate-y-full opacity-0 pointer-events-none'
                 }`}
             >
-                <div className="max-w-[1728px] mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between">
+                <div className="max-w-[1728px] mx-auto px-4 sm:px-8 md:px-12 py-3 flex items-center justify-between gap-3">
                     {/* Left: Livable Brand Logo */}
-                    <Link href="/" className="text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi">
+                    <Link href="/" className="text-2xl sm:text-3xl md:text-[44px] font-normal tracking-tight text-title font-satoshi shrink-0">
                         Livable™
                     </Link>
 
                     {/* Right: Navigation actions */}
-                    <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
+                    <div className="flex items-center gap-2.5 sm:gap-6 md:gap-8">
                         <Link
                             href="/pricing"
-                            className="text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
+                            className="text-sm sm:text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
                         >
                             Pricing
                         </Link>
                         {isLoggedIn ? (
                             <Link
                                 href="/dashboard"
-                                className="text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
+                                className="text-sm sm:text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
                             >
                                 Portal
                             </Link>
                         ) : (
                             <Link
                                 href="/login"
-                                className="text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
+                                className="text-sm sm:text-base md:text-2xl font-medium transition-colors text-title hover:text-black"
                             >
                                 Login
                             </Link>
                         )}
                         <Button
                             onClick={() => router.push("/talk-with-us")}
+                            className="px-3 py-1.5 sm:px-6 sm:py-3 text-xs sm:text-base"
                         >
                             Talk With Us
                         </Button>

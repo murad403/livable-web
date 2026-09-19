@@ -5,64 +5,64 @@ const Pricing = () => {
     const [selectedOption, setSelectedOption] = useState<'single' | 'another'>('single')
 
     return (
-        <section className="px-6 sm:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-10">
+        <section className="px-4 sm:px-8 md:px-12 max-w-[1728px] mx-auto md:space-y-20 space-y-8 sm:space-y-12">
             {/* Main Header */}
-            <div className="text-center space-y-5 md:space-y-9">
-                <h1 className="md:text-[86px] text-6xl font-medium text-title">
+            <div className="text-center space-y-4 sm:space-y-6 md:space-y-9">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[86px] font-medium text-title">
                     Simple Pricing
                 </h1>
-                <h2 className="md:text-[58px] text-4xl font-medium text-title">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] xl:text-[58px] font-medium text-title leading-tight">
                     One flat price for the complete Livable™ Relocation System.
                 </h2>
-                <p className="text-2xl md:text-[36px] tracking-[1px] leading-[150%]">
+                <p className="text-base sm:text-xl md:text-2xl lg:text-[30px] xl:text-[36px] tracking-[0.5px] sm:tracking-[1px] leading-relaxed max-w-5xl mx-auto">
                     Whether you're moving on your own or together, one price includes your guided scouting trip, full platform access, and the complete 3-step process.
                 </p>
-                <p className="text-2xl md:text-[36px] tracking-[1px] leading-[150%]">
+                <p className="text-base sm:text-xl md:text-2xl lg:text-[30px] xl:text-[36px] tracking-[0.5px] sm:tracking-[1px] leading-relaxed max-w-5xl mx-auto">
                     The Livable™ system is priced to cover the full scope of the guided experience—expert sessions, logistical coordination, and full platform access. The flat fee is designed to be straightforward, with no hidden add-ons beyond the optional secondary location.
                 </p>
             </div>
 
-            {/* Flat Price Card Container ($3,400 matching exact image design) */}
-            <div className="max-w-3xl mx-auto rounded-2xl p-5 md:p-8 border border-primary shadow-sm bg-white text-center relative space-y-4 md:space-y-6">
+            {/* Flat Price Card Container */}
+            <div className="max-w-3xl mx-auto rounded-2xl p-4 sm:p-6 md:p-8 border border-primary shadow-sm bg-white text-center relative space-y-4 md:space-y-6">
                 {/* Price */}
-                <div className="md:text-[58px] text-4xl font-medium text-title">
+                <div className="text-4xl sm:text-5xl md:text-[58px] font-medium text-title">
                     $3,400
                 </div>
 
                 {/* Subtitle */}
-                <div className="font-medium text-2xl md:text-[34px] text-title">
+                <div className="font-medium text-xl sm:text-2xl md:text-[34px] text-title">
                     For one or two people
                 </div>
 
                 {/* Subtext */}
-                <p className="font-medium text-xl md:text-2xl text-title tracking-[1px]">
+                <p className="font-medium text-base sm:text-xl md:text-2xl text-title tracking-[0.5px] sm:tracking-[1px] leading-relaxed">
                     The flat price covers up to two people sharing a room, so couples and two-person households go together under a single fee.
                 </p>
 
                 {/* Features Header & Bullet list */}
-                <div className="text-left space-y-4 md:space-y-6">
-                    <h3 className="text-2xl md:text-[34px] text-title">
+                <div className="text-left space-y-3 sm:space-y-4 md:space-y-6 pt-2">
+                    <h3 className="text-lg sm:text-2xl md:text-[34px] text-title font-medium">
                         Included with every Livable™ Relocation System:
                     </h3>
 
-                    <ul className="space-y-4 md:space-y-6 text-title text-xl md:text-2xl">
+                    <ul className="space-y-3 sm:space-y-4 md:space-y-6 text-title text-base sm:text-xl md:text-2xl">
                         <li className="flex items-start gap-2.5">
-                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <span className="size-2.5 sm:size-3 rounded-xs bg-title shrink-0 mt-2 sm:mt-3" />
                             <p>3-Step Relocation Track: Full system access from planning to arrival checklists</p>
                         </li>
                         <li className="flex items-start gap-2.5">
-                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <span className="size-2.5 sm:size-3 rounded-xs bg-title shrink-0 mt-2 sm:mt-3" />
                             <p>Guided Scouting Trip: Personalized itinerary with hotels, transport, and expert sessions.</p>
                         </li>
                         <li className="flex items-start gap-2.5">
-                            <span className="size-3 rounded-xs bg-title shrink-0 mt-3" />
+                            <span className="size-2.5 sm:size-3 rounded-xs bg-title shrink-0 mt-2 sm:mt-3" />
                             <p>Relocation Dashboard: Single workspace for notes, partner referrals, and next steps.</p>
                         </li>
                     </ul>
                 </div>
 
-                {/* Location Switcher toggle at bottom matching Figma image */}
-                <div className="flex items-center justify-center gap-4 text-xl md:text-2xl font-medium text-title">
+                {/* Location Switcher toggle at bottom */}
+                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-base sm:text-xl md:text-2xl font-medium text-title pt-2">
                     <button
                         onClick={() => setSelectedOption('single')}
                         className={`font-medium cursor-pointer transition-colors ${
